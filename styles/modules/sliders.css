@@ -1,0 +1,64 @@
+/* 独立横向 Slider + 合作品牌 Marquee */
+
+/* 横向 Slider：独立组件，不改变原有五种图文组合 */
+.独立Slider组件{margin-top:clamp(54px,6vw,84px);min-width:0}
+.独立Slider头{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
+.独立Slider头 h4{margin:0;font-size:22px;line-height:1.4;font-weight:600;color:var(--墨黑)}
+.独立Slider控制{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.独立Slider计数{min-width:62px;margin-right:6px;font-family:var(--数字);font-size:11px;line-height:1;font-variant-numeric:tabular-nums;color:var(--弱文)}
+.独立Slider控制 button{width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:0;background:var(--卡片);color:var(--墨黑);font:500 18px/1 var(--数字);cursor:pointer;transition:background .28s ease,color .28s ease,opacity .28s ease}
+.独立Slider控制 button:hover{background:var(--主题深);color:#fff}
+.独立Slider控制 button:disabled{opacity:.32;cursor:default;background:var(--卡片);color:var(--弱文)}
+.独立Slider控制 button:focus-visible{outline:2px solid var(--主题深);outline-offset:3px}
+
+.独立Slider视口{min-width:0;overflow:hidden}
+.独立Slider轨道{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;padding:0 0 2px;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.独立Slider轨道::-webkit-scrollbar{display:none}
+.独立Slider卡{position:relative;flex:0 0 min(46%,560px);min-width:340px;scroll-snap-align:start;scroll-snap-stop:always;background:transparent}
+.独立Slider图{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;background:var(--卡片)}
+.独立Slider图 img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.58) contrast(.95);transition:transform .9s var(--缓动),filter .7s var(--缓动)}
+.独立Slider卡:hover img{transform:scale(1.025);filter:saturate(.68) contrast(.97)}
+.独立Slider文{padding:18px 2px 0}
+.独立Slider文 span{display:block;margin-bottom:8px;font-size:10px;line-height:1.5;letter-spacing:.035em;color:var(--弱文)}
+.独立Slider文 h5{margin:0;max-width:94%;font-size:clamp(20px,1.8vw,27px);line-height:1.4;font-weight:600;letter-spacing:-.015em;color:var(--墨黑)}
+.独立Slider文 p{margin:10px 0 0;max-width:92%;font-size:13px;line-height:1.72;color:var(--弱文)}
+
+/* 合作品牌 Marquee：作为静态 Logo strip 之外的第二种合作机构展示方式 */
+.合作品牌滚动{position:relative;margin-top:18px;overflow:hidden;background:var(--主题浅);color:var(--墨黑)}
+.合作品牌滚动:before,.合作品牌滚动:after{content:"";position:absolute;top:0;bottom:0;z-index:2;width:clamp(28px,6vw,90px);pointer-events:none}
+.合作品牌滚动:before{left:0;background:linear-gradient(90deg,var(--主题浅),rgba(220,228,227,0))}
+.合作品牌滚动:after{right:0;background:linear-gradient(270deg,var(--主题浅),rgba(220,228,227,0))}
+.合作品牌轨道{display:flex;width:max-content;will-change:transform;animation:合作品牌向左 46s linear infinite}
+.合作品牌滚动:hover .合作品牌轨道{animation-play-state:paused}
+.合作品牌组{display:flex;align-items:stretch;flex:0 0 auto}
+.合作滚动品牌{width:clamp(180px,17vw,260px);min-height:108px;display:flex;align-items:center;justify-content:center;padding:24px 30px;flex:0 0 auto}
+.合作滚动品牌 strong{font-family:var(--数字);font-size:clamp(15px,1.3vw,20px);line-height:1;letter-spacing:.055em;font-weight:500;white-space:nowrap;color:rgba(32,38,41,.72)}
+.合作滚动品牌:nth-child(2n) strong{font-family:var(--字体);letter-spacing:.012em;font-weight:600}
+@keyframes 合作品牌向左{to{transform:translateX(-50%)}}
+
+@media(max-width:980px){
+  .独立Slider卡{flex-basis:min(68%,520px);min-width:320px}
+  .合作滚动品牌{width:220px}
+}
+
+@media(max-width:680px){
+  .独立Slider组件{margin-top:48px}
+  .独立Slider头{align-items:center;margin-bottom:16px}
+  .独立Slider头 h4{font-size:20px}
+  .独立Slider计数{min-width:54px;margin-right:2px}
+  .独立Slider控制 button{width:40px;height:40px}
+  .独立Slider轨道{gap:12px}
+  .独立Slider卡{flex-basis:88%;min-width:0}
+  .独立Slider文{padding-top:14px}
+  .独立Slider文 p{font-size:12px}
+  .合作品牌滚动{margin-top:14px}
+  .合作滚动品牌{width:180px;min-height:92px;padding:20px 22px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .独立Slider轨道{scroll-behavior:auto}
+  .合作品牌滚动{overflow-x:auto;scrollbar-width:none}
+  .合作品牌滚动::-webkit-scrollbar{display:none}
+  .合作品牌轨道{animation:none!important}
+  .合作品牌组[aria-hidden="true"]{display:none}
+}
