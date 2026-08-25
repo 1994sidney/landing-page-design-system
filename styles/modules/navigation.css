@@ -1,0 +1,21 @@
+/* 顶部模块导航 */
+.顶部{border:0!important}
+.导航{display:flex;align-items:center;justify-content:center;gap:20px;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;white-space:nowrap}
+.导航::-webkit-scrollbar{display:none}
+.导航 a{position:relative;flex:0 0 auto;font-size:12px;line-height:1;color:rgba(255,255,255,.70);text-decoration:none;transition:color .25s ease}
+.导航 a:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:1px;background:rgba(220,228,227,.78);transform:scaleX(0);transform-origin:left;transition:transform .28s var(--缓动)}
+.导航 a:hover,.导航 a.当前模块{color:#fff}
+.导航 a:hover:after,.导航 a.当前模块:after{transform:scaleX(1)}
+.顶部说明{white-space:nowrap}
+
+@media(max-width:1080px){
+  .顶部{grid-template-columns:auto minmax(0,1fr)}
+  .顶部说明{display:none}
+  .导航{justify-content:flex-start;padding-left:22px}
+}
+@media(max-width:720px){
+  .顶部{left:10px;right:10px;padding:0 14px;gap:12px}
+  .品牌{font-size:11px;white-space:nowrap}
+  .导航{gap:16px;padding-left:10px}
+  .导航 a{font-size:11px}
+}
