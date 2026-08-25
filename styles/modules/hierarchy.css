@@ -10,13 +10,12 @@
 .系统模块说明{margin:0 0 4px;max-width:620px;font-size:15px;line-height:1.9;color:var(--正文)}
 .系统模块内容{display:grid;gap:var(--系统小模块间距)}
 
-/* 二级组件组 */
+/* 二级组件组：只保留 H3 标题，删除说明与“适用”信息的页面展示 */
 .系统小模块{min-width:0;margin:0!important;padding:0!important;border:0!important;scroll-margin-top:88px}
-.系统小模块>.组件组头{display:grid;grid-template-columns:minmax(200px,4fr) minmax(0,8fr);gap:clamp(24px,4vw,58px);align-items:start;margin:0 0 var(--系统小标题间距)!important}
-.系统小模块>.组件组头:has(.用途){grid-template-columns:minmax(200px,3.2fr) minmax(0,5.8fr) minmax(160px,3fr)}
-.系统小模块>.组件组头 h3{grid-column:1;margin:0;font-size:clamp(26px,2.7vw,38px);line-height:1.25;letter-spacing:-.022em;font-weight:600;color:var(--墨黑)}
-.系统小模块>.组件组头>p{grid-column:2;margin:2px 0 0;max-width:720px;font-size:14px;line-height:1.84;color:var(--弱文)}
-.系统小模块>.组件组头 .用途{grid-column:3;margin:2px 0 0;justify-self:end;max-width:220px;font-size:11px;line-height:1.65;color:var(--弱文);text-align:right}
+.系统小模块>.组件组头{display:block;margin:0 0 var(--系统小标题间距)!important}
+.系统小模块>.组件组头 h3{margin:0;font-size:clamp(26px,2.7vw,38px);line-height:1.25;letter-spacing:-.022em;font-weight:600;color:var(--墨黑)}
+.系统小模块>.组件组头>p,
+.系统小模块>.组件组头>.用途{display:none!important}
 
 /* 三级组件 */
 .系统小模块 h4{letter-spacing:-.015em}
@@ -51,7 +50,6 @@
 /* 开发令牌 */
 .开发令牌组{background:var(--墨黑);color:#fff;padding:clamp(34px,4vw,52px)!important}
 .开发令牌组>.组件组头 h3{color:#fff}
-.开发令牌组>.组件组头>p{color:rgba(255,255,255,.62)}
 .开发令牌组 .令牌摘要{border-top:1px solid rgba(255,255,255,.16);padding-top:22px}
 .开发令牌组 .令牌摘要 h4{font-size:30px;line-height:1.35;letter-spacing:-.025em;font-weight:400;margin:0 0 20px;color:#fff}
 .开发令牌组 .令牌摘要 p{font-size:14px;line-height:1.85;color:rgba(255,255,255,.62);max-width:480px;margin:0}
@@ -61,13 +59,8 @@
 @media(max-width:1100px){
   .系统模块头{grid-template-columns:1fr;gap:24px}
   .系统模块说明{max-width:760px}
-  .系统小模块>.组件组头,.系统小模块>.组件组头:has(.用途){grid-template-columns:minmax(190px,4fr) minmax(0,8fr)}
-  .系统小模块>.组件组头 .用途{grid-column:2;justify-self:start;text-align:left;margin-top:10px}
 }
 @media(max-width:820px){
-  .系统小模块>.组件组头,.系统小模块>.组件组头:has(.用途){grid-template-columns:1fr;gap:12px}
-  .系统小模块>.组件组头 h3,.系统小模块>.组件组头>p,.系统小模块>.组件组头 .用途{grid-column:1;justify-self:start;text-align:left}
-  .系统小模块>.组件组头 .用途{margin-top:2px}
   .页面蓝图组 .蓝图行{grid-template-columns:1fr 2fr}
   .页面蓝图组 .蓝图行 .规则{grid-column:2}
 }
