@@ -3,10 +3,9 @@
 .内容组件库{display:grid;gap:var(--组件间距,32px)}
 .内容分组{min-width:0}
 .内容分组+.内容分组{margin-top:var(--组件间距,32px)}
-.内容分组头{display:grid;grid-template-columns:4fr 5fr 3fr;gap:18px;align-items:end;margin-bottom:24px}
+.内容分组头{display:block;margin-bottom:24px}
 .内容分组头 h4{margin:0;font-size:28px;line-height:1.35;font-weight:600;letter-spacing:-.02em}
-.内容分组头 p{margin:0;font-size:14px;line-height:1.82;color:var(--弱文);max-width:620px}
-.内容分组头 span{justify-self:end;font-size:11px;color:var(--弱文)}
+.内容分组头>p,.内容分组头>span{display:none!important}
 
 .新闻布局{display:grid;grid-template-columns:7fr 5fr;gap:18px;min-height:540px}
 .主新闻{position:relative;overflow:hidden;min-height:540px;background:var(--石墨);color:#fff}
@@ -80,14 +79,10 @@
   .新闻布局,.文章布局{grid-template-columns:1fr}
   .文章侧栏{grid-template-columns:1fr 1fr;grid-template-rows:auto}
   .文章侧项{grid-template-columns:1fr;grid-template-rows:220px auto}
-  .内容分组头{grid-template-columns:1fr 1fr}
-  .内容分组头 span{grid-column:2;justify-self:end}
   .案例布局{grid-template-columns:1fr 1fr;grid-template-rows:440px 280px}
   .案例主项{grid-column:1/-1;grid-row:auto}
 }
 @media(max-width:680px){
-  .内容分组头{grid-template-columns:1fr;gap:10px}
-  .内容分组头 span{grid-column:auto;justify-self:start}
   .主新闻{min-height:500px}
   .新闻列表{padding:6px 22px}
   .文章侧栏{grid-template-columns:1fr}
