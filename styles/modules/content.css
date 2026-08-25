@@ -24,8 +24,28 @@
 .新闻条目 time{display:block;margin-bottom:11px;font-size:11px;color:var(--弱文)}
 .新闻条目 h5{margin:0;font-size:19px;line-height:1.52;font-weight:600;letter-spacing:-.012em}
 .新闻条目 p{margin:9px 0 0;font-size:13px;line-height:1.75;color:var(--弱文)}
-.内容文本链接{display:inline-block;width:max-content;margin-top:14px;color:var(--主题深);font-size:12px;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(95,115,117,.42);text-underline-offset:4px}
-.内容文本链接:hover{text-decoration-color:currentColor}
+
+/* 文本链接：仍保持编辑式链接形态，但提高识别度并与正文拉开距离 */
+.内容文本链接{
+  display:inline-block;
+  width:max-content;
+  margin-top:22px;
+  padding-bottom:2px;
+  color:var(--主题深);
+  font-size:13px;
+  line-height:1.5;
+  font-weight:600;
+  letter-spacing:.01em;
+  text-decoration-line:underline;
+  text-decoration-thickness:1.5px;
+  text-decoration-color:rgba(95,115,117,.62);
+  text-underline-offset:6px;
+  transition:color .25s ease,text-decoration-color .25s ease;
+}
+.内容文本链接:hover{color:var(--墨黑);text-decoration-color:currentColor}
+.主新闻 .内容文本链接{color:#fff;text-decoration-color:rgba(255,255,255,.68)}
+.主新闻 .内容文本链接:hover{color:#fff;text-decoration-color:#fff}
+.新闻条目 .内容文本链接{margin-top:18px}
 
 .文章布局{display:grid;grid-template-columns:7fr 5fr;gap:18px}
 .文章主项{display:grid;grid-template-rows:minmax(390px,1fr) auto;background:transparent}
@@ -35,6 +55,7 @@
 .文章主文{padding:26px 0 0}
 .文章主文 h5{margin:0;max-width:780px;font-size:clamp(27px,3vw,42px);line-height:1.28;font-weight:600;letter-spacing:-.024em}
 .文章主文 p{margin:14px 0 0;max-width:700px;font-size:14px;line-height:1.82;color:var(--弱文)}
+.文章主文 .内容文本链接{margin-top:20px}
 .文章侧栏{display:grid;grid-template-rows:1fr 1fr;gap:18px}
 .文章侧项{display:grid;grid-template-columns:42% 58%;min-height:260px;background:var(--主题浅);overflow:hidden}
 .文章侧项:nth-child(2){background:var(--卡片)}
@@ -42,6 +63,7 @@
 .文章侧文{padding:28px 26px;display:flex;flex-direction:column;justify-content:center}
 .文章侧文 h5{margin:0;font-size:20px;line-height:1.48;font-weight:600;letter-spacing:-.015em}
 .文章侧文 p{margin:10px 0 0;font-size:13px;line-height:1.75;color:var(--弱文)}
+.文章侧文 .内容文本链接{margin-top:16px}
 
 .案例布局{display:grid;grid-template-columns:8fr 4fr;grid-template-rows:260px 260px;gap:18px}
 .案例项{position:relative;overflow:hidden;background:var(--石墨);color:#fff;min-height:260px}
