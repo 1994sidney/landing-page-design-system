@@ -66,13 +66,12 @@
 .复杂组合图 .EChart画布.图表空状态:before,.复杂组合图 .EChart画布.图表无数据:before{background:var(--墨黑)}
 .复杂组合图 .EChart画布.图表空状态:after,.复杂组合图 .EChart画布.图表无数据:after{color:rgba(255,255,255,.56)}
 
-/* 状态规范展示 */
+/* 状态规范展示：标题 + 样例，不再重复解释状态规则 */
 .状态反馈库{display:grid;gap:var(--系统组件间距,32px)}
 .状态分组{background:rgba(250,250,248,.58);padding:clamp(26px,3vw,38px)}
-.状态分组头{display:grid;grid-template-columns:3fr 7fr 2fr;gap:24px;align-items:end;margin-bottom:24px}
+.状态分组头{display:block;margin-bottom:24px}
 .状态分组头 h4{margin:0;font-size:22px;line-height:1.4;font-weight:600;color:var(--墨黑)}
-.状态分组头 p{margin:0;font-size:13px;line-height:1.8;color:var(--弱文)}
-.状态分组头 span{justify-self:end;font-size:11px;color:var(--弱文)}
+.状态分组头>p,.状态分组头>span{display:none!important}
 .状态网格{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--系统组件内间距,18px)}
 .状态样例{min-width:0;min-height:144px;padding:20px;background:var(--表面);display:flex;flex-direction:column;justify-content:space-between;gap:20px}
 .状态名{font:500 10px/1.4 var(--数字);letter-spacing:.05em;text-transform:uppercase;color:var(--弱文)}
@@ -103,21 +102,22 @@
 .状态FAQ头 i{font-style:normal;color:var(--弱文)}.状态FAQ.打开 .状态FAQ头 i{transform:rotate(45deg);color:var(--主题深)}
 .状态FAQ答{display:none;padding:0 0 18px;font-size:11px;line-height:1.7;color:var(--弱文)}.状态FAQ.打开 .状态FAQ答{display:block}
 
-/* 图片状态展示 */
+/* 图片状态展示：删除 Loaded / Loading / Error 英文浮标 */
 .状态图片网格{grid-template-columns:repeat(3,1fr)}
 .状态图片{position:relative;height:220px;overflow:hidden;background:#E4E7E4}
 .状态图片 img{width:100%;height:100%;object-fit:cover;filter:saturate(.58)}
 .图片骨架{position:absolute;inset:0;background:linear-gradient(100deg,#E0E4E1 20%,#EDF0ED 38%,#E0E4E1 56%);background-size:220% 100%;animation:状态骨架 1.7s linear infinite}
-.图片状态文字{position:absolute;left:16px;bottom:14px;padding:7px 9px;background:rgba(32,38,41,.66);color:#fff;font-size:10px;z-index:5}
+.图片状态文字{display:none!important}
 @keyframes 状态骨架{to{background-position:-220% 0}}
 
-/* 图表状态展示 */
+/* 图表状态展示：只保留中文核心状态，不显示英文标签与解释段落 */
 .状态图表网格{grid-template-columns:repeat(3,1fr)}
-.状态图表{min-height:260px;background:var(--表面);display:grid;grid-template-rows:auto 1fr;padding:20px}
-.状态图表>span{font-size:10px;color:var(--弱文)}
+.状态图表{min-height:260px;background:var(--表面);display:grid;grid-template-rows:1fr;padding:20px}
+.状态图表>span{display:none!important}
 .图表状态舞台{position:relative;display:grid;place-items:center;min-height:190px}
 .图表状态中心{max-width:200px;text-align:center;display:grid;justify-items:center;gap:9px;color:var(--弱文);font-size:11px;line-height:1.65}
 .图表状态中心 strong{font-size:14px;color:var(--墨黑);font-weight:600}
+.图表状态中心>span:not(.图表空图形):not(.无数据符号){display:none}
 .图表加载旋转{width:28px;height:28px;border:2px solid rgba(95,115,117,.18);border-top-color:var(--主题深);border-radius:50%;animation:状态旋转 .9s linear infinite}
 .图表空图形{width:66px;height:42px;display:flex;align-items:flex-end;gap:6px;padding:6px;border-bottom:1px solid rgba(95,115,117,.25);border-left:1px solid rgba(95,115,117,.25)}
 .图表空图形 i{display:block;flex:1;background:rgba(95,115,117,.14)}.图表空图形 i:nth-child(1){height:32%}.图表空图形 i:nth-child(2){height:62%}.图表空图形 i:nth-child(3){height:45%}.图表空图形 i:nth-child(4){height:78%}
@@ -136,7 +136,6 @@
 .状态反馈组 .反馈消息.信息{background:var(--状态信息浅)}.状态反馈组 .反馈消息.信息 b{color:var(--状态信息)}
 
 @media(max-width:980px){
-  .状态分组头{grid-template-columns:1fr;gap:7px}.状态分组头 span{justify-self:start}
   .状态网格,.状态图表网格{grid-template-columns:repeat(2,1fr)}
   .状态图片网格{grid-template-columns:1fr 1fr}.状态图片网格 .状态图片:last-child{grid-column:1/-1}
 }
