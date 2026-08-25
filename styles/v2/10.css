@@ -1,0 +1,89 @@
+/* V2.6 — 图文高度与观点引语精修 */
+
+/* 图文内容库：第一种“文字主导 + 图片辅助”不占用过高纵向空间 */
+.图文内容库组 .图文反向{
+  min-height:470px;
+  height:470px;
+}
+.图文内容库组 .图文反向 .组合主图{
+  min-height:0;
+  height:470px;
+}
+.图文内容库组 .图文反向 .组合文字{
+  padding:clamp(34px,4vw,58px);
+}
+.图文内容库组 .图文反向 .组合标签{
+  margin-bottom:20px;
+}
+.图文内容库组 .图文反向 h4{
+  font-size:clamp(30px,3.2vw,46px);
+  line-height:1.22;
+}
+.图文内容库组 .图文反向 p{
+  margin-top:18px;
+  line-height:1.82;
+}
+.图文内容库组 .图文反向 .文字按钮{
+  margin-top:24px;
+}
+
+/* 观点与引语：字号收敛，并把内容控制在画面右下方 */
+.引语板{
+  min-height:460px;
+  display:grid;
+  grid-template-columns:5fr 7fr;
+  grid-template-rows:auto auto;
+  column-gap:clamp(36px,6vw,96px);
+  row-gap:20px;
+  align-content:end;
+  padding:clamp(48px,6vw,76px) clamp(34px,7vw,104px);
+}
+.引语板 blockquote{
+  grid-column:2;
+  grid-row:1;
+  justify-self:end;
+  width:min(720px,100%);
+  margin:0;
+  font-size:clamp(28px,3vw,44px);
+  line-height:1.40;
+  letter-spacing:-.018em;
+  font-weight:500;
+}
+.引语板 footer{
+  grid-column:2;
+  grid-row:2;
+  justify-self:end;
+  width:min(720px,100%);
+  margin:0;
+  padding:0;
+  font-size:12px;
+  line-height:1.6;
+  color:rgba(255,255,255,.58);
+}
+
+@media(max-width:980px){
+  .图文内容库组 .图文反向,
+  .图文内容库组 .图文反向 .组合主图{
+    height:auto;
+    min-height:0;
+  }
+  .图文内容库组 .图文反向 .组合主图{height:420px}
+  .引语板{grid-template-columns:3fr 7fr;min-height:420px}
+  .引语板 blockquote{font-size:clamp(26px,4vw,38px)}
+}
+
+@media(max-width:680px){
+  .图文内容库组 .图文反向 .组合主图{height:320px}
+  .引语板{
+    min-height:440px;
+    grid-template-columns:1fr;
+    padding:36px 24px;
+  }
+  .引语板 blockquote,
+  .引语板 footer{
+    grid-column:1;
+    width:92%;
+    justify-self:end;
+  }
+  .引语板 blockquote{font-size:27px;line-height:1.45}
+}
