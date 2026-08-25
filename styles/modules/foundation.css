@@ -1,10 +1,138 @@
-/* 基础风格兼容层
-   保留既有 V2 基础视觉规则，新的模块级样式由 styles/modules/* 继续接管。
-*/
-@import url("../v2/01.css");
-@import url("../v2/02.css");
-@import url("../v2/03.css");
-@import url("../v2/04.css");
-@import url("../v2/05.css");
-@import url("../v2/06.css");
-@import url("../v2/07.css");
+/* 基础视觉：主题变量、首屏、设计基础、按钮、标签与卡片 */
+:root{
+  --主题:#7B8E90;
+  --主题深:#5F7375;
+  --主题浅:#DCE4E3;
+  --墨黑:#202629;
+  --石墨:#384244;
+  --正文:#3F484A;
+  --弱文:#6F7879;
+  --页面背景:#F1F2F0;
+  --纸白:#F1F2F0;
+  --纯白:#FAFAF8;
+  --表面:#FAFAF8;
+  --卡片:#E3E7E5;
+  --卡片暖:#D9D4CB;
+  --雾灰:#DCE3E1;
+  --冰灰:#CDD7D6;
+  --石灰:#C4C9C5;
+  --边线:rgba(32,38,41,.10);
+  --暗边:rgba(255,255,255,.18);
+  --玻璃浅:rgba(248,250,249,.58);
+  --玻璃深:rgba(29,38,40,.52);
+  --玻璃边:rgba(255,255,255,.30);
+  --玻璃模糊:18px;
+  --柔影:0 22px 70px rgba(28,37,39,.10);
+}
+
+body{background:var(--页面背景);color:var(--墨黑)}
+.页面{background:radial-gradient(circle at 78% 16%,rgba(123,142,144,.08),transparent 22%),var(--页面背景)}
+.小标{color:var(--弱文);letter-spacing:.06em}
+
+/* 顶部与首屏 */
+.顶部{
+  top:14px;left:var(--页边距);right:var(--页边距);height:58px;padding:0 20px;
+  border:0;border-radius:4px;background:rgba(27,35,37,.38);color:#fff;
+  -webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);
+  box-shadow:0 12px 38px rgba(12,18,19,.12);mix-blend-mode:normal
+}
+.首屏{background:var(--石墨)}
+.首屏图{
+  background:
+    linear-gradient(90deg,rgba(20,29,31,.58),rgba(20,29,31,.12) 62%,rgba(20,29,31,.30)),
+    linear-gradient(0deg,rgba(20,29,31,.36),transparent 54%),
+    url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat;
+  filter:saturate(.62) contrast(.94)
+}
+.首屏标题{font-weight:400;letter-spacing:-.025em;line-height:1.03}
+.首屏标题 .强调{color:#D7E0DF;font-weight:500}
+.首屏侧栏{
+  border:0;padding:25px 26px;margin-bottom:42px;background:rgba(29,38,40,.54);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(15,22,23,.18)
+}
+.首屏底栏{border-top:0;padding-top:0;color:rgba(255,255,255,.74)}
+.首屏底栏 span{padding-top:12px}
+.胶囊按钮{border:0;background:rgba(250,250,248,.96)!important;color:var(--墨黑)!important;box-shadow:0 8px 22px rgba(12,18,19,.14);-webkit-backdrop-filter:none;backdrop-filter:none}
+.胶囊按钮:hover{background:var(--主题)!important;color:#fff!important;transform:translateY(-2px)}
+
+/* 设计原则 */
+.原则组{gap:14px;border:0}
+.原则{
+  min-height:270px;border:0;padding:30px;background:rgba(250,250,248,.68);
+  display:flex;justify-content:flex-end;
+  transition:transform .45s var(--缓动),background .45s var(--缓动),box-shadow .45s var(--缓动)
+}
+.原则:nth-child(2){background:var(--卡片)}
+.原则:nth-child(3){background:var(--主题浅)}
+.原则:nth-child(4){background:#EAE9E4}
+.原则:hover{transform:translateY(-6px);box-shadow:var(--柔影)}
+.原则>div{margin-top:auto}
+.原则 h4{font-weight:600}
+
+/* 色彩系统 */
+.角色色板{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.角色色{min-height:250px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:var(--表面);border:0}
+.角色色 .色角{font-size:12px;color:var(--弱文)}
+.角色色 strong{font:500 clamp(28px,3.2vw,46px)/1 var(--数字);letter-spacing:-.04em}
+.角色色 p{margin:28px 0 0;font-size:13px;line-height:1.75;color:var(--正文);max-width:270px}
+.角色色.主题{background:var(--主题);color:#fff}.角色色.主题 p,.角色色.主题 .色角{color:rgba(255,255,255,.74)}
+.角色色.深色{background:var(--墨黑);color:#fff}.角色色.深色 p,.角色色.深色 .色角{color:rgba(255,255,255,.68)}
+.角色色.页面背景{background:var(--页面背景);box-shadow:inset 0 0 0 1px rgba(32,38,41,.04)}
+.角色色.表面{background:var(--表面)}
+.角色色.卡片{background:var(--卡片)}
+.角色色.主文本{background:#CCD2D0}
+.角色色.次文本{background:#D8DDDA}
+.角色色.玻璃{color:var(--墨黑);background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(225,233,231,.42)),url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=75') center/cover;background-blend-mode:screen}
+.配色比例{display:grid;grid-template-columns:7fr 2fr 1fr;gap:8px;margin-top:18px}
+.配色比例>div{min-height:92px;padding:18px 20px;display:flex;align-items:end;justify-content:space-between;background:var(--表面)}
+.配色比例>div:nth-child(2){background:var(--卡片)}
+.配色比例>div:nth-child(3){background:var(--主题);color:#fff}
+.配色比例 strong{font:500 30px/1 var(--数字)}
+.配色比例 span{font-size:12px;color:inherit;opacity:.72}
+
+/* 字体样式与栅格 */
+.字板{border-top:0;display:grid;gap:8px}
+.字行{border-bottom:0;background:rgba(250,250,248,.56);padding:28px 30px}
+.字行:nth-child(even){background:rgba(227,231,229,.62)}
+.超大标题,.大标题{font-weight:500;letter-spacing:-.025em}
+.中标题{font-weight:500;letter-spacing:-.018em}
+.正文样{color:var(--正文)}
+.栅格示意{border:0;background:var(--表面);box-shadow:inset 0 0 0 1px rgba(32,38,41,.035)}
+
+/* 基础组件 */
+.按钮板,.标签板{border:0;background:var(--表面);padding:34px}
+.主按钮,.次按钮{border:0}
+.主按钮{background:var(--墨黑)}
+.主按钮:hover{background:var(--主题深)}
+.次按钮{background:var(--卡片);color:var(--墨黑)}
+.次按钮:hover{background:var(--主题);color:#fff}
+.文字按钮{
+  display:inline-block;width:max-content;border-bottom:0;color:var(--主题深);font-weight:500;
+  text-decoration-line:underline;text-decoration-thickness:1px;text-decoration-color:rgba(95,115,117,.46);text-underline-offset:5px;
+  transition:color .28s ease,text-decoration-color .28s ease
+}
+.文字按钮:hover{color:var(--墨黑);text-decoration-color:currentColor}
+.标签{border:0;background:var(--卡片);padding:8px 13px}
+.标签.深{background:var(--墨黑)}
+.标签.浅{background:var(--主题浅)}
+.信息卡板{border:0;gap:14px}
+.信息卡{
+  border:0;min-height:310px;padding:30px;background:var(--卡片);display:flex;justify-content:flex-end;
+  transition:transform .45s var(--缓动),background .45s var(--缓动),box-shadow .45s var(--缓动)
+}
+.信息卡:nth-child(2){background:#D8DEDC}
+.信息卡:nth-child(3){background:#E8E7E2}
+.信息卡:hover{background:var(--表面);transform:translateY(-5px);box-shadow:var(--柔影)}
+.信息卡>div{margin-top:auto}
+.信息卡 h4{font-weight:600}
+
+@media(max-width:980px){
+  .顶部{left:12px;right:12px}
+  .角色色板{grid-template-columns:repeat(2,1fr)}
+  .原则组,.信息卡板{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .角色色板,.原则组,.信息卡板{grid-template-columns:1fr}
+  .配色比例{grid-template-columns:1fr}
+  .首屏侧栏{grid-column:1/-1}
+}
