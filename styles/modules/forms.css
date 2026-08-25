@@ -1,8 +1,33 @@
 /* 表单 / FAQ / 页脚 */
 .表单板{min-height:560px}
+
+/* 左侧说明直接叠在摄影背景上，不再使用毛玻璃面板 */
+.表单说明{
+  margin:0!important;
+  padding:clamp(42px,5vw,66px)!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  color:#fff!important;
+}
+.表单说明 .小标{color:rgba(255,255,255,.68)!important}
+.表单说明 h4{max-width:430px;color:#fff;text-shadow:0 2px 18px rgba(14,20,21,.24)}
+.表单说明 p{max-width:390px;color:rgba(255,255,255,.76)!important;text-shadow:0 2px 16px rgba(14,20,21,.20)}
+
+/* 右侧表单仍保留浅色半透明层，确保输入信息清晰 */
 .表单{display:grid;align-content:center;gap:18px}
 .字段{display:grid;gap:7px}
 .字段 label{font-size:12px;line-height:1.5;color:var(--正文)}
 .字段 input{width:100%}
+
 .常见问题{display:grid;gap:10px}
 .页脚演示{margin-top:0}
+
+@media(max-width:680px){
+  .表单说明{min-height:310px;padding:34px 24px!important}
+}
