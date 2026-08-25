@@ -110,9 +110,28 @@ body{background:var(--页面背景);color:var(--墨黑)}
 .次按钮{background:var(--卡片);color:var(--墨黑)}
 .次按钮:hover{background:var(--主题);color:#fff}
 .文字按钮{
-  display:inline-block;width:max-content;border-bottom:0;color:var(--主题深);font-weight:500;
-  text-decoration-line:underline;text-decoration-thickness:1px;text-decoration-color:rgba(95,115,117,.46);text-underline-offset:5px;
-  transition:color .28s ease,text-decoration-color .28s ease
+  appearance:none;
+  -webkit-appearance:none;
+  display:inline-block;
+  width:max-content;
+  max-width:100%;
+  margin:0;
+  padding:10px 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--主题深);
+  font:inherit;
+  font-size:13px;
+  line-height:1.5;
+  font-weight:500;
+  text-align:left;
+  text-decoration-line:underline;
+  text-decoration-thickness:1px;
+  text-decoration-color:rgba(95,115,117,.46);
+  text-underline-offset:5px;
+  cursor:pointer;
+  transition:color .28s ease,text-decoration-color .28s ease,opacity .28s ease
 }
 .文字按钮:hover{color:var(--墨黑);text-decoration-color:currentColor}
 .标签{border:0;background:var(--卡片);padding:8px 13px}
