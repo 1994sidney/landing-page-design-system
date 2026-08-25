@@ -1,5 +1,4 @@
-/* 设计系统三级层级：一级大模块 / 二级组件组 / 三级具体组件 */
-
+/* 页面三级层级：一级大模块 / 二级组件组 / 三级具体组件 */
 :root{
   --系统模块上下:clamp(108px,8.6vw,140px);
   --系统模块头间距:clamp(58px,5.6vw,78px);
@@ -8,181 +7,77 @@
   --系统组件间距:clamp(24px,2.5vw,34px);
 }
 
-/* 旧“基础界面语言”不再属于组件体系，避免脚本重组前短暂显示 */
-.章节#基础组件,.界面语言组{display:none!important}
-
-/* 一级模块：所有大标题完全统一 */
-.系统模块{
-  position:relative;
-  padding:var(--系统模块上下) 0!important;
-  border:0!important;
-  scroll-margin-top:84px;
-}
+/* 一级模块 */
+.系统模块{position:relative;padding:var(--系统模块上下) 0!important;border:0!important;scroll-margin-top:84px}
 .系统模块.模块默认{background:var(--页面背景)!important}
 .系统模块.模块浅色{background:rgba(250,250,248,.72)!important}
 .系统模块.模块雾色{background:rgba(227,231,229,.48)!important}
+.系统模块头{display:grid;grid-template-columns:minmax(0,7fr) minmax(280px,5fr);gap:clamp(32px,5vw,78px);align-items:end;margin:0 0 var(--系统模块头间距)}
+.系统模块标题{margin:0;max-width:900px;font-size:clamp(50px,6vw,86px);line-height:1.05;letter-spacing:-.035em;font-weight:500;color:var(--墨黑)}
+.系统模块说明{margin:0 0 4px;max-width:620px;font-size:15px;line-height:1.9;color:var(--正文)}
+.系统模块内容{display:grid;gap:var(--系统小模块间距)}
 
-.系统模块头{
-  display:grid;
-  grid-template-columns:minmax(0,7fr) minmax(280px,5fr);
-  gap:clamp(32px,5vw,78px);
-  align-items:end;
-  margin:0 0 var(--系统模块头间距);
-}
-.系统模块标题{
-  margin:0;
-  max-width:900px;
-  font-size:clamp(50px,6vw,86px);
-  line-height:1.05;
-  letter-spacing:-.035em;
-  font-weight:500;
-  color:var(--墨黑);
-}
-.系统模块说明{
-  margin:0 0 4px;
-  max-width:620px;
-  font-size:15px;
-  line-height:1.9;
-  color:var(--正文);
-}
-.系统模块内容{
-  display:grid;
-  gap:var(--系统小模块间距);
-}
-
-/* 二级模块：统一小标题层级，不再出现第二套“大标题” */
-.系统小模块{
-  min-width:0;
-  margin:0!important;
-  padding:0!important;
-  border:0!important;
-  scroll-margin-top:88px;
-}
-.系统小模块>.组件组头{
-  display:grid;
-  grid-template-columns:minmax(200px,4fr) minmax(0,8fr);
-  gap:clamp(24px,4vw,58px);
-  align-items:start;
-  margin:0 0 var(--系统小标题间距)!important;
-}
+/* 二级组件组 */
+.系统小模块{min-width:0;margin:0!important;padding:0!important;border:0!important;scroll-margin-top:88px}
+.系统小模块>.组件组头{display:grid;grid-template-columns:minmax(200px,4fr) minmax(0,8fr);gap:clamp(24px,4vw,58px);align-items:start;margin:0 0 var(--系统小标题间距)!important}
 .系统小模块>.组件组头:has(.用途){grid-template-columns:minmax(200px,3.2fr) minmax(0,5.8fr) minmax(160px,3fr)}
-.系统小模块>.组件组头 h3{
-  grid-column:1;
-  margin:0;
-  font-size:clamp(26px,2.7vw,38px);
-  line-height:1.25;
-  letter-spacing:-.022em;
-  font-weight:600;
-  color:var(--墨黑);
-}
-.系统小模块>.组件组头>p{
-  grid-column:2;
-  margin:2px 0 0;
-  max-width:720px;
-  font-size:14px;
-  line-height:1.84;
-  color:var(--弱文);
-}
-.系统小模块>.组件组头:not(:has(.用途))>p{grid-column:2}
-.系统小模块>.组件组头 .用途{
-  grid-column:3;
-  margin:2px 0 0;
-  justify-self:end;
-  max-width:220px;
-  font-size:11px;
-  line-height:1.65;
-  color:var(--弱文);
-  text-align:right;
-}
+.系统小模块>.组件组头 h3{grid-column:1;margin:0;font-size:clamp(26px,2.7vw,38px);line-height:1.25;letter-spacing:-.022em;font-weight:600;color:var(--墨黑)}
+.系统小模块>.组件组头>p{grid-column:2;margin:2px 0 0;max-width:720px;font-size:14px;line-height:1.84;color:var(--弱文)}
+.系统小模块>.组件组头 .用途{grid-column:3;margin:2px 0 0;justify-self:end;max-width:220px;font-size:11px;line-height:1.65;color:var(--弱文);text-align:right}
 
-/* 三级组件：内部标题统一从 h4 开始 */
+/* 三级组件 */
 .系统小模块 h4{letter-spacing:-.015em}
-.系统小模块>.图文组合库,
-.系统小模块>.图表库,
-.系统小模块>.内容组件库,
-.系统小模块>.流程动态库,
-.系统小模块>.流程SVG库{gap:var(--系统组件间距)!important}
-
-/* 设计基础：原独立章节内容现在作为二级组件组存在 */
-.设计原则组 .原则组,
-.色彩系统组 .角色色板,
-.字体样式组 .字板,
-.栅格间距组 .栅格示意,
-.摄影图片组 .摄影区,
-.动效语言组 .动效组,
-.页面蓝图组 .蓝图{margin-top:0!important}
-
-/* 数据图表模块中两组内容形成明确先后关系 */
+.系统小模块>.图文组合库,.系统小模块>.图表库,.系统小模块>.内容组件库,.系统小模块>.流程动态库{gap:var(--系统组件间距)!important}
+.设计原则组 .原则组,.色彩系统组 .角色色板,.字体样式组 .字板,.栅格间距组 .栅格示意,.摄影图片组 .摄影区,.动效语言组 .动效组,.页面蓝图组 .蓝图{margin-top:0!important}
 .数据卡片组 .数据板{margin:0}
-.图表组件组 .图表库{gap:var(--系统组件间距)!important}
-
-/* 内容与媒体中的多组件内容库保持统一节奏 */
 .内容发布组 .内容组件库{gap:var(--系统组件间距)!important}
 .内容发布组 .内容分组+.内容分组{margin-top:var(--系统组件间距)!important}
 .图文内容库组 .图文组合库{gap:var(--系统组件间距)!important}
-
-/* 流程组件内部的多个动态场景属于同一二级组件，间距略大但保持固定 */
 .流程视觉组 .流程动态库{gap:clamp(56px,5vw,76px)!important}
 
-/* 开发令牌仍保持深色展示，但不再把整个一级模块变成深色 */
-.开发令牌组{
-  background:var(--墨黑);
-  color:#fff;
-  padding:clamp(34px,4vw,52px)!important;
-}
+/* 页面蓝图 */
+.页面蓝图组 .蓝图{border-top:0;display:grid;gap:8px}
+.页面蓝图组 .蓝图行{display:grid;grid-template-columns:2fr 6fr 4fr;gap:18px;border:0;padding:23px 26px;background:rgba(250,250,248,.58);align-items:start}
+.页面蓝图组 .蓝图行:nth-child(3n+2){background:var(--卡片)}
+.页面蓝图组 .蓝图行 h4{margin:0;font-size:17px;line-height:1.5;font-weight:600}
+.页面蓝图组 .蓝图行 p{margin:0;font-size:14px;line-height:1.82;color:var(--正文)}
+.页面蓝图组 .蓝图行 .规则{font-size:12px;line-height:1.75;color:var(--弱文)}
+
+/* 页脚 */
+.页脚演示{background:var(--墨黑);color:#fff}
+.页脚演示 .页脚底{border-top:0}
+.页脚列 a{width:max-content;text-decoration:none!important;color:rgba(255,255,255,.72);transition:color .25s ease}
+.页脚列 a:hover{color:#fff;text-decoration:none!important}
+
+/* 开发令牌 */
+.开发令牌组{background:var(--墨黑);color:#fff;padding:clamp(34px,4vw,52px)!important}
 .开发令牌组>.组件组头 h3{color:#fff}
 .开发令牌组>.组件组头>p{color:rgba(255,255,255,.62)}
-.开发令牌组 .令牌摘要 h4{color:#fff}
-.开发令牌组 .令牌摘要 p{color:rgba(255,255,255,.62)}
+.开发令牌组 .令牌摘要{border-top:1px solid rgba(255,255,255,.16);padding-top:22px}
+.开发令牌组 .令牌摘要 h4{font-size:30px;line-height:1.35;letter-spacing:-.025em;font-weight:400;margin:0 0 20px;color:#fff}
+.开发令牌组 .令牌摘要 p{font-size:14px;line-height:1.85;color:rgba(255,255,255,.62);max-width:480px;margin:0}
+.开发令牌组 pre{border-color:rgba(255,255,255,.10)!important}
 .开发令牌组 .末行{color:rgba(255,255,255,.48)}
-
-/* 顶部导航只对应六个一级模块 */
-.导航{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:clamp(12px,1.6vw,24px);
-  min-width:0;
-}
-.导航 a{white-space:nowrap;font-size:12px}
-.导航 a.当前模块{color:#fff}
-.导航 a.当前模块:after{transform:scaleX(1)!important;opacity:1!important}
-
-/* 重组后旧章节选择器不再决定一级模块背景 */
-.系统模块:nth-of-type(3n+2):not(.令牌区){background:inherit}
 
 @media(max-width:1100px){
   .系统模块头{grid-template-columns:1fr;gap:24px}
   .系统模块说明{max-width:760px}
-  .系统小模块>.组件组头,
-  .系统小模块>.组件组头:has(.用途){grid-template-columns:minmax(190px,4fr) minmax(0,8fr)}
+  .系统小模块>.组件组头,.系统小模块>.组件组头:has(.用途){grid-template-columns:minmax(190px,4fr) minmax(0,8fr)}
   .系统小模块>.组件组头 .用途{grid-column:2;justify-self:start;text-align:left;margin-top:10px}
-  .导航{gap:13px}
-  .导航 a{font-size:11px}
-  .顶部说明{display:none}
 }
-
 @media(max-width:820px){
-  :root{
-    --系统模块上下:88px;
-    --系统模块头间距:46px;
-    --系统小模块间距:66px;
-    --系统小标题间距:28px;
-    --系统组件间距:24px;
-  }
-  .系统小模块>.组件组头,
-  .系统小模块>.组件组头:has(.用途){grid-template-columns:1fr;gap:12px}
-  .系统小模块>.组件组头 h3,
-  .系统小模块>.组件组头>p,
-  .系统小模块>.组件组头 .用途{grid-column:1;justify-self:start;text-align:left}
+  :root{--系统模块上下:88px;--系统模块头间距:46px;--系统小模块间距:66px;--系统小标题间距:28px;--系统组件间距:24px}
+  .系统小模块>.组件组头,.系统小模块>.组件组头:has(.用途){grid-template-columns:1fr;gap:12px}
+  .系统小模块>.组件组头 h3,.系统小模块>.组件组头>p,.系统小模块>.组件组头 .用途{grid-column:1;justify-self:start;text-align:left}
   .系统小模块>.组件组头 .用途{margin-top:2px}
-  .导航{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding-right:10px}
-  .导航::-webkit-scrollbar{display:none}
+  .页面蓝图组 .蓝图行{grid-template-columns:1fr 2fr}
+  .页面蓝图组 .蓝图行 .规则{grid-column:2}
 }
-
 @media(max-width:680px){
   .系统模块标题{font-size:clamp(42px,13vw,58px)}
   .系统模块说明{font-size:14px;line-height:1.82}
   .系统小模块>.组件组头 h3{font-size:27px}
+  .页面蓝图组 .蓝图行{grid-template-columns:1fr}
+  .页面蓝图组 .蓝图行 .规则{grid-column:1}
   .开发令牌组{padding:28px 20px!important}
 }
