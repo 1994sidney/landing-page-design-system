@@ -159,9 +159,9 @@
     </section>`;
 
   const loadScript=(src,key)=>new Promise((resolve,reject)=>{
-    if(document.querySelector(`script[data-${key}]`)) return resolve();
+    if(document.querySelector(`script[data-lib="${key}"]`)) return resolve();
     const s=document.createElement('script');
-    s.src=src;s.async=true;s.dataset[key]='true';s.onload=resolve;s.onerror=reject;document.head.appendChild(s);
+    s.src=src;s.async=true;s.dataset.lib=key;s.onload=resolve;s.onerror=reject;document.head.appendChild(s);
   });
 
   const prefersReduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -176,7 +176,7 @@
       const id=packet.dataset.path;
       const route=document.getElementById(id);
       if(!route) return;
-      const motion=window.anime.path(route);
+      const motion=window.anime.path(`#${id}`);
       window.anime({targets:packet,translateX:motion('x'),translateY:motion('y'),rotate:motion('angle'),duration:5200,easing:'linear',loop:true});
     });
   };
@@ -189,7 +189,7 @@
   };
 
   Promise.all([
-    loadScript('https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js','iconifyLoader'),
-    loadScript('https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js','animeLoader')
+    loadScript('https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js','iconify'),
+    loadScript('https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js','anime')
   ]).catch(()=>{}).finally(observeScenes);
 })();
