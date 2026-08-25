@@ -1,4 +1,4 @@
-// 页面基础交互：揭幕、FAQ、模块导航、图片异常状态、Carousel 与 Slider。
+// 页面基础交互：揭幕、FAQ、模块导航、图片异常状态、Carousel、独立 Slider 与品牌 Marquee。
 (() => {
   const revealObserver = 'IntersectionObserver' in window
     ? new IntersectionObserver(entries => {
@@ -41,49 +41,68 @@
     frame.appendChild(fallback);
   };
 
-  document.querySelectorAll('img').forEach(img => {
+  const watchImage = (img) => {
+    if (img.dataset.imageWatchReady === 'true') return;
+    img.dataset.imageWatchReady = 'true';
     img.addEventListener('error', () => markBrokenImage(img), { once: true });
     if (img.complete && img.naturalWidth === 0) markBrokenImage(img);
-  });
+  };
 
   const formatCount = (index, total) => `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
 
-  // 图文组合：横向 Slider。保留原有静态 DOM，无脚本时仍按普通内容库展示。
-  document.querySelectorAll('.图文组合库').forEach(track => {
-    const slides = [...track.children].filter(item => item.classList.contains('图文组合'));
-    if (slides.length < 2) return;
+  // 独立横向 Slider：新增组件，不改变原有五种图文组合的任何排版。
+  const createStandaloneSlider = () => {
+    const anchor = document.querySelector('.图文内容库组 .图文组合库');
+    if (!anchor || anchor.parentElement.querySelector('.独立Slider组件')) return;
 
-    track.classList.add('横向滑动已启用');
-    track.tabIndex = 0;
-    track.setAttribute('role', 'region');
-    track.setAttribute('aria-roledescription', 'carousel');
-    track.setAttribute('aria-label', '图文内容横向 Slider');
-
-    slides.forEach((slide, index) => {
-      slide.setAttribute('role', 'group');
-      slide.setAttribute('aria-label', `${index + 1} / ${slides.length}`);
-    });
-
-    const controls = document.createElement('div');
-    controls.className = '横向滑动控制';
-    controls.innerHTML = `
-      <div class="横向滑动信息">
-        <strong>横向 Slider</strong>
-        <span class="横向滑动计数" aria-live="polite">${formatCount(0, slides.length)}</span>
+    const slider = document.createElement('section');
+    slider.className = '独立Slider组件';
+    slider.setAttribute('aria-label', '横向 Slider');
+    slider.innerHTML = `
+      <div class="独立Slider头">
+        <h4>横向 Slider</h4>
+        <div class="独立Slider控制">
+          <span class="独立Slider计数" aria-live="polite">01 / 05</span>
+          <button type="button" class="独立Slider上一项" aria-label="上一项">←</button>
+          <button type="button" class="独立Slider下一项" aria-label="下一项">→</button>
+        </div>
       </div>
-      <div class="滑动方向键">
-        <button type="button" class="Slider上一项" aria-label="上一项">←</button>
-        <button type="button" class="Slider下一项" aria-label="下一项">→</button>
+      <div class="独立Slider视口">
+        <div class="独立Slider轨道" tabindex="0" role="region" aria-roledescription="carousel" aria-label="项目与内容横向浏览">
+          <article class="独立Slider卡" role="group" aria-label="1 / 5">
+            <figure class="独立Slider图"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=84" alt="现代办公空间与项目环境"></figure>
+            <div class="独立Slider文"><span>品牌与空间</span><h5>让真实场景成为品牌可信度的一部分。</h5><p>适合连续展示项目、产品、空间或案例摘要。</p></div>
+          </article>
+          <article class="独立Slider卡" role="group" aria-label="2 / 5">
+            <figure class="独立Slider图"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=84" alt="团队协作与讨论场景"></figure>
+            <div class="独立Slider文"><span>团队与协作</span><h5>用同一视觉节奏连续呈现多个并列主题。</h5><p>项目之间保持同构，浏览方式则保持连续。</p></div>
+          </article>
+          <article class="独立Slider卡" role="group" aria-label="3 / 5">
+            <figure class="独立Slider图"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=84" alt="明亮开放式办公空间"></figure>
+            <div class="独立Slider文"><span>产品与服务</span><h5>Slider 更适合并列内容，而不是替代复杂图文版式。</h5><p>每一项保持相同结构，才能形成稳定的横向浏览节奏。</p></div>
+          </article>
+          <article class="独立Slider卡" role="group" aria-label="4 / 5">
+            <figure class="独立Slider图"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=84" alt="专业团队在工作空间中协作"></figure>
+            <div class="独立Slider文"><span>研究与洞察</span><h5>保留下一项局部露出，让用户自然理解可以继续滑动。</h5><p>不自动播放，避免横向内容与页面阅读争夺注意力。</p></div>
+          </article>
+          <article class="独立Slider卡" role="group" aria-label="5 / 5">
+            <figure class="独立Slider图"><img src="https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=1200&q=84" alt="会议与展示空间"></figure>
+            <div class="独立Slider文"><span>案例与成果</span><h5>横向浏览适合扩展内容数量，而不拉长页面纵向长度。</h5><p>支持按钮、键盘方向键、触控板与手机触控。</p></div>
+          </article>
+        </div>
       </div>`;
-    track.insertAdjacentElement('afterend', controls);
 
-    const count = controls.querySelector('.横向滑动计数');
-    const prev = controls.querySelector('.Slider上一项');
-    const next = controls.querySelector('.Slider下一项');
+    anchor.insertAdjacentElement('afterend', slider);
+
+    const track = slider.querySelector('.独立Slider轨道');
+    const slides = [...slider.querySelectorAll('.独立Slider卡')];
+    const count = slider.querySelector('.独立Slider计数');
+    const prev = slider.querySelector('.独立Slider上一项');
+    const next = slider.querySelector('.独立Slider下一项');
     let current = 0;
     let raf = 0;
 
-    const syncSlider = () => {
+    const sync = () => {
       const distances = slides.map(slide => Math.abs(slide.offsetLeft - track.scrollLeft));
       current = distances.indexOf(Math.min(...distances));
       count.textContent = formatCount(current, slides.length);
@@ -101,14 +120,11 @@
 
     prev.addEventListener('click', () => goTo(current - 1));
     next.addEventListener('click', () => goTo(current + 1));
-
     track.addEventListener('scroll', () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(syncSlider);
+      raf = requestAnimationFrame(sync);
     }, { passive: true });
-
     track.addEventListener('keydown', event => {
-      if (event.target !== track) return;
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
         goTo(current - 1);
@@ -118,10 +134,34 @@
         goTo(current + 1);
       }
     });
-
     window.addEventListener('resize', () => requestAnimationFrame(() => goTo(current, 'auto')), { passive: true });
-    syncSlider();
-  });
+
+    slider.querySelectorAll('img').forEach(watchImage);
+    sync();
+  };
+
+  // 合作机构：保留原静态 Logo strip，再增加一条持续向左缓慢滚动的品牌带。
+  const createBrandMarquee = () => {
+    const staticStrip = document.querySelector('.合作字标带');
+    if (!staticStrip || staticStrip.parentElement.querySelector('.合作品牌滚动')) return;
+
+    const brands = ['NORTH','MERIDIAN','FIELDWORK','ATLAS','COMMON','STUDIO 27','ORBIT','MONUMENT','SIGNAL','FORM / WORK'];
+    const groupMarkup = brands.map(name => `<span class="合作滚动品牌"><strong>${name}</strong></span>`).join('');
+    const marquee = document.createElement('div');
+    marquee.className = '合作品牌滚动';
+    marquee.setAttribute('role', 'region');
+    marquee.setAttribute('aria-label', '合作品牌滚动展示');
+    marquee.innerHTML = `
+      <div class="合作品牌轨道">
+        <div class="合作品牌组">${groupMarkup}</div>
+        <div class="合作品牌组" aria-hidden="true">${groupMarkup}</div>
+      </div>`;
+    staticStrip.insertAdjacentElement('afterend', marquee);
+  };
+
+  createStandaloneSlider();
+  createBrandMarquee();
+  document.querySelectorAll('img').forEach(watchImage);
 
   // 案例：大幅 Carousel。手动切换，不自动播放，避免与页面阅读节奏争抢注意力。
   document.querySelectorAll('.案例布局').forEach(carousel => {
