@@ -25,55 +25,86 @@
 .客户评价事实 strong{align-self:end;font-family:var(--数字);font-size:clamp(58px,6vw,86px);line-height:.95;font-weight:500;color:#DCE4E3}
 .客户评价事实 p{margin:0;font-size:13px;line-height:1.75;color:rgba(255,255,255,.62)}
 
-/* 专家与团队：人物摄影主导，接近杂志人物版式，不再使用职能分割线 */
+/* 专家与团队：非等宽、错位的人物编辑版式 */
 .专家团队板{display:block;min-height:0;background:transparent}
 .专家团队图{display:none}
-.专家团队列表{padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,26px);align-items:start}
+.专家团队列表{padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.2vw,30px);align-items:start}
 .专家团队引导{display:none}
 .专家角色{min-width:0;padding:0;border:0!important;display:flex;flex-direction:column;gap:0;background:transparent}
-.专家角色:before{content:"";display:block;width:100%;aspect-ratio:4/5;margin-bottom:18px;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.56) contrast(.96);transition:filter .55s var(--缓动),transform .55s var(--缓动)}
-.专家角色:nth-of-type(1):before{background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=84');background-position:center 34%}
-.专家角色:nth-of-type(2):before{background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=84');background-position:center 28%}
-.专家角色:nth-of-type(3):before{background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=84');background-position:center 30%}
+.专家角色:nth-of-type(1){grid-column:span 5}
+.专家角色:nth-of-type(2){grid-column:span 3;margin-top:clamp(64px,7vw,108px)}
+.专家角色:nth-of-type(3){grid-column:span 4;margin-top:clamp(20px,3vw,44px)}
+.专家角色:before{content:"";display:block;width:100%;margin-bottom:18px;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.56) contrast(.96);transition:filter .55s var(--缓动),transform .55s var(--缓动)}
+.专家角色:nth-of-type(1):before{aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=84');background-position:center 34%}
+.专家角色:nth-of-type(2):before{aspect-ratio:4/5;background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=84');background-position:center 28%}
+.专家角色:nth-of-type(3):before{aspect-ratio:5/6;background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1100&q=84');background-position:center 30%}
 .专家角色:hover:before{filter:saturate(.66) contrast(.97)}
 .专家角色>div{order:2;min-width:0}
 .专家角色>span{order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文);letter-spacing:.01em}
-.专家角色 h5{margin:0;max-width:92%;font-size:clamp(18px,1.5vw,23px);line-height:1.4;font-weight:600;letter-spacing:-.015em;color:var(--墨黑)}
+.专家角色 h5{margin:0;max-width:94%;font-size:clamp(18px,1.5vw,23px);line-height:1.4;font-weight:600;letter-spacing:-.015em;color:var(--墨黑)}
+.专家角色:nth-of-type(1) h5{font-size:clamp(20px,1.8vw,27px)}
 .专家角色 p{display:none}
 
-/* 资质与成果：六格证据画廊，以文档 / 证书 / 报告图片为主体 */
-.资质成果板{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,30px);background:transparent;min-height:0;align-items:start}
+/* 资质与成果：上方重点文件 + 下方成果缩略，避免与人物区同构 */
+.资质成果板{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2vw,26px);background:transparent;min-height:0;align-items:start}
 .资质文档区,.资质成果列表{display:contents}
 .资质成果列表>p{display:none}
-.资质文档,.成果行{min-width:0;padding:0;border:0!important;background:transparent;box-shadow:none;transform:none!important;display:flex;flex-direction:column;align-items:flex-start;gap:0}
-.资质文档:before,.成果行:before{content:"";display:block;width:100%;aspect-ratio:4/5;margin-bottom:16px;background-color:#E2E4E0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:grayscale(.32) saturate(.54) contrast(.96)}
-.资质文档:nth-child(1):before{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=84')}
-.资质文档:nth-child(2):before{background-image:url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1000&q=84')}
-.成果行:nth-of-type(1):before{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=84')}
-.成果行:nth-of-type(2):before{background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=84')}
-.成果行:nth-of-type(3):before{background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=84')}
-.成果行:nth-of-type(4):before{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=84')}
+
+/* 两张重点资质：横向大图，标题叠在图片底部 */
+.资质文档{position:relative;min-width:0;min-height:clamp(330px,34vw,470px);padding:0;border:0!important;background:#DADDD9;box-shadow:none;transform:none!important;overflow:hidden;color:#fff}
+.资质文档:nth-child(1){grid-column:span 7}
+.资质文档:nth-child(2){grid-column:span 5}
+.资质文档:before{content:"";position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:grayscale(.28) saturate(.54) contrast(.95);transition:transform .7s var(--缓动),filter .7s var(--缓动)}
+.资质文档:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,28,30,.02) 38%,rgba(22,28,30,.74) 100%)}
+.资质文档:nth-child(1):before{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1500&q=84')}
+.资质文档:nth-child(2):before{background-image:url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1200&q=84')}
+.资质文档:hover:before{transform:scale(1.025);filter:grayscale(.20) saturate(.60) contrast(.96)}
 .资质文档 .文档章{display:none}
-.资质文档>div{display:block}
-.资质文档 h5,.成果行 strong{order:2;margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.45;font-weight:600;letter-spacing:-.012em;color:var(--墨黑)}
-.资质文档 p{display:none}
-.资质文档 small,.成果行 small{display:none}
-.成果行 span{order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文)}
-.资质文档:after{content:"正式文件 / 成果材料";order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文)}
+.资质文档>div{position:absolute;left:clamp(22px,3vw,38px);right:clamp(22px,3vw,38px);bottom:clamp(20px,2.6vw,34px);z-index:2;display:block}
+.资质文档 h5{margin:0;max-width:620px;font-size:clamp(22px,2.2vw,34px);line-height:1.3;font-weight:600;letter-spacing:-.018em;color:#fff}
+.资质文档 p,.资质文档 small{display:none}
+
+/* 四张成果缩略：紧凑图像 + 极少文字 */
+.成果行{grid-column:span 3;min-width:0;padding:0;border:0!important;background:transparent;box-shadow:none;transform:none!important;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.成果行:before{content:"";display:block;width:100%;aspect-ratio:1;margin-bottom:14px;background-color:#E2E4E0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:grayscale(.34) saturate(.50) contrast(.96);transition:filter .5s var(--缓动)}
+.成果行:hover:before{filter:grayscale(.20) saturate(.60) contrast(.97)}
+.成果行:nth-of-type(1):before{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=84')}
+.成果行:nth-of-type(2):before{background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=84')}
+.成果行:nth-of-type(3):before{background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=84')}
+.成果行:nth-of-type(4):before{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=84')}
+.成果行 strong{order:2;margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.45;font-weight:600;letter-spacing:-.01em;color:var(--墨黑)}
+.成果行 span{order:3;margin-top:6px;font-size:10px;line-height:1.5;color:var(--弱文)}
+.成果行 small{display:none}
 
 @media(max-width:980px){
   .合作字标带{grid-template-columns:repeat(3,1fr)}
   .合作字标:nth-child(3n):after{display:none}
   .合作字标{min-height:110px}
   .客户评价板{grid-template-columns:1fr}
-  .专家团队列表,.资质成果板{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+  .专家团队列表{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  .专家角色:nth-of-type(1),.专家角色:nth-of-type(2),.专家角色:nth-of-type(3){grid-column:auto}
+  .专家角色:nth-of-type(2){margin-top:52px}
+  .专家角色:nth-of-type(3){margin-top:0;max-width:72%}
+
+  .资质文档:nth-child(1),.资质文档:nth-child(2){grid-column:span 6;min-height:360px}
+  .成果行{grid-column:span 6}
+  .成果行:before{aspect-ratio:4/3}
 }
+
 @media(max-width:680px){
   .合作字标带{grid-template-columns:repeat(2,1fr)}
   .合作字标:nth-child(3n):after{display:block}
   .合作字标:nth-child(2n):after{display:none}
   .客户评价正文,.客户评价事实{padding:30px 24px}
   .客户评价正文 blockquote{font-size:29px}
-  .专家团队列表,.资质成果板{grid-template-columns:1fr;gap:28px}
-  .专家角色:before,.资质文档:before,.成果行:before{aspect-ratio:4/5}
+
+  .专家团队列表{grid-template-columns:1fr;gap:30px}
+  .专家角色:nth-of-type(1),.专家角色:nth-of-type(2),.专家角色:nth-of-type(3){margin-top:0;max-width:none}
+  .专家角色:nth-of-type(1):before,.专家角色:nth-of-type(2):before,.专家角色:nth-of-type(3):before{aspect-ratio:4/5}
+
+  .资质成果板{grid-template-columns:1fr;gap:24px}
+  .资质文档:nth-child(1),.资质文档:nth-child(2),.成果行{grid-column:auto}
+  .资质文档{min-height:330px}
+  .成果行:before{aspect-ratio:16/10}
 }
