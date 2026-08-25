@@ -90,11 +90,83 @@
 
   <section class="章节 系统模块 模块浅色" id="模块-基础组件">
     <div class="容器">
-      <header class="系统模块头"><h2 class="系统模块标题">基础组件</h2><p class="系统模块说明">集中管理最常使用的基础界面元素，包括按钮、标签与卡片，让不同页面使用同一套交互与视觉表达。</p></header>
+      <header class="系统模块头"><h2 class="系统模块标题">基础组件</h2><p class="系统模块说明">集中管理最常使用的基础界面元素，包括按钮、标签、卡片与状态反馈，让不同页面使用同一套交互与视觉表达。</p></header>
       <div class="系统模块内容">
-        <div class="组件组 系统小模块 显现"><div class="组件组头"><h3>按钮与行动入口</h3><p>一个页面只保留一个明确主行动。次级行动使用低对比灰面或文字式入口，不要让所有按钮拥有同等视觉重量。</p><div class="用途">适用：导航、首屏、行动入口、表单提交</div></div><div class="按钮板"><button class="主按钮">立即了解</button><button class="次按钮">查看详情</button><button class="文字按钮">阅读完整介绍</button><button class="主按钮 禁用">暂不可用</button></div></div>
+        <div class="组件组 系统小模块 显现"><div class="组件组头"><h3>按钮与行动入口</h3><p>一个页面只保留一个明确主行动。次级行动使用低对比灰面或文字式入口，不要让所有按钮拥有同等视觉重量。</p><div class="用途">适用：导航、首屏、行动入口、表单提交</div></div><div class="按钮板"><button class="主按钮">立即了解</button><button class="次按钮">查看详情</button><button class="文字按钮">阅读完整介绍</button><button class="主按钮 禁用" disabled>暂不可用</button></div></div>
         <div class="组件组 系统小模块 显现"><div class="组件组头"><h3>标签与元信息</h3><p>标签用于分类而不是装饰。默认使用冷灰底色或轻量文字状态，不使用高饱和彩色胶囊堆满页面。</p><div class="用途">适用：服务类型、案例分类、行业、日期</div></div><div class="标签板"><span class="标签 深">核心服务</span><span class="标签 浅">行业研究</span><span class="标签">战略咨询</span><span class="标签">产品设计</span><span class="标签">2026 年更新</span></div></div>
         <div class="组件组 系统小模块 显现"><div class="组件组头"><h3>卡片</h3><p>卡片不依赖边框划格，通过低对比底色、留白和轻微悬停位移建立层次。标题应体现具体价值，不写空泛口号。</p><div class="用途">适用：核心能力、服务模块、价值主张</div></div><div class="信息卡板"><article class="信息卡"><div><h4>从复杂信息中找到真正需要表达的重点</h4><p>减少信息噪音，把用户最关心的问题提前到页面结构中。</p></div></article><article class="信息卡"><div><h4>让品牌表达与业务逻辑保持一致</h4><p>视觉不是独立装饰，而是承载业务层级、可信度与行动路径。</p></div></article><article class="信息卡"><div><h4>用更少的组件建立更稳定的页面秩序</h4><p>通过字体、比例、图片和留白形成完整的视觉系统。</p></div></article></div></div>
+
+        <div class="组件组 系统小模块 状态反馈组 显现">
+          <div class="组件组头"><h3>状态与反馈</h3><p>组件不能只有默认外观。Hover、Focus、Error、Loading、Empty 等状态共同决定真实使用体验；成功、错误和禁用也不能只靠颜色区分，必须同时通过文字、结构或状态标识表达含义。</p><div class="用途">适用：交互反馈、表单验证、异步加载、空状态、异常恢复、无障碍键盘操作</div></div>
+          <div class="状态反馈库">
+            <section class="状态分组">
+              <div class="状态分组头"><h4>按钮状态</h4><p>主按钮与次按钮共用同一套状态逻辑。Hover 提升可点击感，Active 表示已经按下，Focus 为键盘用户提供明确焦点，Disabled 必须同时降低视觉权重并禁止交互。</p><span>Default / Hover / Active / Focus / Disabled</span></div>
+              <div class="状态网格">
+                <div class="状态样例"><span class="状态名">Default</span><div class="状态样例演示"><button class="主按钮">立即了解</button></div></div>
+                <div class="状态样例"><span class="状态名">Hover</span><div class="状态样例演示"><button class="主按钮 状态悬停">立即了解</button></div></div>
+                <div class="状态样例"><span class="状态名">Active</span><div class="状态样例演示"><button class="主按钮 状态按下">立即了解</button></div></div>
+                <div class="状态样例"><span class="状态名">Focus</span><div class="状态样例演示"><button class="主按钮 状态焦点">立即了解</button></div></div>
+                <div class="状态样例"><span class="状态名">Disabled</span><div class="状态样例演示"><button class="主按钮" disabled>暂不可用</button></div></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>文本链接</h4><p>文本链接依靠下划线持续表达“可点击”，Hover 通过文字与下划线对比增强反馈；Focus 仍必须可见，不能因为视觉克制而牺牲键盘可访问性。</p><span>Default / Hover / Focus</span></div>
+              <div class="状态网格">
+                <div class="状态样例"><span class="状态名">Default</span><div class="状态样例演示"><a class="状态文本链接" href="#模块-基础组件">阅读全文</a></div></div>
+                <div class="状态样例"><span class="状态名">Hover</span><div class="状态样例演示"><a class="状态文本链接 状态悬停" href="#模块-基础组件">阅读全文</a></div></div>
+                <div class="状态样例"><span class="状态名">Focus</span><div class="状态样例演示"><a class="状态文本链接 状态焦点" href="#模块-基础组件">阅读全文</a></div></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>输入框状态</h4><p>默认状态保持低对比；Focus 明确当前位置；Error 必须说明具体问题；Success 只在确实需要确认验证通过时出现，不应让每个普通输入都变绿。</p><span>Default / Focus / Error / Success</span></div>
+              <div class="状态网格 状态输入网格">
+                <div class="状态样例"><span class="状态名">Default</span><div class="状态输入"><label for="state-input-default">邮箱</label><input id="state-input-default" placeholder="name@example.com"><small>请输入常用邮箱</small></div></div>
+                <div class="状态样例"><span class="状态名">Focus</span><div class="状态输入 模拟焦点"><label for="state-input-focus">邮箱</label><input id="state-input-focus" value="hello@example.com"><small>正在编辑</small></div></div>
+                <div class="状态样例"><span class="状态名">Error</span><div class="状态输入 模拟错误"><label for="state-input-error">邮箱</label><input id="state-input-error" value="hello@" aria-invalid="true"><small>请输入完整的邮箱地址</small></div></div>
+                <div class="状态样例"><span class="状态名">Success</span><div class="状态输入 模拟成功"><label for="state-input-success">邮箱</label><input id="state-input-success" value="hello@example.com"><small>邮箱格式已确认</small></div></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>FAQ 状态</h4><p>Closed 只呈现问题和展开入口；Open 使用浅色面建立层级并展示答案。真实 FAQ 同步更新 aria-expanded，保证键盘和辅助技术能够识别开合状态。</p><span>Closed / Open</span></div>
+              <div class="状态网格 状态FAQ网格">
+                <div class="状态FAQ"><div class="状态FAQ头"><span>这项服务适合什么类型的项目？</span><i>＋</i></div></div>
+                <div class="状态FAQ 打开"><div class="状态FAQ头"><span>这项服务适合什么类型的项目？</span><i>＋</i></div><div class="状态FAQ答">适合需要清晰信息架构、专业品牌表达和长期设计系统支持的项目。</div></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>图片状态</h4><p>图片包含 Loaded、Loading 与 Error 三种基础状态。真实远程图片加载失败时，页面会自动隐藏破图并显示统一占位，不直接暴露浏览器默认的损坏图片图标。</p><span>Loaded / Loading / Error</span></div>
+              <div class="状态网格 状态图片网格">
+                <div class="状态图片"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=82" alt="已加载的办公空间示例"><span class="图片状态文字">Loaded</span></div>
+                <div class="状态图片"><div class="图片骨架"></div><span class="图片状态文字">Loading</span></div>
+                <div class="状态图片 图片加载失败"><span class="图片失败占位"><span><i class="图片失败符号" aria-hidden="true"></i><strong>图片暂时无法显示</strong><span>检查图片地址或稍后重试</span></span></span><span class="图片状态文字">Error</span></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>ECharts 状态</h4><p>Loading 表示请求仍在进行；Empty 表示图表尚未获得必要条件或尚未开始查询；No data 表示查询已经完成但结果为零；Error 则表示数据或图表资源加载失败。四者不能共用同一句“暂无数据”。</p><span>Loading / Empty / No data / Error</span></div>
+              <div class="状态网格 状态图表网格">
+                <div class="状态图表"><span>Loading</span><div class="图表状态舞台"><div class="图表状态中心"><i class="图表加载旋转" aria-hidden="true"></i><strong>正在加载数据</strong><span>保持布局稳定，不提前显示空状态。</span></div></div></div>
+                <div class="状态图表"><span>Empty</span><div class="图表状态舞台"><div class="图表状态中心"><span class="图表空图形" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>选择范围后查看图表</strong><span>尚未产生查询条件，不等同于没有数据。</span></div></div></div>
+                <div class="状态图表"><span>No data</span><div class="图表状态舞台"><div class="图表状态中心"><span class="无数据符号" aria-hidden="true">—</span><strong>当前条件没有数据</strong><span>查询已完成，可以调整筛选范围后重试。</span></div></div></div>
+                <div class="状态图表"><span>Error</span><div class="图表状态舞台"><div class="图表状态中心"><span class="无数据符号" aria-hidden="true">!</span><strong>图表暂时无法加载</strong><span>保留重试入口或说明错误原因，不伪装成空数据。</span></div></div></div>
+              </div>
+            </section>
+
+            <section class="状态分组">
+              <div class="状态分组头"><h4>系统反馈</h4><p>成功、错误、警告和信息提示使用低饱和底色，同时提供明确标题和说明。颜色只负责帮助快速扫描，真正的含义由文字承担。</p><span>Success / Error / Warning / Info</span></div>
+              <div class="反馈消息网格">
+                <div class="反馈消息 成功"><b>✓</b><div><strong>提交成功</strong><p>信息已保存，可以继续下一步。</p></div></div>
+                <div class="反馈消息 错误"><b>!</b><div><strong>提交失败</strong><p>部分信息未通过验证，请检查后重试。</p></div></div>
+                <div class="反馈消息 警告"><b>△</b><div><strong>需要确认</strong><p>当前操作会覆盖尚未保存的修改。</p></div></div>
+                <div class="反馈消息 信息"><b>i</b><div><strong>状态说明</strong><p>数据将在下一次同步完成后更新。</p></div></div>
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -120,25 +192,10 @@
         <div class="组件组 系统小模块 信任证明组 显现">
           <div class="组件组头"><h3>信任与证明</h3><p>可信度不应只靠一排 Logo。合作机构说明谁与你一起工作，客户评价说明真实感受，专家团队说明由谁负责，资质与成果则提供可核验的证据类型。</p><div class="用途">适用：品牌背书、合作伙伴、客户评价、专家团队、研究成果、资质荣誉</div></div>
           <div class="信任证明库">
-            <section class="信任分组">
-              <div class="信任分组头"><h4>合作机构</h4><p>使用连续字标横带体现合作范围。示例仅为中性占位品牌，实际项目应替换为已获授权的真实机构标识。</p><span>Logo strip · 示例字标</span></div>
-              <div class="合作字标带"><div class="合作字标"><strong>NORTH</strong></div><div class="合作字标"><strong>MERIDIAN</strong></div><div class="合作字标"><strong>FIELDWORK</strong></div><div class="合作字标"><strong>ATLAS</strong></div><div class="合作字标"><strong>COMMON</strong></div><div class="合作字标"><strong>STUDIO 27</strong></div></div>
-            </section>
-
-            <section class="信任分组">
-              <div class="信任分组头"><h4>客户评价</h4><p>不要堆很多短评。选择一条能说明合作价值的完整判断，再用右侧事实补充项目背景。</p><span>Testimonial · 示例内容</span></div>
-              <div class="客户评价板"><div class="客户评价正文"><blockquote>“真正有价值的不是把页面做得更复杂，而是帮助团队重新确认：什么最重要、为什么重要，以及用户下一步应该做什么。”</blockquote><div class="客户评价来源"><strong>客户评价示例</strong><span>项目负责人 · 品牌与数字体验项目</span></div></div><aside class="客户评价事实"><span>项目事实示例</span><strong>6 个月</strong><p>从研究、信息架构到设计系统与上线验证，形成一套可以持续使用的页面表达体系。</p></aside></div>
-            </section>
-
-            <section class="信任分组">
-              <div class="信任分组头"><h4>专家与团队</h4><p>专业服务更适合呈现团队如何共同工作，而不是制作一面头像名片墙。用真实工作场景建立可信度，再用职能说明专业分工。</p><span>Team expertise · 角色结构</span></div>
-              <div class="专家团队板"><figure class="专家团队图"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=85" alt="专业团队协作场景"><figcaption><span>真实工作场景</span><span>研究 · 策略 · 设计 · 实施</span></figcaption></figure><div class="专家团队列表"><p class="专家团队引导">团队介绍重点说明谁负责什么，以及不同专业如何共同形成结果。姓名、职称和机构信息应以真实可核验资料替换。</p><div class="专家角色"><span>研究负责人</span><div><h5>把问题转化为可验证的研究判断</h5><p>负责研究设计、证据筛选、用户洞察与关键结论。</p></div></div><div class="专家角色"><span>策略负责人</span><div><h5>把研究判断转化为结构和决策</h5><p>负责价值主张、信息架构、内容优先级与行动路径。</p></div></div><div class="专家角色"><span>设计负责人</span><div><h5>把策略落实为一致的视觉与体验</h5><p>负责设计系统、关键界面、交互细节与最终质量。</p></div></div></div></div>
-            </section>
-
-            <section class="信任分组">
-              <div class="信任分组头"><h4>资质与成果</h4><p>这一结构用于放置真正可以核验的证据：资质文件、研究成果、标准规范、行业荣誉或第三方认证。示例文档不代表真实资质。</p><span>Evidence · 示例占位</span></div>
-              <div class="资质成果板"><div class="资质文档区"><article class="资质文档"><span class="文档章">证据</span><div><h5>专业资质 / 认证文件</h5><p>展示文件名称、签发机构和有效信息。</p></div><small>示例证据 · 替换为真实文件</small></article><article class="资质文档"><span class="文档章">成果</span><div><h5>研究成果 / 标准规范</h5><p>展示论文、报告、标准或正式成果。</p></div><small>示例证据 · 支持真实链接</small></article></div><div class="资质成果列表"><p>证据型内容应该告诉用户“凭什么相信”，而不是只写“专业、权威、领先”。每一项最好能够进一步查看原始文件、来源或正式说明。</p><div class="成果行"><span>专业资质</span><strong>准入、认证与专业能力证明</strong><small>替换为真实文件</small></div><div class="成果行"><span>研究成果</span><strong>论文、报告、专利与研究项目</strong><small>替换为真实来源</small></div><div class="成果行"><span>标准规范</span><strong>参与制定或遵循的正式标准</strong><small>替换为标准编号</small></div><div class="成果行"><span>行业荣誉</span><strong>由第三方授予的奖项与认可</strong><small>替换为授予机构</small></div></div></div>
-            </section>
+            <section class="信任分组"><div class="信任分组头"><h4>合作机构</h4><p>使用连续字标横带体现合作范围。示例仅为中性占位品牌，实际项目应替换为已获授权的真实机构标识。</p><span>Logo strip · 示例字标</span></div><div class="合作字标带"><div class="合作字标"><strong>NORTH</strong></div><div class="合作字标"><strong>MERIDIAN</strong></div><div class="合作字标"><strong>FIELDWORK</strong></div><div class="合作字标"><strong>ATLAS</strong></div><div class="合作字标"><strong>COMMON</strong></div><div class="合作字标"><strong>STUDIO 27</strong></div></div></section>
+            <section class="信任分组"><div class="信任分组头"><h4>客户评价</h4><p>不要堆很多短评。选择一条能说明合作价值的完整判断，再用右侧事实补充项目背景。</p><span>Testimonial · 示例内容</span></div><div class="客户评价板"><div class="客户评价正文"><blockquote>“真正有价值的不是把页面做得更复杂，而是帮助团队重新确认：什么最重要、为什么重要，以及用户下一步应该做什么。”</blockquote><div class="客户评价来源"><strong>客户评价示例</strong><span>项目负责人 · 品牌与数字体验项目</span></div></div><aside class="客户评价事实"><span>项目事实示例</span><strong>6 个月</strong><p>从研究、信息架构到设计系统与上线验证，形成一套可以持续使用的页面表达体系。</p></aside></div></section>
+            <section class="信任分组"><div class="信任分组头"><h4>专家与团队</h4><p>专业服务更适合呈现团队如何共同工作，而不是制作一面头像名片墙。用真实工作场景建立可信度，再用职能说明专业分工。</p><span>Team expertise · 角色结构</span></div><div class="专家团队板"><figure class="专家团队图"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1800&q=85" alt="专业团队协作场景"><figcaption><span>真实工作场景</span><span>研究 · 策略 · 设计 · 实施</span></figcaption></figure><div class="专家团队列表"><p class="专家团队引导">团队介绍重点说明谁负责什么，以及不同专业如何共同形成结果。姓名、职称和机构信息应以真实可核验资料替换。</p><div class="专家角色"><span>研究负责人</span><div><h5>把问题转化为可验证的研究判断</h5><p>负责研究设计、证据筛选、用户洞察与关键结论。</p></div></div><div class="专家角色"><span>策略负责人</span><div><h5>把研究判断转化为结构和决策</h5><p>负责价值主张、信息架构、内容优先级与行动路径。</p></div></div><div class="专家角色"><span>设计负责人</span><div><h5>把策略落实为一致的视觉与体验</h5><p>负责设计系统、关键界面、交互细节与最终质量。</p></div></div></div></div></section>
+            <section class="信任分组"><div class="信任分组头"><h4>资质与成果</h4><p>这一结构用于放置真正可以核验的证据：资质文件、研究成果、标准规范、行业荣誉或第三方认证。示例文档不代表真实资质。</p><span>Evidence · 示例占位</span></div><div class="资质成果板"><div class="资质文档区"><article class="资质文档"><span class="文档章">证据</span><div><h5>专业资质 / 认证文件</h5><p>展示文件名称、签发机构和有效信息。</p></div><small>示例证据 · 替换为真实文件</small></article><article class="资质文档"><span class="文档章">成果</span><div><h5>研究成果 / 标准规范</h5><p>展示论文、报告、标准或正式成果。</p></div><small>示例证据 · 支持真实链接</small></article></div><div class="资质成果列表"><p>证据型内容应该告诉用户“凭什么相信”，而不是只写“专业、权威、领先”。每一项最好能够进一步查看原始文件、来源或正式说明。</p><div class="成果行"><span>专业资质</span><strong>准入、认证与专业能力证明</strong><small>替换为真实文件</small></div><div class="成果行"><span>研究成果</span><strong>论文、报告、专利与研究项目</strong><small>替换为真实来源</small></div><div class="成果行"><span>标准规范</span><strong>参与制定或遵循的正式标准</strong><small>替换为标准编号</small></div><div class="成果行"><span>行业荣誉</span><strong>由第三方授予的奖项与认可</strong><small>替换为授予机构</small></div></div></div></section>
           </div>
         </div>
 
