@@ -21,6 +21,10 @@
 .组件库{display:grid;gap:var(--小模块间距)}
 .组件组{padding-top:0;margin:0;scroll-margin-top:92px}
 .组件组头{margin-bottom:var(--组件标题间距)}
+.流程视觉组 .组件组头,
+.图表组件组 .组件组头,
+.内容发布组 .组件组头,
+.图文内容库组 .组件组头{margin-bottom:var(--组件标题间距)!important}
 
 /* 各类内容库共用同一组件间距 */
 .图文组合库,
@@ -28,6 +32,8 @@
 .内容组件库,
 .流程动态库,
 .流程SVG库{gap:var(--组件间距)!important}
+.图文内容库组 .图文组合库{margin-top:var(--组件间距)!important}
+.内容分组+.内容分组{margin-top:0!important}
 
 .原则组,.角色色板,.信息卡板,.小组件组,.动效组{gap:var(--组件内间距)}
 .新闻布局,.文章布局,.案例布局{gap:var(--组件内间距)}
