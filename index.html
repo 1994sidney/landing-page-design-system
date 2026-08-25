@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>LeRoux 设计语言｜落地页视觉识别与组件规范</title>
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/v2.css" />
+</head>
+<body>
+<div class="页面">
+<header class="顶部">
+  <div class="品牌">LeRoux 设计系统</div>
+  <nav class="导航"><a href="#原则">原则</a><a href="#字体">字体</a><a href="#基础组件">基础组件</a><a href="#落地组件">落地页组件</a><a href="#蓝图">页面蓝图</a><a href="#动效">动效</a></nav>
+  <div class="顶部说明">落地页视觉规范 · 2026</div>
+</header>
+
+<section class="首屏">
+  <div class="首屏图"></div>
+  <div class="首屏网格">
+    <div class="首屏眉题">现代商业 · 编辑感 · 冷静克制 · 中文网页视觉语言</div>
+    <h1 class="首屏标题"><span>让信息有秩序，</span><span class="强调">让页面有气场。</span></h1>
+    <aside class="首屏侧栏"><p>这套系统延续 LeRoux 的冷中性、低装饰、大字号与编辑式排版，并针对中文阅读重新调整标题字距、正文行高、段落宽度与组件密度，重点服务落地页。</p><a class="胶囊按钮" href="#落地组件">查看组件规范 <i>↗</i></a></aside>
+    <div class="首屏底栏"><span>01 / 中文排版</span><span>12 栏栅格</span><span>低饱和摄影</span><span>向下浏览 ↓</span></div>
+  </div>
+</section>
+
+<section class="章节" id="原则"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">01</div><h2 class="章节标题">核心设计原则</h2><p class="章节说明">LeRoux 的高级感并不来自复杂组件，而来自信息层级、比例和留白。落地页应尽量减少“组件堆叠感”，让标题、摄影、数字和段落成为视觉主角。</p></div>
+  <div class="原则组 显现">
+    <article class="原则"><span class="序号 数字">01 / 尺度</span><div><h3>大标题建立气场</h3><p>首页首屏和章节标题应明显大于正文，但中文不采用英文式极端压缩字距，保持舒展和可读。</p></div></article>
+    <article class="原则"><span class="序号 数字">02 / 克制</span><div><h3>少卡片、少阴影</h3><p>分组主要依靠留白、1px 边线、明暗反差和布局关系，不依赖圆角卡片层层包裹。</p></div></article>
+    <article class="原则"><span class="序号 数字">03 / 摄影</span><div><h3>冷静的编辑摄影</h3><p>采用真实空间、人物与工作场景，降低饱和度，避免典型“科技蓝”和过度 人工智能化视觉。</p></div></article>
+    <article class="原则"><span class="序号 数字">04 / 节奏</span><div><h3>缓慢且方向明确</h3><p>动效以揭幕、平移、裁切和箭头位移为主，不做弹跳、炫光或频繁缩放。</p></div></article>
+  </div>
+</div></section>
+
+<section class="章节 色彩章节" id="色彩"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">02</div><h2 class="章节标题">角色化色彩系统</h2><p class="章节说明">不再把颜色只当作色板展示，而是明确每一种颜色在落地页中的职责。整体以冷静的雾蓝灰为主题，以暖灰白作为大面积背景，以深墨色建立信息重量；玻璃层只用于叠图导航、浮层信息和表单等需要透出环境的区域。</p></div>
+  <div class="角色色板 显现">
+    <article class="角色色 主题"><span class="色角">主题色</span><strong>#7B8E90</strong><p>品牌识别、重点数字、链接悬停、局部强调。控制在页面视觉面积的 8–12%。</p></article>
+    <article class="角色色 深色"><span class="色角">深背景</span><strong>#20282A</strong><p>首屏遮罩、品牌观点、页脚和高对比区域。用于建立沉稳的视觉锚点。</p></article>
+    <article class="角色色 页面背景"><span class="色角">页面背景</span><strong>#F1F2F0</strong><p>全站基础底色。比纯白更柔和，让摄影与灰阶界面自然融合。</p></article>
+    <article class="角色色 表面"><span class="色角">内容表面</span><strong>#FAFAF8</strong><p>正文内容区、数据块、FAQ 展开区。尽量依靠底色和留白分层，而非边框。</p></article>
+    <article class="角色色 卡片"><span class="色角">卡片 / 面板</span><strong>#E3E7E5</strong><p>服务模块、信息面板、浅色悬浮层。与页面背景保持低对比关系。</p></article>
+    <article class="角色色 主文本"><span class="色角">主文本</span><strong>#202629</strong><p>标题与主要正文。中文正文不使用纯黑，长时间阅读更舒适。</p></article>
+    <article class="角色色 次文本"><span class="色角">次文本</span><strong>#5E6869</strong><p>说明、辅助信息、元数据。与主文本保持明确但不过度的层级差。</p></article>
+    <article class="角色色 玻璃"><span class="色角">毛玻璃</span><strong>58% + 18px</strong><p>浅玻璃建议 rgba(248,250,249,.58) + backdrop-filter: blur(18px)。只用于浮层，不作为所有卡片的默认样式。</p></article>
+  </div>
+  <div class="配色比例 显现"><div><strong>70%</strong><span>背景与留白</span></div><div><strong>20%</strong><span>深浅内容表面</span></div><div><strong>10%</strong><span>主题色与交互强调</span></div></div>
+</div></section>
+
+<section class="章节 细线" id="字体"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">03</div><h2 class="章节标题">中文字体与文本样式</h2><p class="章节说明">中文字体使用系统无衬线优先：苹方、思源黑体、微软雅黑。与英文相比，中文需要更松的行高、更克制的负字距以及更短的正文行宽。</p></div>
+  <div class="字板 显现">
+    <div class="字行"><div class="字标签">超大展示标题</div><p class="字样 超大标题">复杂的事，<br>说得更清楚。</p><div class="字规格">60–112 像素<br>字重 300<br>行高 1.02<br>字距 -0.045 字宽</div></div>
+    <div class="字行"><div class="字标签">大标题</div><p class="字样 大标题">用更少的视觉元素，建立更强的品牌秩序。</p><div class="字规格">44–78 像素<br>字重 300<br>行高 1.08<br>字距 -0.035 字宽</div></div>
+    <div class="字行"><div class="字标签">章节标题</div><p class="字样 中标题">专业，不需要用复杂来证明。</p><div class="字规格">34 像素<br>字重 400<br>行高 1.28<br>字距 -0.025 字宽</div></div>
+    <div class="字行"><div class="字标签">模块标题</div><p class="字样 小标题样">把信息组织好，本身就是设计。</p><div class="字规格">22 像素<br>字重 500<br>行高 1.45</div></div>
+    <div class="字行"><div class="字标签">正文</div><p class="字样 正文样">中文正文建议保持相对从容的阅读节奏。落地页的正文并不需要追求很大的字号，但需要足够的行高、清晰的段落关系和适当的单行长度。建议正文宽度控制在约 28–36 个汉字，使读者在大屏幕上也不需要横向扫视过长距离。</p><div class="字规格">16 像素<br>行高 1.90<br>字距 0–0.01 字宽<br>建议 28–36 汉字/行</div></div>
+    <div class="字行"><div class="字标签">辅助信息</div><p class="字样 辅助样">用于来源、日期、编号、图片说明、服务标签和次级提示。不要用极小字号堆砌大量信息。</p><div class="字规格">12–13 像素<br>行高 1.70–1.80<br>字距 0.02 字宽</div></div>
+  </div>
+</div></section>
+
+<section class="章节 细线"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">04</div><h2 class="章节标题">栅格与间距</h2><p class="章节说明">桌面端以 12 栏作为骨架，模块可以 5/7、6/6、7/5、8/4 等比例组合。章节之间宁可留大面积空白，也不要用大量不同底色和卡片切碎页面。</p></div>
+  <div class="栅格示意 显现"><div class="栅格信息"><span>12 栏</span><span>栏间距 18 像素</span><span>外边距 40–56 像素</span></div><div class="栅格主"><h3>留白不是空，<br>而是信息的一部分。</h3></div><div class="栅格侧">推荐纵向间距序列：8 / 16 / 24 / 40 / 64 / 96 / 140。落地页主要章节建议使用 96–140 像素；组件内部通常为 16–48 像素。</div></div>
+</div></section>
+
+<section class="章节 细线" id="基础组件"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">05</div><h2 class="章节标题">基础界面语言</h2><p class="章节说明">导航、按钮、页签、数据和服务入口都保持“结构化地隐身”。视觉重点永远优先给标题、数字、图片和核心观点。</p></div>
+  <div class="组件区 显现"><div class="演示导航"><div class="演示标志">品牌名称</div><div class="演示菜单"><span>首页</span><span>产品服务</span><span>研究与洞察</span><span>关于我们</span></div><button class="胶囊按钮 演示联系">联系我们 <i>↗</i></button></div><div class="组件主体"><div class="组件主面"><p class="小标" style="color:rgba(255,255,255,.58)">业务转型 / 01</p><h3 class="主句">让复杂的业务，<br>变得<em>更清楚。</em></h3><div class="页签"><button class="当前">01 战略</button><button>02 研究</button><button>03 增长</button></div></div><div class="组件侧面"><div class="数字卡"><span class="小标">核心数据</span><div class="大数字 数字">8,506+</div><p>超大数字用轻字重、紧凑数字字距和大面积留白，不额外叠加图标、渐变或阴影。</p></div><div class="小组件组"><div class="小组件"><div class="符号">↗</div><h4>行业研究</h4></div><div class="小组件"><div class="符号">+</div><h4>策略设计</h4></div><div class="小组件"><div class="符号">→</div><h4>客户支持</h4></div><div class="小组件"><div class="符号">◎</div><h4>成果评估</h4></div></div></div></div></div>
+</div></section>
+
+<section class="章节 细线" id="落地组件"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">06</div><h2 class="章节标题">落地页 组件规范</h2><p class="章节说明">这一部分补齐实际建站最常用的组件。每种组件都延续同一视觉逻辑：大面积留白、低对比表面、图片主导、层级清晰、动效克制，并避免传统 软件服务类页面大量彩色卡片的套路。</p></div>
+  <div class="组件库">
+    <div class="组件组 显现"><div class="组件组头"><h3>按钮与行动入口</h3><p>一个页面只保留一个明确主行动。次级行动使用低对比灰面或文字式入口，不要让所有按钮都拥有同等视觉重量。</p><div class="用途">适用：导航、首屏、行动入口、表单提交</div></div><div class="按钮板"><button class="主按钮">立即了解 <span>↗</span></button><button class="次按钮">查看详情 <span>→</span></button><button class="文字按钮">阅读完整介绍 <span>↗</span></button><button class="主按钮 禁用">暂不可用</button></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>标签与元信息</h3><p>标签用于分类而不是装饰。默认使用冷灰底色或轻量文字状态，不使用高饱和彩色胶囊堆满页面。</p><div class="用途">适用：服务类型、案例分类、行业、日期</div></div><div class="标签板"><span class="标签 深">核心服务</span><span class="标签 浅">行业研究</span><span class="标签">战略咨询</span><span class="标签">产品设计</span><span class="标签">2026 年更新</span></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>价值与服务卡片</h3><p>卡片不依赖边框划格，通过低对比底色、留白和轻微悬停位移建立层次。标题应体现具体价值，不写空泛口号。</p><div class="用途">适用：核心能力、服务模块、价值主张</div></div><div class="信息卡板"><article class="信息卡"><span class="卡号 数字">01</span><div><h4>从复杂信息中找到真正需要表达的重点</h4><p>减少信息噪音，把用户最关心的问题提前到页面结构中。</p></div><span class="箭头">↗</span></article><article class="信息卡"><span class="卡号 数字">02</span><div><h4>让品牌表达与业务逻辑保持一致</h4><p>视觉不是独立装饰，而是承载业务层级、可信度与行动路径。</p></div><span class="箭头">↗</span></article><article class="信息卡"><span class="卡号 数字">03</span><div><h4>用更少的组件建立更稳定的页面秩序</h4><p>通过字体、比例、边线、图片和留白形成完整的视觉系统。</p></div><span class="箭头">↗</span></article></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>关键数据</h3><p>数据用于建立可信度，不建议把每个数字都做成独立彩色卡片。最好采用一整行或一整块连续布局。</p><div class="用途">适用：客户规模、覆盖范围、成果、增长</div></div><div class="数据板"><div class="数据项"><span class="小标">累计服务</span><strong>8,506+</strong><p>合作项目与服务案例</p></div><div class="数据项"><span class="小标">覆盖区域</span><strong>27</strong><p>省级行政区域</p></div><div class="数据项"><span class="小标">合作机构</span><strong>320+</strong><p>组织与专业机构</p></div><div class="数据项"><span class="小标">持续运营</span><strong>12 年</strong><p>专业实践与积累</p></div></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>图文内容模块</h3><p>这是 落地页 最重要的中段组件之一。图片与文字尽量形成 7/5 或 5/7 的不对称关系，避免所有模块都是等宽卡片。</p><div class="用途">适用：产品介绍、方法论、案例、机构能力</div></div><div class="图文板"><div class="图文图"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85" alt="现代办公空间"></div><div class="图文文"><div><span class="小标">方法与能力 / 01</span><h4>把专业能力，转化为用户能够理解的页面表达。</h4><p>图文模块不应只是“左边一张图、右边一段话”。标题负责观点，正文负责解释，底部信息负责补充来源、范围或行动入口，形成完整的信息层级。</p><button class="文字按钮">查看方法说明 <span>↗</span></button></div><div class="底部"><span>推荐比例 7 : 5</span><span>图片建议 16 : 10</span></div></div></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>毛玻璃叠层</h3><p>毛玻璃用于“叠在图片或深色背景之上”的信息层，而不是把所有内容都做成透明卡片。透明度要足够低，文字对比度优先于效果本身。</p><div class="用途">适用：导航、首屏辅助信息、联系表单、案例信息浮层</div></div>
+      <div class="玻璃演示">
+        <div class="玻璃背景"></div>
+        <div class="玻璃文案"><span class="小标">品牌能力 / 04</span><h4>让内容与背景发生关系，而不是彼此割裂。</h4><p>通过半透明表面、背景模糊和极轻的高光边缘建立层次。推荐浅玻璃用于亮图，深玻璃用于首屏与视频背景。</p><button class="玻璃按钮">查看完整案例 <span>↗</span></button></div>
+        <div class="玻璃数据"><span>项目覆盖</span><strong class="数字">27</strong><small>省级行政区域</small></div>
+      </div>
+    </div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>观点与引语</h3><p>用于页面中段制造节奏变化。不要使用“名人金句式”装饰，而应承载品牌判断、用户证言或核心方法论。</p><div class="用途">适用：品牌观点、客户证言、方法论总结</div></div><div class="引语板"><blockquote>“真正专业的页面，不是让用户看到设计有多复杂，而是让用户更快理解：你是谁、你能解决什么问题、为什么值得相信。”</blockquote><footer>品牌表达原则 · 中文 落地页 设计规范</footer></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>流程与工作方式</h3><p>流程应表达真实的方法和步骤，不要把所有内容都变成四个图标。编号、标题和简短解释已经足够。</p><div class="用途">适用：服务流程、实施步骤、合作方式</div></div><div class="步骤板"><div class="步骤"><span class="步号">01</span><h4>理解问题</h4><p>确认业务目标、受众、现状和真正需要解决的问题。</p></div><div class="步骤"><span class="步号">02</span><h4>建立结构</h4><p>先组织信息优先级，再确定页面模块、视觉尺度与内容节奏。</p></div><div class="步骤"><span class="步号">03</span><h4>形成系统</h4><p>统一字体、颜色、栅格、组件、图像和动效，避免页面各自为政。</p></div><div class="步骤"><span class="步号">04</span><h4>持续优化</h4><p>根据真实访问、转化与内容变化继续迭代，不把首版当成终点。</p></div></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>联系与表单</h3><p>表单保持安静，不需要厚重输入框。优先使用毛玻璃容器与低对比字段底色，说明区域与表单区域形成清晰的 5/7 结构。</p><div class="用途">适用：预约咨询、资料申请、项目联系</div></div><div class="表单板"><div class="表单说明"><span class="小标">开始沟通</span><h4>告诉我们你正在解决什么问题。</h4><p>建议只收集完成第一次沟通真正需要的信息。落地页 表单字段通常控制在 3–5 项。</p></div><form class="表单" onsubmit="event.preventDefault()"><div class="字段"><label>姓名</label><input placeholder="请输入姓名"></div><div class="字段"><label>机构 / 公司</label><input placeholder="请输入机构名称"></div><div class="字段"><label>联系方式</label><input placeholder="邮箱或手机号码"></div><div><button class="主按钮">提交信息 <span>↗</span></button></div></form></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>常见问题</h3><p>常见问题不做成一排排线框。通过留白、浅色展开面和图标状态建立节奏，仅在必要位置保留短分隔。</p><div class="用途">适用：产品说明、服务边界、合作前答疑</div></div><div class="常见问题"><div class="问答 展开"><button class="问题"><span>这套设计系统适合什么类型的 落地页？</span><i>＋</i></button><div class="答案"><p>适合需要专业、成熟、可信且具有一定设计感的企业、机构、咨询、研究、教育科技与专业服务类页面。它不强调强烈互联网感，也不适合以高饱和彩色插画为核心的年轻消费品牌。</p></div></div><div class="问答"><button class="问题"><span>页面是否可以使用品牌强调色？</span><i>＋</i></button><div class="答案"><p>可以，但建议把强调色控制在小面积行动入口、状态提示或关键图表中。大面积界面仍以冷中性为主体，否则会破坏这套视觉语言的克制感。</p></div></div><div class="问答"><button class="问题"><span>中文页面为什么不建议使用过度负字距？</span><i>＋</i></button><div class="答案"><p>汉字本身结构密度高，过度压缩会降低辨识度和阅读舒适度。中文的大气感更应该来自字号、留白、版面比例和字重，而不是像英文一样依赖极端紧缩字距。</p></div></div></div></div>
+
+    <div class="组件组 显现"><div class="组件组头"><h3>页脚</h3><p>页脚继续沿用深色反转，既作为页面结束，也形成最后一次品牌印象。信息不宜堆得过满。</p><div class="用途">适用：全站收尾、导航、联系方式、版权</div></div><footer class="页脚演示"><div class="页脚顶"><h4>把复杂问题，变成清楚、可信、可行动的表达。</h4><div class="页脚列"><h5>导航</h5><a>首页</a><a>产品服务</a><a>案例</a></div><div class="页脚列"><h5>关于</h5><a>机构介绍</a><a>研究与洞察</a><a>联系我们</a></div><div class="页脚列"><h5>联系</h5><a>商务合作</a><a>媒体联系</a><a>人才招聘</a></div></div><div class="页脚底"><span>© 2026 品牌名称</span><span>隐私政策 · 使用条款</span><span>中国 · 中文简体</span></div></footer></div>
+  </div>
+</div></section>
+
+<section class="章节 细线" id="蓝图"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">07</div><h2 class="章节标题">落地页 页面蓝图</h2><p class="章节说明">组件不是全部都要使用。一个成熟的 落地页 通常需要 7–10 个主要章节。关键是建立叙事顺序：先回答“你是谁和解决什么”，再证明能力，最后引导行动。</p></div>
+  <div class="蓝图 显现">
+    <div class="蓝图行"><div class="编号 数字">01</div><h4>顶部导航</h4><p>品牌标志、3–5 个核心导航入口、一个主行动按钮。</p><div class="规则">透明或深色叠图；高度 60–72 像素；避免两层导航。</div></div>
+    <div class="蓝图行"><div class="编号 数字">02</div><h4>首屏</h4><p>一句核心判断 + 一段解释 + 单一主行动 + 一张高质量主视觉。</p><div class="规则">标题 64–142 像素；中文不超过 2–3 行；首屏尽量保持一个视觉中心。</div></div>
+    <div class="蓝图行"><div class="编号 数字">03</div><h4>可信度 / 数据</h4><p>用真实数据、合作机构、成果或研究背景快速建立可信度。</p><div class="规则">连续数据带优先，不建议 4 个彩色圆角卡片。</div></div>
+    <div class="蓝图行"><div class="编号 数字">04</div><h4>核心价值</h4><p>解释用户为什么需要你，以及你解决问题的方式有什么不同。</p><div class="规则">建议 3 项；每项标题必须是观点，不只是名词。</div></div>
+    <div class="蓝图行"><div class="编号 数字">05</div><h4>产品 / 服务</h4><p>图文模块展示重点产品、服务能力或解决方案。</p><div class="规则">使用 7/5、5/7 交替布局；避免所有内容做成同尺寸卡片。</div></div>
+    <div class="蓝图行"><div class="编号 数字">06</div><h4>案例 / 方法</h4><p>用具体案例、实施方式、研究方法或成果证明专业能力。</p><div class="规则">以图文、流程、引语穿插，形成视觉节奏变化。</div></div>
+    <div class="蓝图行"><div class="编号 数字">07</div><h4>品牌观点</h4><p>使用一段大字号观点或客户证言，让页面从信息转向品牌判断。</p><div class="规则">深色反转区优先；控制在 1 个强观点。</div></div>
+    <div class="蓝图行"><div class="编号 数字">08</div><h4>常见问题 / 说明</h4><p>处理用户决策前的关键疑问和服务边界。</p><div class="规则">3–6 个问题；折叠结构；不要变成长篇说明书。</div></div>
+    <div class="蓝图行"><div class="编号 数字">09</div><h4>最终 行动入口</h4><p>再次明确用户下一步行动，例如预约、咨询、申请、查看方案。</p><div class="规则">一个主要动作；大面积留白；避免多个并列按钮。</div></div>
+    <div class="蓝图行"><div class="编号 数字">10</div><h4>页脚</h4><p>完成品牌收尾，提供必要导航、联系与法律信息。</p><div class="规则">深色反转；保持整洁；不重复正文大量信息。</div></div>
+  </div>
+</div></section>
+
+<section class="章节 细线"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">08</div><h2 class="章节标题">摄影与图片方向</h2><p class="章节说明">摄影应该像商业杂志，而不是企业宣传图库。空间、人物动作、材料、建筑和环境共同参与构图，整体保持自然、冷静和真实。</p></div>
+  <div class="摄影区 显现"><figure class="摄影图" style="margin:0"><img src="https://images.unsplash.com/photo-1497366811364-ccf3f8c9bf1b?auto=format&fit=crop&w=1800&q=85" alt="编辑感办公场景"><figcaption class="摄影说明"><span>低饱和 · 建筑感 · 编辑式构图</span><span>遮罩 12–28%</span></figcaption></figure><div class="摄影规则"><div class="摄影规则项"><div class="号 数字">01</div><div><h4>去饱和，而非纯黑白</h4><p>保留真实颜色，但降低约 35–55% 饱和度，使图片与冷灰界面自然融合。</p></div></div><div class="摄影规则项"><div class="号 数字">02</div><div><h4>人物与空间共同出现</h4><p>避免大头商务照。优先人物、空间、桌面、建筑线条共同出现的场景。</p></div></div><div class="摄影规则项"><div class="号 数字">03</div><div><h4>大图优先，减少碎图</h4><p>首屏 可使用 16:9 至 21:9；内容模块使用 16:10、4:5 或 3:4。</p></div></div><div class="摄影规则项"><div class="号 数字">04</div><div><h4>文字直接叠图</h4><p>用轻微深色遮罩保证可读，不额外为文字制作半透明浮层卡片。</p></div></div><div class="摄影规则项"><div class="号 数字">05</div><div><h4>避免模板化科技视觉</h4><p>避免霓虹、发光网格、蓝紫渐变、人工智能机器人等过度“科技感”素材。</p></div></div></div></div>
+</div></section>
+
+<section class="章节 细线" id="动效"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">09</div><h2 class="章节标题">动效语言</h2><p class="章节说明">统一使用同一条缓动曲线。动效的目的不是展示技术，而是帮助页面产生连续节奏和方向感。首屏、章节、图片和箭头保持相同的运动性格。</p></div>
+  <div class="动效组 显现"><div class="动效卡"><span class="标记">揭幕 / 900 毫秒</span><div class="词">内容<br>缓慢进入</div><div class="箭">↗</div></div><div class="动效卡"><span class="标记">位移 / 700 毫秒</span><div class="词">明确的<br>方向移动</div><div class="箭">→</div></div><div class="动效卡"><span class="标记">悬停 / 350 毫秒</span><div class="词">轻量的<br>交互反馈</div><div class="箭">↗</div></div></div>
+</div></section>
+
+<section class="章节 令牌区" id="令牌"><div class="容器">
+  <div class="章节头 显现"><div class="章节号 数字">10</div><h2 class="章节标题">开发实现令牌</h2><p class="章节说明">以下参数可直接作为落地页项目的样式设计变量起点。目标不是逐像素复制某个模板，而是稳定复用这套视觉逻辑。</p></div>
+  <div class="令牌布局 显现"><div class="令牌摘要"><h3>复用设计语言，<br>而不是复制模板。</h3><p>最值得保持稳定的六项：大尺度中文标题、角色化冷中性色、12 栏栅格、全幅低饱和摄影、克制毛玻璃和缓慢方向性动效。</p></div><pre>:root {
+  --color-primary: #7B8E90;
+  --color-primary-deep: #5F7375;
+  --color-ink: #202629;
+  --color-bg: #F1F2F0;
+  --color-surface: #FAFAF8;
+  --color-card: #E3E7E5;
+  --color-text-secondary: #5E6869;
+  --color-glass: rgba(248,250,249,.58);
+
+  --font-zh: "PingFang SC", "Source Han Sans SC",
+             "Microsoft YaHei", sans-serif;
+  --body-size: 16px;
+  --body-line-height: 1.9;
+  --display-weight: 300;
+  --display-letter-spacing: -0.035em;
+
+  --grid-columns: 12;
+  --grid-gap: 18px;
+  --page-gutter: 56px;
+
+  --section-space: 140px;
+  --panel-radius: 4px;
+  --action-radius: 999px;
+  --glass-blur: 18px;
+  --glass-border: rgba(255,255,255,.30);
+
+  --motion-ease: cubic-bezier(.22,1,.36,1);
+  --motion-fast: 350ms;
+  --motion-base: 700ms;
+  --motion-slow: 900ms;
+}</pre></div>
+  <div class="末行"><span>LeRoux 设计语言研究</span><span>重点用途：落地页 / 品牌官网 / 专业服务机构</span><span>中文简体视觉系统</span></div>
+</div></section>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
