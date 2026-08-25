@@ -1,4 +1,4 @@
-// 数据图表：只负责加载 ECharts、初始化静态 DOM 图表，并维护真实加载状态。
+// 数据图表：只负责加载 ECharts、初始化静态 DOM 图表，并维护真实加载与响应式状态。
 (() => {
   const chartTargets = ['chart-line', 'chart-bar', 'chart-pie', 'chart-radar', 'chart-combo'];
   const existingTargets = chartTargets.map(id => document.getElementById(id)).filter(Boolean);
@@ -106,101 +106,132 @@
     });
 
     mount('chart-pie', {
-      animationDuration: 850,
-      tooltip: {
-        trigger:'item', backgroundColor:'rgba(32,38,41,.94)', borderWidth:0,
-        textStyle:{ color:'#fff', fontSize:12 }
+      baseOption: {
+        animationDuration: 850,
+        tooltip: {
+          trigger:'item', backgroundColor:'rgba(32,38,41,.94)', borderWidth:0,
+          textStyle:{ color:'#fff', fontSize:12 }
+        },
+        legend: {
+          orient:'vertical', right:18, top:'middle', icon:'circle', itemWidth:8, itemHeight:8,
+          textStyle:{ color:theme.text, fontSize:11 }, itemGap:16
+        },
+        graphic: [
+          { type:'text', left:'31%', top:'43%', style:{ text:'100%', fill:theme.ink, font:'600 26px PingFang SC, sans-serif', textAlign:'center' } },
+          { type:'text', left:'31%', top:'54%', style:{ text:'整体构成', fill:theme.weak, font:'11px PingFang SC, sans-serif', textAlign:'center' } }
+        ],
+        series: [{
+          type:'pie', radius:['52%','72%'], center:['34%','50%'], avoidLabelOverlap:true,
+          label:{ show:false }, itemStyle:{ borderColor:'#DCE4E3', borderWidth:3 },
+          data:[
+            { value:38, name:'研究与洞察', itemStyle:{ color:theme.deep } },
+            { value:27, name:'策略设计', itemStyle:{ color:theme.primary } },
+            { value:21, name:'产品体验', itemStyle:{ color:theme.pale } },
+            { value:14, name:'持续服务', itemStyle:{ color:theme.warm } }
+          ]
+        }]
       },
-      legend: {
-        orient:'vertical', right:18, top:'middle', icon:'circle', itemWidth:8, itemHeight:8,
-        textStyle:{ color:theme.text, fontSize:11 }, itemGap:16
-      },
-      graphic: [
-        { type:'text', left:'31%', top:'43%', style:{ text:'100%', fill:theme.ink, font:'600 26px PingFang SC, sans-serif', textAlign:'center' } },
-        { type:'text', left:'31%', top:'54%', style:{ text:'整体构成', fill:theme.weak, font:'11px PingFang SC, sans-serif', textAlign:'center' } }
-      ],
-      series: [{
-        type:'pie', radius:['52%','72%'], center:['34%','50%'], avoidLabelOverlap:true,
-        label:{ show:false }, itemStyle:{ borderColor:'#DCE4E3', borderWidth:3 },
-        data:[
-          { value:38, name:'研究与洞察', itemStyle:{ color:theme.deep } },
-          { value:27, name:'策略设计', itemStyle:{ color:theme.primary } },
-          { value:21, name:'产品体验', itemStyle:{ color:theme.pale } },
-          { value:14, name:'持续服务', itemStyle:{ color:theme.warm } }
-        ]
+      media: [{
+        query: { maxWidth: 520 },
+        option: {
+          legend: { orient:'horizontal', left:'center', right:'auto', top:'auto', bottom:2, itemGap:10, textStyle:{ color:theme.text, fontSize:10 } },
+          graphic: [
+            { type:'text', left:'center', top:'31%', style:{ text:'100%', fill:theme.ink, font:'600 23px PingFang SC, sans-serif', textAlign:'center' } },
+            { type:'text', left:'center', top:'42%', style:{ text:'整体构成', fill:theme.weak, font:'10px PingFang SC, sans-serif', textAlign:'center' } }
+          ],
+          series: [{ center:['50%','37%'], radius:['40%','58%'] }]
+        }
       }]
     });
 
     mount('chart-radar', {
-      animationDuration: 850,
-      tooltip: {
-        trigger: 'item', backgroundColor: 'rgba(32,38,41,.94)', borderWidth: 0,
-        textStyle: { color: '#fff', fontSize: 12 }, padding: [10, 12]
+      baseOption: {
+        animationDuration: 850,
+        tooltip: {
+          trigger: 'item', backgroundColor: 'rgba(32,38,41,.94)', borderWidth: 0,
+          textStyle: { color: '#fff', fontSize: 12 }, padding: [10, 12]
+        },
+        radar: {
+          center: ['50%', '52%'], radius: '68%', splitNumber: 4, shape: 'polygon',
+          indicator: [
+            { name: '研究洞察', max: 100 }, { name: '策略设计', max: 100 },
+            { name: '内容表达', max: 100 }, { name: '产品体验', max: 100 },
+            { name: '持续服务', max: 100 }
+          ],
+          axisName: { color: '#5E6869', fontSize: 11 },
+          axisLine: { lineStyle: { color: 'rgba(32,38,41,.12)' } },
+          splitLine: { lineStyle: { color: 'rgba(32,38,41,.09)' } },
+          splitArea: { areaStyle: { color: ['rgba(250,250,248,.28)', 'rgba(220,228,227,.18)'] } }
+        },
+        series: [{
+          type: 'radar', symbol: 'circle', symbolSize: 6,
+          lineStyle: { width: 2.5, color: theme.deep },
+          itemStyle: { color: theme.deep }, areaStyle: { color: 'rgba(123,142,144,.28)' },
+          data: [{ value: [88,76,82,69,74], name: '能力轮廓' }]
+        }]
       },
-      radar: {
-        center: ['50%', '52%'], radius: '68%', splitNumber: 4, shape: 'polygon',
-        indicator: [
-          { name: '研究洞察', max: 100 }, { name: '策略设计', max: 100 },
-          { name: '内容表达', max: 100 }, { name: '产品体验', max: 100 },
-          { name: '持续服务', max: 100 }
-        ],
-        axisName: { color: '#5E6869', fontSize: 11 },
-        axisLine: { lineStyle: { color: 'rgba(32,38,41,.12)' } },
-        splitLine: { lineStyle: { color: 'rgba(32,38,41,.09)' } },
-        splitArea: { areaStyle: { color: ['rgba(250,250,248,.28)', 'rgba(220,228,227,.18)'] } }
-      },
-      series: [{
-        type: 'radar', symbol: 'circle', symbolSize: 6,
-        lineStyle: { width: 2.5, color: theme.deep },
-        itemStyle: { color: theme.deep }, areaStyle: { color: 'rgba(123,142,144,.28)' },
-        data: [{ value: [88,76,82,69,74], name: '能力轮廓' }]
+      media: [{
+        query: { maxWidth: 520 },
+        option: { radar: { center:['50%','53%'], radius:'56%', axisName:{ color:'#5E6869', fontSize:10 } }, series:[{ symbolSize:5 }] }
       }]
     });
 
     mount('chart-combo', {
-      animationDuration: 900,
-      grid: { left: 52, right: 54, top: 62, bottom: 38 },
-      tooltip: {
-        trigger:'axis', backgroundColor:'rgba(250,250,248,.96)', borderWidth:0,
-        textStyle:{ color:theme.ink, fontSize:12 }, padding:[10,12],
-        axisPointer:{ type:'shadow', shadowStyle:{ color:'rgba(255,255,255,.035)' } }
-      },
-      legend: {
-        top:8, right:0, itemWidth:10, itemHeight:6,
-        textStyle:{ color:'rgba(255,255,255,.62)', fontSize:11 }, data:['参与规模','完成率']
-      },
-      xAxis: {
-        type:'category', data:['阶段A','阶段B','阶段C','阶段D','阶段E','阶段F'],
-        axisLine:{ lineStyle:{ color:'rgba(255,255,255,.10)' } }, axisTick:{ show:false },
-        axisLabel:{ color:'rgba(255,255,255,.52)', fontSize:11 }
-      },
-      yAxis: [
-        {
-          type:'value', name:'规模', nameTextStyle:{ color:'rgba(255,255,255,.42)', fontSize:10 },
-          axisLine:{ show:false }, axisTick:{ show:false }, axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:10 },
-          splitLine:{ lineStyle:{ color:'rgba(255,255,255,.07)' } }
+      baseOption: {
+        animationDuration: 900,
+        grid: { left: 52, right: 54, top: 62, bottom: 38 },
+        tooltip: {
+          trigger:'axis', backgroundColor:'rgba(250,250,248,.96)', borderWidth:0,
+          textStyle:{ color:theme.ink, fontSize:12 }, padding:[10,12],
+          axisPointer:{ type:'shadow', shadowStyle:{ color:'rgba(255,255,255,.035)' } }
         },
-        {
-          type:'value', name:'%', min:40, max:100, nameTextStyle:{ color:'rgba(255,255,255,.42)', fontSize:10 },
-          axisLine:{ show:false }, axisTick:{ show:false }, axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:10 }, splitLine:{ show:false }
-        }
-      ],
-      series: [
-        {
-          name:'参与规模', type:'bar', barWidth:24, data:[420,580,720,860,990,1180],
-          itemStyle:{
-            borderRadius:0,
-            color:new echarts.graphic.LinearGradient(0,0,0,1,[
-              { offset:0, color:'#BFD0CF' }, { offset:1, color:'#6E8385' }
-            ])
+        legend: {
+          top:8, right:0, itemWidth:10, itemHeight:6,
+          textStyle:{ color:'rgba(255,255,255,.62)', fontSize:11 }, data:['参与规模','完成率']
+        },
+        xAxis: {
+          type:'category', data:['阶段A','阶段B','阶段C','阶段D','阶段E','阶段F'],
+          axisLine:{ lineStyle:{ color:'rgba(255,255,255,.10)' } }, axisTick:{ show:false },
+          axisLabel:{ color:'rgba(255,255,255,.52)', fontSize:11 }
+        },
+        yAxis: [
+          {
+            type:'value', name:'规模', nameTextStyle:{ color:'rgba(255,255,255,.42)', fontSize:10 },
+            axisLine:{ show:false }, axisTick:{ show:false }, axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:10 },
+            splitLine:{ lineStyle:{ color:'rgba(255,255,255,.07)' } }
+          },
+          {
+            type:'value', name:'%', min:40, max:100, nameTextStyle:{ color:'rgba(255,255,255,.42)', fontSize:10 },
+            axisLine:{ show:false }, axisTick:{ show:false }, axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:10 }, splitLine:{ show:false }
           }
-        },
-        {
-          name:'完成率', type:'line', yAxisIndex:1, smooth:.32, symbolSize:8,
-          data:[58,63,69,76,82,88], lineStyle:{ width:3, color:'#E3DDD2' },
-          itemStyle:{ color:'#E3DDD2', borderColor:'#20282A', borderWidth:2 }
+        ],
+        series: [
+          {
+            name:'参与规模', type:'bar', barWidth:24, data:[420,580,720,860,990,1180],
+            itemStyle:{
+              borderRadius:0,
+              color:new echarts.graphic.LinearGradient(0,0,0,1,[
+                { offset:0, color:'#BFD0CF' }, { offset:1, color:'#6E8385' }
+              ])
+            }
+          },
+          {
+            name:'完成率', type:'line', yAxisIndex:1, smooth:.32, symbolSize:8,
+            data:[58,63,69,76,82,88], lineStyle:{ width:3, color:'#E3DDD2' },
+            itemStyle:{ color:'#E3DDD2', borderColor:'#20282A', borderWidth:2 }
+          }
+        ]
+      },
+      media: [{
+        query: { maxWidth: 520 },
+        option: {
+          grid:{ left:42, right:38, top:70, bottom:36 },
+          legend:{ top:6, left:'center', right:'auto', textStyle:{ color:'rgba(255,255,255,.62)', fontSize:10 } },
+          xAxis:{ axisLabel:{ color:'rgba(255,255,255,.52)', fontSize:9 } },
+          yAxis:[{ axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:9 } },{ axisLabel:{ color:'rgba(255,255,255,.42)', fontSize:9 } }],
+          series:[{ barWidth:17 },{ symbolSize:6 }]
         }
-      ]
+      }]
     });
 
     const resize = () => instances.forEach(chart => chart.resize());
