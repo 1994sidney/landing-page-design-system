@@ -1,0 +1,113 @@
+/* 内容与响应式规范：图片比例、内容长度、断点与极端内容边界 */
+
+/* 真实组件的边界保护 */
+.页面 :where(.系统模块,.系统模块内容,.组件组,.图表模块,.图文组合,.文章主项,.文章侧项,.案例项,.信任分组,.流程动态场景,.Hero样例,.CTA纯文本,.CTA摄影,.页脚演示,.页脚轻量){min-width:0}
+.页面 :where(h1,h2,h3,h4,h5,p,a,span,strong,small,label,button){overflow-wrap:break-word}
+.页面 :where(.内容文本链接,.文字按钮,.页面文本按钮,.页面实按钮,.页面导航行动,.主按钮,.次按钮,.胶囊按钮,.玻璃按钮){max-width:100%}
+.页面 :where(.主按钮,.次按钮,.胶囊按钮,.玻璃按钮,.页面实按钮,.页面导航行动){white-space:normal;text-align:center;line-height:1.45}
+.页面 img{max-width:100%}
+.页面 .长词保护,.页面 :where(.末行,.页脚底,.页脚轻量底){overflow-wrap:anywhere}
+
+/* 列表型内容允许截断，主标题与核心观点不强制截断 */
+.新闻条目 h5,.文章侧文 h5,.案例项:not(.案例主项) h5{
+  display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden
+}
+.新闻条目 h5{-webkit-line-clamp:2}
+.文章侧文 h5{-webkit-line-clamp:3}
+.案例项:not(.案例主项) h5{-webkit-line-clamp:2}
+.新闻条目 p,.文章侧文 p{
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden
+}
+
+/* 规范模块 */
+.内容响应规范库{display:grid;gap:var(--系统组件间距,32px)}
+.规范分组{min-width:0;padding:clamp(28px,3.2vw,42px);background:rgba(250,250,248,.62)}
+.规范分组:nth-child(even){background:rgba(227,231,229,.66)}
+.规范分组头{display:grid;grid-template-columns:3fr 7fr 2fr;gap:24px;align-items:end;margin-bottom:28px}
+.规范分组头 h4{margin:0;font-size:22px;line-height:1.35;font-weight:600;color:var(--墨黑)}
+.规范分组头 p{margin:0;max-width:700px;font-size:13px;line-height:1.82;color:var(--弱文)}
+.规范分组头>span{justify-self:end;font-size:10px;line-height:1.5;color:var(--弱文)}
+
+/* 图片比例 */
+.图片比例网格{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:end}
+.比例示例{margin:0;min-width:0}
+.比例示例:nth-child(1){grid-column:span 5}.比例示例:nth-child(2){grid-column:span 4}.比例示例:nth-child(3){grid-column:span 3}
+.比例示例:nth-child(4){grid-column:span 4}.比例示例:nth-child(5){grid-column:span 4}.比例示例:nth-child(6){grid-column:span 4}
+.比例画面{position:relative;overflow:hidden;background:var(--卡片)}
+.比例画面 img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.56) contrast(.94)}
+.比例-hero .比例画面{aspect-ratio:21/9}.比例-content .比例画面{aspect-ratio:16/10}.比例-card .比例画面{aspect-ratio:4/3}
+.比例-portrait .比例画面{aspect-ratio:4/5}.比例-square .比例画面{aspect-ratio:1}.比例-logo .比例画面{aspect-ratio:3/1;background:#E7E9E6;display:grid;place-items:center;padding:28px}
+.比例-logo .比例画面 strong{font:600 clamp(16px,2vw,25px)/1 var(--数字);letter-spacing:.08em;color:var(--石墨)}
+.比例说明{display:grid;grid-template-columns:1fr auto;gap:14px;margin-top:11px}
+.比例说明 strong{font-size:12px;line-height:1.5;font-weight:600;color:var(--墨黑)}
+.比例说明 span{font:500 10px/1.5 var(--数字);color:var(--主题深)}
+.比例说明 p{grid-column:1/-1;margin:0;font-size:11px;line-height:1.7;color:var(--弱文)}
+
+/* 内容长度 */
+.内容长度表{display:grid;background:var(--表面)}
+.长度行{display:grid;grid-template-columns:2.2fr 1.7fr 1.6fr 4.5fr;gap:22px;align-items:start;padding:18px 20px;border-top:1px solid rgba(32,38,41,.08)}
+.长度行:first-child{border-top:0;background:var(--墨黑);color:#fff;padding-top:14px;padding-bottom:14px}
+.长度行>span,.长度行>strong{min-width:0}
+.长度行:first-child span{font-size:10px;color:rgba(255,255,255,.54)}
+.长度行 strong{font-size:13px;line-height:1.55;font-weight:600;color:var(--墨黑)}
+.长度行:not(:first-child)>span{font-size:11px;line-height:1.65;color:var(--弱文)}
+.长度行 .长度建议{font:500 11px/1.55 var(--数字);color:var(--主题深)}
+.长度提示{margin-top:16px;padding:18px 20px;background:var(--主题浅);font-size:12px;line-height:1.8;color:var(--正文)}
+
+/* 响应式：三种视口直接展示相同页面结构如何重排 */
+.响应式视口组{display:grid;grid-template-columns:5fr 4fr 3fr;gap:18px;align-items:end}
+.视口卡{min-width:0}
+.视口标题{display:flex;justify-content:space-between;gap:14px;margin-bottom:10px;font-size:10px;color:var(--弱文)}
+.视口标题 strong{font:600 11px/1.4 var(--数字);color:var(--墨黑)}
+.视口框{padding:12px;background:#D9DEDB;box-shadow:0 16px 40px rgba(28,37,39,.06)}
+.视口页面{min-height:330px;background:var(--表面);padding:12px;display:grid;align-content:start;gap:9px;overflow:hidden}
+.视口导航{height:22px;background:var(--墨黑);display:grid;grid-template-columns:1fr 2fr .7fr;gap:5px;padding:6px}
+.视口导航 i,.视口导航 b{display:block;background:rgba(255,255,255,.34)}
+.视口导航 b{background:rgba(220,228,227,.78)}
+.视口首屏{display:grid;grid-template-columns:5fr 7fr;gap:8px;min-height:105px}
+.视口文字{background:var(--主题浅);padding:9px;display:grid;align-content:end;gap:5px}.视口文字 i{height:7px;background:rgba(32,38,41,.20)}.视口文字 i:first-child{width:72%;height:12px;background:rgba(32,38,41,.52)}
+.视口图片{background:linear-gradient(135deg,#9FAEAD,#CAD3D1)}
+.视口内容{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.视口内容 i{height:72px;background:#E4E7E4}.视口内容 i:nth-child(2){background:#DCE4E3}.视口内容 i:nth-child(3){background:#D9D4CB}
+.视口图表{height:72px;background:var(--墨黑);position:relative;overflow:hidden}.视口图表:before{content:"";position:absolute;left:9px;right:9px;bottom:10px;height:32px;background:linear-gradient(110deg,transparent 0 12%,rgba(190,207,205,.40) 13% 15%,transparent 16% 31%,rgba(190,207,205,.55) 32% 35%,transparent 36% 50%,rgba(190,207,205,.62) 51% 55%,transparent 56%)}
+.视口平板 .视口页面{min-height:300px}.视口平板 .视口首屏{grid-template-columns:1fr;min-height:135px}.视口平板 .视口图片{min-height:66px;order:-1}.视口平板 .视口内容{grid-template-columns:1fr 1fr}.视口平板 .视口内容 i:last-child{grid-column:1/-1;height:54px}
+.视口手机 .视口框{padding:8px}.视口手机 .视口页面{min-height:280px;padding:9px;gap:7px}.视口手机 .视口导航{grid-template-columns:1fr .6fr}.视口手机 .视口导航 i:nth-child(2){display:none}.视口手机 .视口首屏{grid-template-columns:1fr;min-height:124px}.视口手机 .视口图片{min-height:72px;order:-1}.视口手机 .视口内容{grid-template-columns:1fr}.视口手机 .视口内容 i{height:48px}.视口手机 .视口内容 i:last-child{grid-column:auto}.视口手机 .视口图表{height:60px}
+.断点规则表{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.断点规则{padding:18px;background:var(--表面)}
+.断点规则 strong{display:block;margin-bottom:8px;font:600 12px/1.4 var(--数字);color:var(--墨黑)}
+.断点规则 p{margin:0;font-size:11px;line-height:1.72;color:var(--弱文)}
+
+/* 极端内容边界 */
+.边界测试网格{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.边界测试{min-width:0;padding:24px;background:var(--表面);overflow:hidden}
+.边界测试>span{display:block;margin-bottom:14px;font:500 10px/1.4 var(--数字);color:var(--主题深)}
+.边界测试 h5{margin:0;font-size:20px;line-height:1.45;font-weight:600;color:var(--墨黑)}
+.边界测试 p{margin:12px 0 0;font-size:12px;line-height:1.78;color:var(--弱文)}
+.边界长英文{overflow-wrap:anywhere;word-break:normal}
+.边界长按钮{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;max-width:100%;min-height:44px;padding:10px 16px;background:var(--墨黑);color:#fff;font-size:12px;line-height:1.45;text-decoration:none;text-align:center}
+.边界卡片标题{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.边界图片裁切{margin-top:16px;aspect-ratio:16/10;overflow:hidden;background:var(--卡片)}
+.边界图片裁切 img{width:100%;height:100%;object-fit:cover;object-position:center 36%;filter:saturate(.55)}
+.边界原则{margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.边界原则 div{padding:16px;background:var(--主题浅)}
+.边界原则 strong{display:block;margin-bottom:6px;font-size:12px;color:var(--墨黑)}
+.边界原则 p{margin:0;font-size:10px;line-height:1.65;color:var(--弱文)}
+
+/* 统一断点语义：桌面 >=1180；平板 681–1179；手机 <=680 */
+@media(max-width:1179px){
+  .规范分组头{grid-template-columns:1fr 1.7fr}.规范分组头>span{grid-column:2;justify-self:end}
+  .图片比例网格{grid-template-columns:repeat(6,1fr)}
+  .比例示例:nth-child(1),.比例示例:nth-child(2),.比例示例:nth-child(3),.比例示例:nth-child(4),.比例示例:nth-child(5),.比例示例:nth-child(6){grid-column:span 3}
+  .响应式视口组{grid-template-columns:1fr 1fr}.视口手机{grid-column:1/-1;max-width:360px}
+  .边界原则{grid-template-columns:1fr 1fr}
+}
+@media(max-width:980px){
+  .内容长度表{overflow-x:auto;overscroll-behavior-x:contain}.长度行{min-width:760px}
+  .断点规则表{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .规范分组{padding:24px 18px}.规范分组头{grid-template-columns:1fr;gap:8px}.规范分组头>span{grid-column:auto;justify-self:start}
+  .图片比例网格{grid-template-columns:1fr 1fr}.比例示例:nth-child(n){grid-column:auto}.比例-hero{grid-column:1/-1!important}.比例-hero .比例画面{aspect-ratio:16/9}
+  .响应式视口组{grid-template-columns:1fr}.视口手机{grid-column:auto;max-width:none}
+  .边界测试网格,.边界原则{grid-template-columns:1fr}
+  .页面 :where(.主按钮,.次按钮,.胶囊按钮,.玻璃按钮,.页面实按钮,.页面导航行动){min-height:44px}
+}
