@@ -149,7 +149,7 @@
         tooltip: { ...tooltip, trigger: 'item' },
         xAxis: { type: 'value', max: 100, axisLine: { show:false }, axisTick: { show:false }, axisLabel, splitLine },
         yAxis: { type: 'category', inverse: true, data: ['行业研究','战略设计','内容体系','产品体验','持续服务'], axisLine: { show:false }, axisTick: { show:false }, axisLabel: { ...axisLabel, color: theme.text } },
-        series: [{ type: 'bar', barWidth: 16, data: [92,84,78,73,66], label: { show:true, position:'right', color: theme.deep, fontSize:11, formatter:'{c}' }, itemStyle: { borderRadius:[0,8,8,0], color: new echarts.graphic.LinearGradient(0,0,1,0,[{ offset:0, color:'#B9C6C5' },{ offset:1, color:theme.deep }]) } }]
+        series: [{ type: 'bar', barWidth: 16, data: [92,84,78,73,66], label: { show:true, position:'right', color: theme.deep, fontSize:11, formatter:'{c}' }, itemStyle: { borderRadius:0, color: new echarts.graphic.LinearGradient(0,0,1,0,[{ offset:0, color:'#B9C6C5' },{ offset:1, color:theme.deep }]) } }]
       });
       instances.push(chart);
     }
