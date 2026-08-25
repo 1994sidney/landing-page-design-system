@@ -1,0 +1,8 @@
+/* 表单 / FAQ / 页脚 */
+.表单板{min-height:560px}
+.表单{display:grid;align-content:center;gap:18px}
+.字段{display:grid;gap:7px}
+.字段 label{font-size:12px;line-height:1.5;color:var(--正文)}
+.字段 input{width:100%}
+.常见问题{display:grid;gap:10px}
+.页脚演示{margin-top:0}
