@@ -1,0 +1,29 @@
+/* V2.5 — 图文内容库合并与标题间距优化 */
+
+/* 原基础图文 + 多种组合成为一个连续内容库 */
+.图文内容库组 .图文组合库{
+  margin-top:clamp(30px,4vw,54px);
+}
+
+/* “方法与能力”等副标题与大标题之间需要明确但克制的层级间距 */
+.图文内容库组 .图文文 .小标{
+  display:block;
+  margin:0 0 20px;
+  font-size:12px;
+  line-height:1.5;
+  letter-spacing:.04em;
+  color:var(--弱文);
+}
+.图文内容库组 .图文文 h4{
+  margin-top:0;
+}
+
+/* 内容库内部不同版式之间保持统一纵向节奏 */
+.图文内容库组 .图文组合库{
+  gap:clamp(30px,4.2vw,58px);
+}
+
+@media(max-width:680px){
+  .图文内容库组 .图文文 .小标{margin-bottom:16px}
+  .图文内容库组 .图文组合库{margin-top:28px;gap:28px}
+}
