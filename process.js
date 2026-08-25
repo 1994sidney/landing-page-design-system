@@ -22,51 +22,40 @@
     document.head.appendChild(script);
   });
 
+  const hairline = 'stroke-width:1.25;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;opacity:.66';
+  const support = 'stroke-width:1;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;opacity:.42';
+
   const geometry = [
     {
       stage: '.全流程舞台',
       svg: `
-        <path id="scene-route-a" class="流程场景路径 流程主路径" d="M130 320 H830"/>
-        <path class="流程场景路径 流程支线路径" d="M130 320 V304"/>
-        <path class="流程场景路径 流程支线路径" d="M365 320 V382"/>
-        <path class="流程场景路径 流程支线路径" d="M605 320 V304"/>
-        <path class="流程场景路径 流程支线路径" d="M830 320 V382"/>
-        <circle class="流程节点" cx="130" cy="320" r="6"/>
-        <circle class="流程节点" cx="365" cy="320" r="6"/>
-        <circle class="流程节点" cx="605" cy="320" r="6"/>
-        <circle class="流程节点" cx="830" cy="320" r="6"/>
-        <circle class="流程信号" data-path="scene-route-a" cx="0" cy="0" r="5"/>
+        <path id="scene-route-a" class="流程场景路径 流程主路径" style="${hairline}" d="M122 320 H838"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M132 320 V304"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M365 320 V382"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M605 320 V304"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M828 320 V382"/>
+        <rect class="流程信号" data-path="scene-route-a" x="-10" y="-1.5" width="20" height="3" rx="1.5"/>
       `
     },
     {
       stage: '.协同舞台',
       svg: `
-        <path class="流程场景路径 流程支线路径" d="M270 160 C292 160 295 208 310 224"/>
-        <path class="流程场景路径 流程支线路径" d="M270 230 H310"/>
-        <path class="流程场景路径 流程支线路径" d="M270 300 C292 300 295 252 310 236"/>
-        <path class="流程场景路径 流程支线路径" d="M310 230 H326"/>
-        <path id="scene-route-b" class="流程场景路径 流程主路径" d="M700 265 C720 265 720 320 740 320"/>
-        <circle class="流程节点" cx="310" cy="230" r="6"/>
-        <circle class="流程节点" cx="700" cy="265" r="6"/>
-        <circle class="流程节点" cx="740" cy="320" r="6"/>
-        <circle class="流程信号" data-path="scene-route-b" cx="0" cy="0" r="5"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 160 H308"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 230 H308"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 300 H308"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M308 160 V300"/>
+        <path class="流程场景路径 流程支线路径" style="${support}" d="M308 230 H326"/>
+        <path id="scene-route-b" class="流程场景路径 流程主路径" style="${hairline}" d="M700 265 H718 Q728 265 728 275 V310 Q728 320 738 320 H746"/>
+        <rect class="流程信号" data-path="scene-route-b" x="-9" y="-1.5" width="18" height="3" rx="1.5"/>
       `
     },
     {
       stage: '.迭代舞台',
       svg: `
-        <path class="流程场景路径 流程主路径" d="M259 180 C320 180 315 250 365 250"/>
-        <path class="流程场景路径 流程主路径" d="M595 250 C645 250 640 180 701 180"/>
-        <path class="流程场景路径 流程主路径" d="M810 286 C810 372 772 456 772 530"/>
-        <path class="流程场景路径 流程主路径" d="M634 530 C500 590 178 590 120 520 C84 476 90 326 148 286"/>
-        <circle class="流程节点" cx="259" cy="180" r="6"/>
-        <circle class="流程节点" cx="365" cy="250" r="6"/>
-        <circle class="流程节点" cx="595" cy="250" r="6"/>
-        <circle class="流程节点" cx="701" cy="180" r="6"/>
-        <circle class="流程节点" cx="810" cy="286" r="6"/>
-        <circle class="流程节点" cx="772" cy="530" r="6"/>
-        <circle class="流程节点" cx="634" cy="530" r="6"/>
-        <circle class="流程节点" cx="148" cy="286" r="6"/>
+        <path class="流程场景路径 流程主路径" style="${hairline}" d="M259 180 H326 Q338 180 338 192 V238 Q338 250 350 250 H365"/>
+        <path class="流程场景路径 流程主路径" style="${hairline}" d="M595 250 H610 Q622 250 622 238 V192 Q622 180 634 180 H701"/>
+        <path class="流程场景路径 流程主路径" style="${hairline}" d="M810 286 V402 Q810 414 798 414 H784 Q772 414 772 426 V530"/>
+        <path class="流程场景路径 流程主路径" style="${hairline}" d="M634 530 H174 Q158 530 158 514 V302 Q158 286 142 286"/>
       `
     }
   ];
@@ -99,13 +88,14 @@
       window.anime.set(signal, { opacity: 0 });
       window.anime({
         targets: signal,
-        opacity: [{ value: 1, duration: 180 }, { value: 1, duration: 2500 }, { value: 0, duration: 220 }],
+        opacity: [{ value: 0, duration: 80 }, { value: .92, duration: 180 }, { value: .92, duration: 1800 }, { value: 0, duration: 220 }],
         translateX: motion('x'),
         translateY: motion('y'),
-        duration: 2900,
+        rotate: motion('angle'),
+        duration: 2280,
         easing: 'linear',
         loop: true,
-        endDelay: 1500
+        endDelay: 1900
       });
     });
   };
@@ -118,10 +108,8 @@
     const units = scene.querySelectorAll('.场景单元,.角色行');
     const mainPaths = [...scene.querySelectorAll('.流程主路径')];
     const supportPaths = [...scene.querySelectorAll('.流程支线路径')];
-    const nodes = scene.querySelectorAll('.流程节点');
     const signals = scene.querySelectorAll('.流程信号');
 
-    window.anime.set(nodes, { opacity: 0, scale: .72, transformOrigin: 'center center' });
     window.anime.set(signals, { opacity: 0 });
     supportPaths.forEach(path => { path.style.opacity = '0'; });
 
@@ -130,32 +118,24 @@
       .add({
         targets: units,
         opacity: [0, 1],
-        translateY: [14, 0],
-        delay: window.anime.stagger(95),
-        duration: 620
+        translateY: [12, 0],
+        delay: window.anime.stagger(90),
+        duration: 580
       })
       .add({
         targets: supportPaths,
-        opacity: [0, 1],
-        delay: window.anime.stagger(70),
-        duration: 420,
+        opacity: [0, .42],
+        delay: window.anime.stagger(55),
+        duration: 340,
         easing: 'easeOutSine'
-      }, '-=280')
+      }, '-=250')
       .add({
         targets: mainPaths,
         strokeDashoffset: [window.anime.setDashoffset, 0],
-        delay: window.anime.stagger(130),
-        duration: 760,
+        delay: window.anime.stagger(110),
+        duration: 700,
         easing: 'easeInOutSine'
-      }, '-=220')
-      .add({
-        targets: nodes,
-        opacity: [0, 1],
-        scale: [.72, 1],
-        delay: window.anime.stagger(65),
-        duration: 300,
-        easing: 'easeOutBack'
-      }, '-=460');
+      }, '-=180');
 
     timeline.finished.then(() => startSignal(scene)).catch(() => {});
   };
