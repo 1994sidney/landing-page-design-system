@@ -22,40 +22,34 @@
     document.head.appendChild(script);
   });
 
-  const hairline = 'stroke-width:1.25;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;opacity:.66';
-  const support = 'stroke-width:1;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;opacity:.42';
+  const lightBase = 'fill:none;stroke:rgba(95,115,117,.10);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.72';
+  const lightMain = 'fill:none;stroke:rgba(95,115,117,.56);stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;opacity:.92';
+  const darkBase = 'fill:none;stroke:rgba(220,228,227,.09);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.82';
+  const darkMain = 'fill:none;stroke:rgba(220,228,227,.52);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.94';
 
   const geometry = [
     {
       stage: '.全流程舞台',
       svg: `
-        <path id="scene-route-a" class="流程场景路径 流程主路径" style="${hairline}" d="M122 320 H838"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M132 320 V304"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M365 320 V382"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M605 320 V304"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M828 320 V382"/>
-        <rect class="流程信号" data-path="scene-route-a" x="-10" y="-1.5" width="20" height="3" rx="1.5"/>
+        <path class="流程场景路径 流程轨迹底" style="${lightBase}" d="M44 350 C155 430 238 226 342 346 C455 474 546 216 650 330 C758 442 833 246 918 338"/>
+        <path id="scene-route-a" class="流程场景路径 流程主路径" style="${lightMain}" d="M44 350 C155 430 238 226 342 346 C455 474 546 216 650 330 C758 442 833 246 918 338"/>
+        <rect class="流程信号" data-path="scene-route-a" x="-14" y="-1.5" width="28" height="3" rx="1.5"/>
       `
     },
     {
       stage: '.协同舞台',
       svg: `
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 160 H308"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 230 H308"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M270 300 H308"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M308 160 V300"/>
-        <path class="流程场景路径 流程支线路径" style="${support}" d="M308 230 H326"/>
-        <path id="scene-route-b" class="流程场景路径 流程主路径" style="${hairline}" d="M700 265 H718 Q728 265 728 275 V310 Q728 320 738 320 H746"/>
-        <rect class="流程信号" data-path="scene-route-b" x="-9" y="-1.5" width="18" height="3" rx="1.5"/>
+        <path class="流程场景路径 流程轨迹底" style="${darkBase}" d="M48 394 C174 342 214 232 338 278 C492 335 536 452 678 410 C790 378 812 252 926 286"/>
+        <path id="scene-route-b" class="流程场景路径 流程主路径" style="${darkMain}" d="M48 394 C174 342 214 232 338 278 C492 335 536 452 678 410 C790 378 812 252 926 286"/>
+        <rect class="流程信号" data-path="scene-route-b" x="-13" y="-1.5" width="26" height="3" rx="1.5"/>
       `
     },
     {
       stage: '.迭代舞台',
       svg: `
-        <path class="流程场景路径 流程主路径" style="${hairline}" d="M259 180 H326 Q338 180 338 192 V238 Q338 250 350 250 H365"/>
-        <path class="流程场景路径 流程主路径" style="${hairline}" d="M595 250 H610 Q622 250 622 238 V192 Q622 180 634 180 H701"/>
-        <path class="流程场景路径 流程主路径" style="${hairline}" d="M810 286 V402 Q810 414 798 414 H784 Q772 414 772 426 V530"/>
-        <path class="流程场景路径 流程主路径" style="${hairline}" d="M634 530 H174 Q158 530 158 514 V302 Q158 286 142 286"/>
+        <path class="流程场景路径 流程轨迹底" style="${lightBase}" d="M58 300 C160 430 270 430 360 310 C455 185 535 185 630 310 C720 425 825 420 910 300 C900 455 800 545 650 540 C470 532 300 560 155 515 C88 493 55 410 58 300"/>
+        <path id="scene-route-c" class="流程场景路径 流程主路径" style="${lightMain}" d="M58 300 C160 430 270 430 360 310 C455 185 535 185 630 310 C720 425 825 420 910 300 C900 455 800 545 650 540 C470 532 300 560 155 515 C88 493 55 410 58 300"/>
+        <rect class="流程信号" data-path="scene-route-c" x="-14" y="-1.5" width="28" height="3" rx="1.5"/>
       `
     }
   ];
@@ -88,14 +82,19 @@
       window.anime.set(signal, { opacity: 0 });
       window.anime({
         targets: signal,
-        opacity: [{ value: 0, duration: 80 }, { value: .92, duration: 180 }, { value: .92, duration: 1800 }, { value: 0, duration: 220 }],
+        opacity: [
+          { value: 0, duration: 120 },
+          { value: .86, duration: 260 },
+          { value: .86, duration: 2500 },
+          { value: 0, duration: 320 }
+        ],
         translateX: motion('x'),
         translateY: motion('y'),
         rotate: motion('angle'),
-        duration: 2280,
+        duration: 3200,
         easing: 'linear',
         loop: true,
-        endDelay: 1900
+        endDelay: 2200
       });
     });
   };
@@ -106,12 +105,12 @@
     started.add(scene);
 
     const units = scene.querySelectorAll('.场景单元,.角色行');
+    const basePaths = [...scene.querySelectorAll('.流程轨迹底')];
     const mainPaths = [...scene.querySelectorAll('.流程主路径')];
-    const supportPaths = [...scene.querySelectorAll('.流程支线路径')];
     const signals = scene.querySelectorAll('.流程信号');
 
     window.anime.set(signals, { opacity: 0 });
-    supportPaths.forEach(path => { path.style.opacity = '0'; });
+    window.anime.set(basePaths, { opacity: 0 });
 
     const timeline = window.anime.timeline({ easing: 'easeOutCubic' });
     timeline
@@ -120,22 +119,20 @@
         opacity: [0, 1],
         translateY: [12, 0],
         delay: window.anime.stagger(90),
-        duration: 580
+        duration: 620
       })
       .add({
-        targets: supportPaths,
-        opacity: [0, .42],
-        delay: window.anime.stagger(55),
-        duration: 340,
+        targets: basePaths,
+        opacity: [0, 1],
+        duration: 700,
         easing: 'easeOutSine'
-      }, '-=250')
+      }, '-=300')
       .add({
         targets: mainPaths,
         strokeDashoffset: [window.anime.setDashoffset, 0],
-        delay: window.anime.stagger(110),
-        duration: 700,
+        duration: 1450,
         easing: 'easeInOutSine'
-      }, '-=180');
+      }, '-=500');
 
     timeline.finished.then(() => startSignal(scene)).catch(() => {});
   };
