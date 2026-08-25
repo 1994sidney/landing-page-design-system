@@ -207,3 +207,9 @@ const v12Script=document.createElement('script');
 v12Script.src='components-v12.js';
 v12Script.defer=true;
 document.body.appendChild(v12Script);
+
+// V2.9：加载动态 SVG 场景化流程扩展。
+const v13Script=document.createElement('script');
+v13Script.src='components-v13.js';
+v13Script.defer=true;
+document.body.appendChild(v13Script);
