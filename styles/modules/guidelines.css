@@ -23,10 +23,9 @@
 .内容响应规范库{display:grid;gap:var(--系统组件间距,32px)}
 .规范分组{min-width:0;padding:clamp(28px,3.2vw,42px);background:rgba(250,250,248,.62)}
 .规范分组:nth-child(even){background:rgba(227,231,229,.66)}
-.规范分组头{display:grid;grid-template-columns:3fr 7fr 2fr;gap:24px;align-items:end;margin-bottom:28px}
+.规范分组头{display:block;margin-bottom:28px}
 .规范分组头 h4{margin:0;font-size:22px;line-height:1.35;font-weight:600;color:var(--墨黑)}
-.规范分组头 p{margin:0;max-width:700px;font-size:13px;line-height:1.82;color:var(--弱文)}
-.规范分组头>span{justify-self:end;font-size:10px;line-height:1.5;color:var(--弱文)}
+.规范分组头>p,.规范分组头>span{display:none!important}
 
 /* 图片比例 */
 .图片比例网格{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:end}
@@ -94,7 +93,6 @@
 
 /* 统一断点语义：桌面 >=1180；平板 681–1179；手机 <=680 */
 @media(max-width:1179px){
-  .规范分组头{grid-template-columns:1fr 1.7fr}.规范分组头>span{grid-column:2;justify-self:end}
   .图片比例网格{grid-template-columns:repeat(6,1fr)}
   .比例示例:nth-child(1),.比例示例:nth-child(2),.比例示例:nth-child(3),.比例示例:nth-child(4),.比例示例:nth-child(5),.比例示例:nth-child(6){grid-column:span 3}
   .响应式视口组{grid-template-columns:1fr 1fr}.视口手机{grid-column:1/-1;max-width:360px}
@@ -105,7 +103,7 @@
   .断点规则表{grid-template-columns:1fr}
 }
 @media(max-width:680px){
-  .规范分组{padding:24px 18px}.规范分组头{grid-template-columns:1fr;gap:8px}.规范分组头>span{grid-column:auto;justify-self:start}
+  .规范分组{padding:24px 18px}
   .图片比例网格{grid-template-columns:1fr 1fr}.比例示例:nth-child(n){grid-column:auto}.比例-hero{grid-column:1/-1!important}.比例-hero .比例画面{aspect-ratio:16/9}
   .响应式视口组{grid-template-columns:1fr}.视口手机{grid-column:auto;max-width:none}
   .边界测试网格,.边界原则{grid-template-columns:1fr}
