@@ -201,3 +201,9 @@ if(processGroup){
       </section>`;
   }
 }
+
+// V2.8：加载 ECharts 与新闻 / 文章 / 案例组件扩展。
+const v12Script=document.createElement('script');
+v12Script.src='components-v12.js';
+v12Script.defer=true;
+document.body.appendChild(v12Script);
