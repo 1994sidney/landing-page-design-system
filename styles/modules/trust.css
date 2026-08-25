@@ -2,10 +2,9 @@
 
 .信任证明库{display:grid;gap:var(--系统组件间距,32px)}
 .信任分组{min-width:0}
-.信任分组头{display:grid;grid-template-columns:3fr 6fr 3fr;gap:28px;align-items:end;margin-bottom:24px}
+.信任分组头{display:block;margin-bottom:24px}
 .信任分组头 h4{margin:0;font-size:22px;line-height:1.35;font-weight:600;color:var(--墨黑)}
-.信任分组头 p{margin:0;font-size:13px;line-height:1.8;color:var(--弱文);max-width:620px}
-.信任分组头>span{justify-self:end;font-size:11px;line-height:1.5;color:var(--弱文)}
+.信任分组头>p,.信任分组头>span{display:none!important}
 
 /* 合作机构：连续字标横带，不做 Logo 卡片墙 */
 .合作字标带{display:grid;grid-template-columns:repeat(6,1fr);background:var(--墨黑);color:#fff;min-height:170px}
@@ -58,7 +57,6 @@
 .成果行 small{font-size:10px;color:var(--弱文);white-space:nowrap}
 
 @media(max-width:980px){
-  .信任分组头{grid-template-columns:1fr;gap:8px}.信任分组头>span{justify-self:start}
   .合作字标带{grid-template-columns:repeat(3,1fr)}.合作字标:nth-child(3n):after{display:none}.合作字标{min-height:110px}
   .客户评价板,.专家团队板,.资质成果板{grid-template-columns:1fr}
   .专家团队图{min-height:460px}.资质文档区{min-height:380px}
