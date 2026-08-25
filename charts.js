@@ -1,13 +1,24 @@
-// 数据图表：只负责加载 ECharts 与初始化静态 DOM 中的图表。
+// 数据图表：只负责加载 ECharts、初始化静态 DOM 图表，并维护真实加载状态。
 (() => {
   const chartTargets = ['chart-line', 'chart-bar', 'chart-pie', 'chart-radar', 'chart-combo'];
-  if (!chartTargets.some(id => document.getElementById(id))) return;
+  const existingTargets = chartTargets.map(id => document.getElementById(id)).filter(Boolean);
+  if (!existingTargets.length) return;
 
-  const loadECharts = (done) => {
+  existingTargets.forEach(el => el.classList.add('图表加载中'));
+
+  const markLoadFailed = () => {
+    existingTargets.forEach(el => {
+      el.classList.remove('图表加载中');
+      el.classList.add('图表加载失败');
+    });
+  };
+
+  const loadECharts = (done, fail) => {
     if (window.echarts) return done();
     const existing = document.querySelector('script[data-echarts-loader]');
     if (existing) {
       existing.addEventListener('load', done, { once: true });
+      existing.addEventListener('error', fail, { once: true });
       return;
     }
     const script = document.createElement('script');
@@ -15,11 +26,12 @@
     script.async = true;
     script.dataset.echartsLoader = 'true';
     script.onload = done;
+    script.onerror = fail;
     document.head.appendChild(script);
   };
 
   const initCharts = () => {
-    if (!window.echarts) return;
+    if (!window.echarts) return markLoadFailed();
 
     const theme = {
       ink: '#202629', text: '#3F484A', weak: '#6F7879', primary: '#7B8E90', deep: '#5F7375',
@@ -36,6 +48,7 @@
     const mount = (id, option) => {
       const el = document.getElementById(id);
       if (!el) return;
+      el.classList.remove('图表加载中', '图表加载失败');
       const previous = echarts.getInstanceByDom(el);
       if (previous) previous.dispose();
       const chart = echarts.init(el);
@@ -194,12 +207,9 @@
     window.addEventListener('resize', resize, { passive:true });
     if ('ResizeObserver' in window) {
       const ro = new ResizeObserver(resize);
-      chartTargets.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) ro.observe(el);
-      });
+      existingTargets.forEach(el => ro.observe(el));
     }
   };
 
-  loadECharts(initCharts);
+  loadECharts(initCharts, markLoadFailed);
 })();
