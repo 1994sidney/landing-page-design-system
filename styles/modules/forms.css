@@ -1,33 +1,49 @@
-/* 表单 / FAQ / 页脚 */
-.表单板{min-height:560px}
+/* 联系表单与 FAQ */
+.表单板{
+  display:grid;grid-template-columns:5fr 7fr;min-height:560px;position:relative;overflow:hidden;border:0;
+  background:linear-gradient(90deg,rgba(30,40,42,.30),rgba(30,40,42,.10)),url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1800&q=82') center/cover
+}
 
-/* 左侧说明直接叠在摄影背景上，不再使用毛玻璃面板 */
+/* 左侧说明直接叠在摄影上，不使用毛玻璃 */
 .表单说明{
-  margin:0!important;
-  padding:clamp(42px,5vw,66px)!important;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  background:transparent!important;
-  border:0!important;
-  box-shadow:none!important;
-  -webkit-backdrop-filter:none!important;
-  backdrop-filter:none!important;
-  color:#fff!important;
+  margin:0!important;padding:clamp(42px,5vw,66px)!important;display:flex;flex-direction:column;justify-content:flex-end;
+  background:transparent!important;border:0!important;box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;color:#fff!important
 }
 .表单说明 .小标{color:rgba(255,255,255,.68)!important}
 .表单说明 h4{max-width:430px;color:#fff;text-shadow:0 2px 18px rgba(14,20,21,.24)}
 .表单说明 p{max-width:390px;color:rgba(255,255,255,.76)!important;text-shadow:0 2px 16px rgba(14,20,21,.20)}
 
-/* 右侧表单仍保留浅色半透明层，确保输入信息清晰 */
-.表单{display:grid;align-content:center;gap:18px}
-.字段{display:grid;gap:7px}
-.字段 label{font-size:12px;line-height:1.5;color:var(--正文)}
-.字段 input{width:100%}
+/* 右侧表单 */
+.表单{
+  margin:34px 34px 34px 0;padding:46px;display:grid;align-content:center;gap:18px;
+  background:rgba(245,247,246,.60);border:0;
+  -webkit-backdrop-filter:blur(20px) saturate(115%);backdrop-filter:blur(20px) saturate(115%);
+  box-shadow:0 22px 64px rgba(18,25,27,.12)
+}
+.字段{display:grid;gap:8px!important;padding:0!important;background:transparent!important}
+.字段 label{display:block;margin:0 0 1px 2px;font-size:13px!important;line-height:1.45;font-weight:500;color:var(--墨黑)!important}
+.字段 input{
+  min-height:50px;width:100%;border:0!important;border-radius:2px;padding:14px 16px!important;
+  background:rgba(255,255,255,.48)!important;color:var(--墨黑);box-shadow:none!important;
+  transition:background .25s ease,box-shadow .25s ease
+}
+.字段 input::placeholder{color:rgba(63,72,74,.48)}
+.字段 input:focus{outline:none;background:rgba(255,255,255,.78)!important;box-shadow:0 0 0 2px rgba(123,142,144,.18)!important}
 
-.常见问题{display:grid;gap:10px}
-.页脚演示{margin-top:0}
+/* FAQ */
+.常见问题{border-top:0;display:grid;gap:8px}
+.问答{border-bottom:0;background:rgba(250,250,248,.58);padding:0 22px}
+.问答.展开{background:var(--卡片)}
+.问题{padding:22px 0}
+.答案 p{padding-bottom:24px}
 
+@media(max-width:980px){
+  .表单板{grid-template-columns:1fr}
+  .表单说明{min-height:330px}
+  .表单{margin:0 20px 20px}
+}
 @media(max-width:680px){
   .表单说明{min-height:310px;padding:34px 24px!important}
+  .表单{padding:30px 22px;margin:0 14px 14px}
 }
