@@ -8,6 +8,9 @@
   --系统组件间距:clamp(24px,2.5vw,34px);
 }
 
+/* 旧“基础界面语言”不再属于组件体系，避免脚本重组前短暂显示 */
+.章节#基础组件,.界面语言组{display:none!important}
+
 /* 一级模块：所有大标题完全统一 */
 .系统模块{
   position:relative;
@@ -93,28 +96,21 @@
 }
 
 /* 三级组件：内部标题统一从 h4 开始 */
-.系统小模块 h4{
-  letter-spacing:-.015em;
-}
+.系统小模块 h4{letter-spacing:-.015em}
 .系统小模块>.图文组合库,
 .系统小模块>.图表库,
 .系统小模块>.内容组件库,
 .系统小模块>.流程动态库,
-.系统小模块>.流程SVG库{
-  gap:var(--系统组件间距)!important;
-}
+.系统小模块>.流程SVG库{gap:var(--系统组件间距)!important}
 
 /* 设计基础：原独立章节内容现在作为二级组件组存在 */
 .设计原则组 .原则组,
 .色彩系统组 .角色色板,
 .字体样式组 .字板,
 .栅格间距组 .栅格示意,
-.界面语言组 .组件区,
 .摄影图片组 .摄影区,
 .动效语言组 .动效组,
-.页面蓝图组 .蓝图{
-  margin-top:0!important;
-}
+.页面蓝图组 .蓝图{margin-top:0!important}
 
 /* 数据图表模块中两组内容形成明确先后关系 */
 .数据卡片组 .数据板{margin:0}
@@ -148,10 +144,7 @@
   gap:clamp(12px,1.6vw,24px);
   min-width:0;
 }
-.导航 a{
-  white-space:nowrap;
-  font-size:12px;
-}
+.导航 a{white-space:nowrap;font-size:12px}
 .导航 a.当前模块{color:#fff}
 .导航 a.当前模块:after{transform:scaleX(1)!important;opacity:1!important}
 
