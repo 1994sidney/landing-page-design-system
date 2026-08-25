@@ -106,3 +106,98 @@ if(imageContentGroup && !imageContentGroup.querySelector('.图文组合库')){
   if(baseLayout) baseLayout.insertAdjacentElement('afterend',library);
   else imageContentGroup.appendChild(library);
 }
+
+// V2.7：将“流程与工作方式”的步骤卡片替换为多组内联 SVG 流程图。
+const processGroup=[...document.querySelectorAll('.组件组')].find(group=>group.querySelector('h3')?.textContent.trim()==='流程与工作方式');
+if(processGroup){
+  processGroup.classList.add('流程视觉组');
+  const desc=processGroup.querySelector('.组件组头 p');
+  const usage=processGroup.querySelector('.组件组头 .用途');
+  if(desc) desc.textContent='流程不再用四张卡片罗列步骤，而是通过路径、节点、分支、循环和阶段关系直接表现工作方式。不同结构分别适合线性推进、方案分流、持续迭代和成熟度演进。';
+  if(usage) usage.textContent='适用：服务流程、项目实施、决策路径、迭代机制、阶段规划';
+
+  const stepsBoard=processGroup.querySelector('.步骤板');
+  if(stepsBoard){
+    stepsBoard.className='流程SVG库';
+    stepsBoard.innerHTML=`
+      <section class="流程SVG组 流程线性">
+        <div class="流程说明"><span class="流程类型">线性推进</span><h4>把连续步骤放在一条清晰路径上。</h4><p>适合没有复杂分支的实施流程，让用户一眼看到从问题理解到持续优化的推进关系。</p></div>
+        <div class="流程画布">
+          <svg viewBox="0 0 920 260" role="img" aria-labelledby="flow-linear-title">
+            <title id="flow-linear-title">线性推进流程</title>
+            <defs><marker id="flowArrowLinear" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="流程箭头" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+            <path class="流程辅线" d="M110 126 H810"/>
+            <path class="流程主线" marker-end="url(#flowArrowLinear)" d="M135 126 H305"/>
+            <path class="流程主线" marker-end="url(#flowArrowLinear)" d="M365 126 H535"/>
+            <path class="流程主线" marker-end="url(#flowArrowLinear)" d="M595 126 H765"/>
+            <circle class="流程节点实" cx="110" cy="126" r="14"/><circle class="流程节点" cx="340" cy="126" r="14"/><circle class="流程节点" cx="570" cy="126" r="14"/><circle class="流程节点实" cx="800" cy="126" r="14"/>
+            <text class="流程标签" x="110" y="178" text-anchor="middle">理解问题</text><text class="流程注释" x="110" y="200" text-anchor="middle">目标与现状</text>
+            <text class="流程标签" x="340" y="178" text-anchor="middle">建立结构</text><text class="流程注释" x="340" y="200" text-anchor="middle">信息与优先级</text>
+            <text class="流程标签" x="570" y="178" text-anchor="middle">形成系统</text><text class="流程注释" x="570" y="200" text-anchor="middle">视觉与组件</text>
+            <text class="流程标签" x="800" y="178" text-anchor="middle">持续优化</text><text class="流程注释" x="800" y="200" text-anchor="middle">验证与迭代</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="流程SVG组 流程分支">
+        <div class="流程说明"><span class="流程类型">分支与汇合</span><h4>同一个目标，可以经过不同专业路径再重新汇合。</h4><p>适合展示策略与设计、内容与产品等并行工作如何从共同目标出发，最终形成统一交付。</p></div>
+        <div class="流程画布">
+          <svg viewBox="0 0 920 360" role="img" aria-labelledby="flow-branch-title">
+            <title id="flow-branch-title">分支汇合流程</title>
+            <defs><marker id="flowArrowBranch" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="流程箭头" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+            <path class="流程主线" d="M125 180 H270"/>
+            <path class="流程主线" marker-end="url(#flowArrowBranch)" d="M270 180 C330 180 330 90 420 90"/>
+            <path class="流程主线" marker-end="url(#flowArrowBranch)" d="M270 180 C330 180 330 270 420 270"/>
+            <path class="流程主线" d="M455 90 C580 90 575 180 660 180"/>
+            <path class="流程主线" d="M455 270 C580 270 575 180 660 180"/>
+            <path class="流程主线" marker-end="url(#flowArrowBranch)" d="M690 180 H805"/>
+            <circle class="流程节点实" cx="105" cy="180" r="14"/><circle class="流程节点浅" cx="440" cy="90" r="15"/><circle class="流程节点浅" cx="440" cy="270" r="15"/><circle class="流程节点" cx="675" cy="180" r="15"/><circle class="流程节点实" cx="830" cy="180" r="14"/>
+            <text class="流程标签" x="105" y="225" text-anchor="middle">目标确认</text>
+            <text class="流程标签" x="440" y="58" text-anchor="middle">信息结构</text><text class="流程注释" x="440" y="115" text-anchor="middle">内容与逻辑</text>
+            <text class="流程标签" x="440" y="320" text-anchor="middle">视觉表达</text><text class="流程注释" x="440" y="295" text-anchor="middle">界面与体验</text>
+            <text class="流程标签" x="675" y="225" text-anchor="middle">系统整合</text>
+            <text class="流程标签" x="830" y="225" text-anchor="middle">验证交付</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="流程SVG组 流程循环">
+        <div class="流程说明"><span class="流程类型">循环迭代</span><h4>不是走完一次，而是让反馈重新进入下一轮。</h4><p>适合产品、内容和运营类工作，用闭环表达观察、判断、执行和反馈之间持续发生的关系。</p></div>
+        <div class="流程画布">
+          <svg viewBox="0 0 720 500" role="img" aria-labelledby="flow-cycle-title">
+            <title id="flow-cycle-title">循环迭代流程</title>
+            <defs><marker id="flowArrowCycle" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="流程箭头" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+            <path class="流程主线" marker-end="url(#flowArrowCycle)" d="M360 88 A162 162 0 0 1 522 250"/>
+            <path class="流程主线" marker-end="url(#flowArrowCycle)" d="M522 250 A162 162 0 0 1 360 412"/>
+            <path class="流程主线" marker-end="url(#flowArrowCycle)" d="M360 412 A162 162 0 0 1 198 250"/>
+            <path class="流程主线" marker-end="url(#flowArrowCycle)" d="M198 250 A162 162 0 0 1 360 88"/>
+            <circle class="流程节点实" cx="360" cy="88" r="14"/><circle class="流程节点" cx="522" cy="250" r="14"/><circle class="流程节点" cx="360" cy="412" r="14"/><circle class="流程节点" cx="198" cy="250" r="14"/><circle class="流程中心" cx="360" cy="250" r="5"/>
+            <path class="流程虚线" d="M360 112 V226 M498 250 H384 M360 388 V274 M222 250 H336"/>
+            <text class="流程标签" x="360" y="54" text-anchor="middle">观察输入</text><text class="流程注释" x="360" y="135" text-anchor="middle">真实问题</text>
+            <text class="流程标签" x="582" y="255">形成判断</text><text class="流程注释" x="582" y="277">策略假设</text>
+            <text class="流程标签" x="360" y="462" text-anchor="middle">执行验证</text><text class="流程注释" x="360" y="382" text-anchor="middle">形成方案</text>
+            <text class="流程标签" x="138" y="255" text-anchor="end">反馈修正</text><text class="流程注释" x="138" y="277" text-anchor="end">数据与体验</text>
+            <text class="流程注释" x="360" y="254" text-anchor="middle">持续迭代</text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="流程SVG组 流程阶段">
+        <div class="流程说明"><span class="流程类型">阶段递进</span><h4>用阶梯关系表达能力逐层成熟，而不是平铺步骤。</h4><p>适合长期项目和复杂实施计划，强调后一阶段建立在前一阶段成果之上，并持续向更高完成度推进。</p></div>
+        <div class="流程画布">
+          <svg viewBox="0 0 920 380" role="img" aria-labelledby="flow-stage-title">
+            <title id="flow-stage-title">阶段递进流程</title>
+            <defs><marker id="flowArrowStage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="流程箭头" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs>
+            <path class="流程辅线" d="M70 315 H225 V255 H390 V195 H555 V135 H720 V75 H845"/>
+            <path class="流程主线" marker-end="url(#flowArrowStage)" d="M70 315 H225 V255 H390 V195 H555 V135 H720 V75 H845"/>
+            <circle class="流程节点实" cx="95" cy="315" r="12"/><circle class="流程节点" cx="225" cy="255" r="12"/><circle class="流程节点" cx="390" cy="195" r="12"/><circle class="流程节点" cx="555" cy="135" r="12"/><circle class="流程节点实" cx="720" cy="75" r="12"/>
+            <text class="流程标签" x="95" y="350" text-anchor="middle">内容理解</text><text class="流程注释" x="95" y="370" text-anchor="middle">明确问题</text>
+            <text class="流程标签" x="225" y="228" text-anchor="middle">信息结构</text><text class="流程注释" x="225" y="278" text-anchor="middle">建立秩序</text>
+            <text class="流程标签" x="390" y="168" text-anchor="middle">视觉系统</text><text class="流程注释" x="390" y="218" text-anchor="middle">形成规范</text>
+            <text class="流程标签" x="555" y="108" text-anchor="middle">交互验证</text><text class="流程注释" x="555" y="158" text-anchor="middle">真实使用</text>
+            <text class="流程标签" x="720" y="48" text-anchor="middle">持续迭代</text><text class="流程注释" x="720" y="98" text-anchor="middle">长期优化</text>
+          </svg>
+        </div>
+      </section>`;
+  }
+}
