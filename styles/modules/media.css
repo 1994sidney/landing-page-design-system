@@ -1,6 +1,109 @@
-/* 图文与视觉内容
-   基础图文内容库、组合版式及相关细节优化。
-*/
-@import url("../v2/08.css");
-@import url("../v2/09.css");
-@import url("../v2/10.css");
+/* 图文、毛玻璃、观点与摄影 */
+
+/* 基础图文 */
+.图文板{border:0;background:transparent;gap:0}
+.图文文{border-left:0;background:var(--表面);padding:56px 50px}
+.图文文 h4{font-weight:500}
+.图文文 .底部{border-top:0;color:var(--弱文)}
+.图文内容库组 .图文文 .小标{display:block;margin:0 0 20px;font-size:12px;line-height:1.5;letter-spacing:.04em;color:var(--弱文)}
+.图文内容库组 .图文文 h4{margin-top:0}
+
+/* 多种图文组合 */
+.图文组合库{display:grid;gap:clamp(30px,4.2vw,58px);margin-top:clamp(30px,4vw,54px)}
+.图文组合{position:relative;overflow:hidden;background:var(--表面)}
+.图文组合 figure{margin:0;overflow:hidden}
+.图文组合 img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.60) contrast(.94);transition:transform 1s var(--缓动),filter .8s var(--缓动)}
+.图文组合:hover img{transform:scale(1.025);filter:saturate(.68) contrast(.96)}
+.组合标签{display:block;margin-bottom:26px;font-size:12px;line-height:1.5;letter-spacing:.04em;color:var(--弱文)}
+.图文组合 h4{margin:0;max-width:720px;font-size:clamp(32px,3.7vw,54px);line-height:1.20;letter-spacing:-.025em;font-weight:500}
+.图文组合 p{margin:22px 0 0;max-width:580px;font-size:15px;line-height:1.88;color:var(--正文)}
+
+.图文反向{display:grid;grid-template-columns:5fr 7fr;min-height:470px;height:470px}
+.图文反向 .组合文字{padding:clamp(34px,4vw,58px);display:flex;flex-direction:column;justify-content:center;background:var(--卡片)}
+.图文反向 .组合主图{min-height:0;height:470px}
+.图文反向 .组合标签{margin-bottom:20px}
+.图文反向 h4{font-size:clamp(30px,3.2vw,46px);line-height:1.22}
+.图文反向 p{margin-top:18px;line-height:1.82}
+.图文反向 .文字按钮{margin-top:24px}
+
+.全幅叠文{min-height:640px;background:var(--墨黑)}
+.全幅叠文 .全幅背景{position:absolute;inset:0}
+.全幅叠文 .全幅背景:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,36,38,.12),rgba(27,36,38,.02) 48%,rgba(27,36,38,.30))}
+.全幅叠文 .叠文面板{position:absolute;left:clamp(24px,4.5vw,72px);bottom:clamp(24px,4.5vw,64px);width:min(520px,46%);padding:clamp(30px,3vw,46px);background:rgba(246,247,244,.94);box-shadow:0 24px 70px rgba(19,27,29,.14)}
+.全幅叠文 .叠文面板 h4{font-size:clamp(30px,3.3vw,48px)}
+.全幅叠文 .文字按钮{margin-top:26px}
+
+.双图错位{background:transparent;overflow:visible;padding:10px 0 6px}
+.双图区域{position:relative;min-height:610px}
+.双图大{position:absolute;left:0;top:0;width:72%;height:520px}
+.双图小{position:absolute;right:0;bottom:0;width:38%;height:330px;box-shadow:0 24px 65px rgba(22,30,31,.11)}
+.双图文字{width:58%;margin:36px 0 0 auto;padding:0 clamp(12px,2vw,26px) 0 0}
+.双图文字 h4{font-size:clamp(30px,3.3vw,48px)}
+
+.横向带状{display:grid;grid-template-columns:4fr 5fr 3fr;min-height:330px;background:var(--主题浅)}
+.带状文字,.带状说明{padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column;justify-content:center}
+.带状文字 h4{font-size:clamp(26px,2.8vw,40px)}
+.带状图片{min-height:330px}
+.带状说明{justify-content:flex-end;background:rgba(250,250,248,.48)}
+.带状说明 p{font-size:14px;line-height:1.82;margin:0}
+.带状说明 .文字按钮{margin-top:24px}
+
+.玻璃叠文组合{min-height:650px;background:var(--石墨)}
+.玻璃组合背景{position:absolute;inset:0}
+.玻璃组合背景:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,34,36,.08),rgba(24,34,36,.30))}
+.玻璃组合文案{position:absolute;right:clamp(24px,4.5vw,72px);bottom:clamp(24px,4.5vw,64px);width:min(540px,45%);padding:clamp(32px,3.8vw,54px);color:#fff;background:rgba(29,38,40,.54);border:0;-webkit-backdrop-filter:blur(20px) saturate(115%);backdrop-filter:blur(20px) saturate(115%);box-shadow:0 26px 76px rgba(15,22,23,.18)}
+.玻璃组合文案 .组合标签{color:rgba(255,255,255,.62)}
+.玻璃组合文案 h4{font-size:clamp(31px,3.4vw,50px)}
+.玻璃组合文案 p{color:rgba(255,255,255,.74)}
+.玻璃组合文案 .玻璃按钮{margin-top:28px;padding:12px 18px;border:0;border-radius:999px;background:rgba(250,250,248,.96)!important;color:var(--墨黑)!important;box-shadow:0 8px 22px rgba(12,18,19,.14)}
+.玻璃组合文案 .玻璃按钮:hover{background:var(--主题)!important;color:#fff!important}
+
+/* 独立毛玻璃示例 */
+.玻璃演示{position:relative;min-height:570px;overflow:hidden;background:var(--石墨)}
+.玻璃背景{position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,31,33,.28),rgba(22,31,33,.04)),url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85') center/cover;filter:saturate(.60) contrast(.96)}
+.玻璃文案{position:absolute;left:4.2%;top:9%;width:min(520px,46%);padding:36px 38px;color:#fff;background:rgba(29,38,40,.54);border:0;-webkit-backdrop-filter:blur(var(--玻璃模糊)) saturate(115%);backdrop-filter:blur(var(--玻璃模糊)) saturate(115%);box-shadow:0 24px 70px rgba(15,22,23,.18)}
+.玻璃文案 .小标{color:rgba(255,255,255,.62)}
+.玻璃文案 h4{font-size:clamp(34px,4vw,58px);line-height:1.20;letter-spacing:-.025em;font-weight:500;margin:34px 0 20px}
+.玻璃文案 p{font-size:14px;line-height:1.86;color:rgba(255,255,255,.72);max-width:430px}
+.玻璃按钮{border:0;margin-top:14px;border-radius:999px;padding:12px 17px;background:rgba(250,250,248,.96)!important;color:var(--墨黑)!important;box-shadow:0 8px 22px rgba(12,18,19,.14)}
+.玻璃按钮:hover{background:var(--主题)!important;color:#fff!important}
+.玻璃数据{position:absolute;right:4%;bottom:7%;width:230px;min-height:180px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(248,250,249,.62);border:0;color:var(--墨黑);-webkit-backdrop-filter:blur(20px) saturate(120%);backdrop-filter:blur(20px) saturate(120%);box-shadow:0 24px 64px rgba(21,29,31,.13)}
+.玻璃数据>span,.玻璃数据 small{font-size:12px;color:var(--正文)}
+.玻璃数据 strong{font-size:70px;font-weight:500;line-height:.9;color:var(--主题深)}
+
+/* 观点与引语 */
+.引语板{min-height:460px;display:grid;grid-template-columns:5fr 7fr;grid-template-rows:auto auto;column-gap:clamp(36px,6vw,96px);row-gap:20px;align-content:end;padding:clamp(48px,6vw,76px) clamp(34px,7vw,104px);color:#fff;background:linear-gradient(90deg,rgba(30,39,41,.88),rgba(30,39,41,.60)),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80') center/cover}
+.引语板 blockquote{grid-column:2;grid-row:1;justify-self:end;width:min(720px,100%);margin:0;font-size:clamp(28px,3vw,44px);line-height:1.40;letter-spacing:-.018em;font-weight:500}
+.引语板 footer{grid-column:2;grid-row:2;justify-self:end;width:min(720px,100%);margin:0;padding:0;border:0;font-size:12px;line-height:1.6;color:rgba(255,255,255,.58)}
+
+/* 摄影 */
+.摄影规则{border-top:0;gap:8px}
+.摄影规则项{border-bottom:0;padding:22px 24px;background:rgba(250,250,248,.60);grid-template-columns:1fr!important}
+.摄影规则项:nth-child(even){background:var(--卡片)}
+.摄影说明{border-top:0;background:rgba(28,37,39,.42);left:18px;right:18px;bottom:18px;padding:12px 14px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
+@media(max-width:980px){
+  .图文反向{grid-template-columns:1fr;height:auto;min-height:0}
+  .图文反向 .组合主图{height:420px;min-height:0;order:-1}
+  .全幅叠文 .叠文面板{width:min(560px,70%)}
+  .横向带状{grid-template-columns:1fr 1fr}
+  .带状说明{grid-column:1/-1;min-height:220px}
+  .玻璃组合文案{width:min(560px,68%)}
+  .双图区域{min-height:540px}
+  .双图大{height:450px}.双图小{height:280px}.双图文字{width:72%}
+  .引语板{grid-template-columns:3fr 7fr;min-height:420px}
+  .引语板 blockquote{font-size:clamp(26px,4vw,38px)}
+  .玻璃文案{width:70%}
+}
+@media(max-width:680px){
+  .图文内容库组 .图文文 .小标{margin-bottom:16px}
+  .图文组合库{margin-top:28px;gap:28px}
+  .图文反向 .组合文字{padding:32px 24px}
+  .图文反向 .组合主图{height:320px}
+  .全幅叠文{min-height:720px}.全幅叠文 .叠文面板{left:18px;right:18px;bottom:18px;width:auto;padding:28px 24px}
+  .双图区域{min-height:450px}.双图大{width:82%;height:360px}.双图小{width:48%;height:230px}.双图文字{width:100%;margin-top:26px;padding:0}
+  .横向带状{grid-template-columns:1fr}.带状图片{min-height:300px}.带状说明{grid-column:auto;min-height:0}
+  .玻璃叠文组合{min-height:740px}.玻璃组合文案{left:18px;right:18px;bottom:18px;width:auto;padding:30px 24px}
+  .玻璃演示{min-height:720px}.玻璃文案{left:18px;right:18px;top:18px;width:auto}.玻璃数据{left:18px;right:18px;bottom:18px;width:auto}
+  .引语板{min-height:440px;grid-template-columns:1fr;padding:36px 24px}.引语板 blockquote,.引语板 footer{grid-column:1;width:92%;justify-self:end}.引语板 blockquote{font-size:27px;line-height:1.45}
+}
