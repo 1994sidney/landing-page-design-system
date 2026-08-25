@@ -18,3 +18,21 @@ actionSelectors.forEach(selector=>{
     });
   });
 });
+
+// V2.3：清理仍嵌在文本中的 01 / 02 / 03 等视觉序号。
+// 只处理明确的界面标识，不触碰统计数据、年份、尺寸等真实数字。
+const numberedMetaSelectors=['.首屏底栏 span:first-child','.页签 button','.小标'];
+const stripUiNumbering=(text)=>text
+  .replace(/^\s*(?:0[1-9]|10)\s*\/\s*/,'')
+  .replace(/^\s*(?:0[1-9]|10)\s+(?=[^\d])/,'')
+  .replace(/\s*\/\s*(?:0[1-9]|10)\s*$/,'')
+  .trim();
+
+numberedMetaSelectors.forEach(selector=>{
+  document.querySelectorAll(selector).forEach(element=>{
+    const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT);
+    const textNodes=[];
+    while(walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach(node=>{ node.nodeValue=stripUiNumbering(node.nodeValue); });
+  });
+});
