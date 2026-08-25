@@ -11,13 +11,14 @@
   --焦点环:rgba(95,115,117,.30);
 }
 
-/* 真实按钮状态 */
+/* 真实按钮与链接状态 */
 .主按钮,.次按钮,.胶囊按钮,.玻璃按钮,.页面实按钮,.页面导航行动{
   transition:background .28s var(--缓动),color .28s var(--缓动),transform .18s ease,box-shadow .28s ease,opacity .28s ease;
 }
 .主按钮:active,.次按钮:active,.胶囊按钮:active,.玻璃按钮:active,.页面实按钮:active,.页面导航行动:active{transform:translateY(1px)}
 .主按钮:focus-visible,.次按钮:focus-visible,.胶囊按钮:focus-visible,.玻璃按钮:focus-visible,.页面实按钮:focus-visible,.页面导航行动:focus-visible,
-.文字按钮:focus-visible,.内容文本链接:focus-visible,.页面文本按钮:focus-visible{
+.文字按钮:focus-visible,.内容文本链接:focus-visible,.页面文本按钮:focus-visible,
+.导航 a:focus-visible,.页面导航菜单 a:focus-visible,.页脚列 a:focus-visible,.页脚轻量列 a:focus-visible{
   outline:0;box-shadow:0 0 0 3px var(--页面背景),0 0 0 5px var(--焦点环)
 }
 .主按钮:disabled,.次按钮:disabled,.禁用,[aria-disabled="true"]{
@@ -38,7 +39,9 @@
 .问题{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;background:transparent;border:0;color:var(--墨黑);text-align:left;cursor:pointer}
 .问题 i{font-style:normal;transition:transform .28s var(--缓动),color .28s ease;color:var(--弱文)}
 .问题:focus-visible{outline:0;box-shadow:0 0 0 2px var(--焦点环)}
-.答案{display:none}.问答.展开 .答案{display:block}.问答.展开 .问题 i{transform:rotate(45deg);color:var(--主题深)}
+.答案{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .42s var(--缓动),opacity .28s ease}
+.答案>p{overflow:hidden}
+.问答.展开 .答案{grid-template-rows:1fr;opacity:1}.问答.展开 .问题 i{transform:rotate(45deg);color:var(--主题深)}
 
 /* 图片加载失败：脚本会把失败图片的父级标记为 .图片加载失败 */
 .图片加载失败{position:relative!important;background:linear-gradient(135deg,#E4E7E4,#D8DEDC)!important;min-height:220px;overflow:hidden}
@@ -67,10 +70,10 @@
 .状态反馈库{display:grid;gap:var(--系统组件间距,32px)}
 .状态分组{background:rgba(250,250,248,.58);padding:clamp(26px,3vw,38px)}
 .状态分组头{display:grid;grid-template-columns:3fr 7fr 2fr;gap:24px;align-items:end;margin-bottom:24px}
-.状态分组头 h4{margin:0;font-size:21px;line-height:1.4;font-weight:600;color:var(--墨黑)}
-.状态分组头 p{margin:0;font-size:12px;line-height:1.75;color:var(--弱文)}
-.状态分组头 span{justify-self:end;font-size:10px;color:var(--弱文)}
-.状态网格{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.状态分组头 h4{margin:0;font-size:22px;line-height:1.4;font-weight:600;color:var(--墨黑)}
+.状态分组头 p{margin:0;font-size:13px;line-height:1.8;color:var(--弱文)}
+.状态分组头 span{justify-self:end;font-size:11px;color:var(--弱文)}
+.状态网格{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--系统组件内间距,18px)}
 .状态样例{min-width:0;min-height:144px;padding:20px;background:var(--表面);display:flex;flex-direction:column;justify-content:space-between;gap:20px}
 .状态名{font:500 10px/1.4 var(--数字);letter-spacing:.05em;text-transform:uppercase;color:var(--弱文)}
 .状态样例演示{display:flex;align-items:center;min-height:50px}
@@ -121,16 +124,16 @@
 .无数据符号{font:500 38px/1 var(--数字);color:rgba(95,115,117,.26)}
 @keyframes 状态旋转{to{transform:rotate(360deg)}}
 
-/* 操作反馈：颜色不是唯一信号 */
-.反馈消息网格{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.反馈消息{padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;font-size:12px;line-height:1.65}
-.反馈消息 b{width:24px;height:24px;display:grid;place-items:center;font-size:12px;font-weight:600}
-.反馈消息 strong{display:block;margin-bottom:2px;font-size:12px;color:var(--墨黑)}
-.反馈消息 p{margin:0;color:var(--弱文)}
-.反馈消息.成功{background:var(--状态成功浅)}.反馈消息.成功 b{color:var(--状态成功)}
-.反馈消息.错误{background:var(--状态错误浅)}.反馈消息.错误 b{color:var(--状态错误)}
-.反馈消息.警告{background:var(--状态警告浅)}.反馈消息.警告 b{color:var(--状态警告)}
-.反馈消息.信息{background:var(--状态信息浅)}.反馈消息.信息 b{color:var(--状态信息)}
+/* 系统反馈：限定在状态模块内，避免覆盖流程场景的同名 .反馈消息 */
+.反馈消息网格{display:grid;grid-template-columns:1fr 1fr;gap:var(--系统组件内间距,18px)}
+.状态反馈组 .反馈消息{padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;font-size:12px;line-height:1.65}
+.状态反馈组 .反馈消息 b{width:24px;height:24px;display:grid;place-items:center;font-size:12px;font-weight:600}
+.状态反馈组 .反馈消息 strong{display:block;margin-bottom:2px;font-size:12px;color:var(--墨黑)}
+.状态反馈组 .反馈消息 p{margin:0;color:var(--弱文)}
+.状态反馈组 .反馈消息.成功{background:var(--状态成功浅)}.状态反馈组 .反馈消息.成功 b{color:var(--状态成功)}
+.状态反馈组 .反馈消息.错误{background:var(--状态错误浅)}.状态反馈组 .反馈消息.错误 b{color:var(--状态错误)}
+.状态反馈组 .反馈消息.警告{background:var(--状态警告浅)}.状态反馈组 .反馈消息.警告 b{color:var(--状态警告)}
+.状态反馈组 .反馈消息.信息{background:var(--状态信息浅)}.状态反馈组 .反馈消息.信息 b{color:var(--状态信息)}
 
 @media(max-width:980px){
   .状态分组头{grid-template-columns:1fr;gap:7px}.状态分组头 span{justify-self:start}
