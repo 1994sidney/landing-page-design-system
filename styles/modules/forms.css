@@ -36,6 +36,7 @@
 .问答{border-bottom:0;background:rgba(250,250,248,.58);padding:0 22px}
 .问答.展开{background:var(--卡片)}
 .问题{padding:22px 0}
+.答案{max-height:none!important;overflow:visible!important}
 .答案 p{padding-bottom:24px}
 
 @media(max-width:980px){
