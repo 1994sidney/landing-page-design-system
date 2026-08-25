@@ -23,6 +23,7 @@
   --玻璃边:rgba(255,255,255,.30);
   --玻璃模糊:18px;
   --柔影:0 22px 70px rgba(28,37,39,.10);
+  --控件圆角:2px;
 }
 
 body{background:var(--页面背景);color:var(--墨黑)}
@@ -67,7 +68,8 @@ body{background:var(--页面背景);color:var(--墨黑)}
 .原则:nth-child(4){background:#EAE9E4}
 .原则:hover{transform:translateY(-6px);box-shadow:var(--柔影)}
 .原则>div{margin-top:auto}
-.原则 h4{font-weight:600}
+.原则 h4{margin:0 0 13px;font-size:22px;line-height:1.3;letter-spacing:-.02em;font-weight:600}
+.原则 p{margin:0;font-size:14px;line-height:1.78;color:var(--弱文);max-width:260px}
 
 /* 色彩系统 */
 .角色色板{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -98,10 +100,11 @@ body{background:var(--页面背景);color:var(--墨黑)}
 .中标题{font-weight:500;letter-spacing:-.018em}
 .正文样{color:var(--正文)}
 .栅格示意{border:0;background:var(--表面);box-shadow:inset 0 0 0 1px rgba(32,38,41,.035)}
+.栅格主 h4{margin:0;font-size:44px;line-height:1.15;letter-spacing:-.035em;font-weight:500}
 
 /* 基础组件 */
 .按钮板,.标签板{border:0;background:var(--表面);padding:34px}
-.主按钮,.次按钮{border:0}
+.主按钮,.次按钮{border:0;border-radius:var(--控件圆角);min-height:44px;padding:0 18px;justify-content:center;line-height:1.45}
 .主按钮{background:var(--墨黑)}
 .主按钮:hover{background:var(--主题深)}
 .次按钮{background:var(--卡片);color:var(--墨黑)}
@@ -135,4 +138,5 @@ body{background:var(--页面背景);color:var(--墨黑)}
   .角色色板,.原则组,.信息卡板{grid-template-columns:1fr}
   .配色比例{grid-template-columns:1fr}
   .首屏侧栏{grid-column:1/-1}
+  .栅格主 h4{font-size:34px}
 }
