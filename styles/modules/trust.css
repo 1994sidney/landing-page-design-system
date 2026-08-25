@@ -14,7 +14,7 @@
 .合作字标 strong{font-family:var(--数字);font-size:clamp(16px,1.45vw,22px);line-height:1;letter-spacing:.06em;font-weight:500;color:rgba(255,255,255,.78);white-space:nowrap}
 .合作字标:nth-child(2n) strong{font-family:var(--字体);letter-spacing:.015em;font-weight:600}
 
-/* 客户评价：一条强观点 + 右侧项目事实，不堆评价卡片 */
+/* 客户评价：一条强观点 + 右侧项目事实 */
 .客户评价板{display:grid;grid-template-columns:7fr 5fr;min-height:430px;background:var(--主题浅)}
 .客户评价正文{padding:clamp(42px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between}
 .客户评价正文 blockquote{margin:0;max-width:760px;font-size:clamp(30px,3.4vw,50px);line-height:1.35;letter-spacing:-.022em;font-weight:500;color:var(--墨黑)}
@@ -25,45 +25,55 @@
 .客户评价事实 strong{align-self:end;font-family:var(--数字);font-size:clamp(58px,6vw,86px);line-height:.95;font-weight:500;color:#DCE4E3}
 .客户评价事实 p{margin:0;font-size:13px;line-height:1.75;color:rgba(255,255,255,.62)}
 
-/* 专家与团队：用真实工作场景 + 职能列表，不做头像名片墙 */
-.专家团队板{display:grid;grid-template-columns:7fr 5fr;min-height:560px;background:var(--表面)}
-.专家团队图{position:relative;margin:0;min-height:560px;overflow:hidden}
-.专家团队图 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.58) contrast(.94)}
-.专家团队图:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(24,32,34,.30))}
-.专家团队图 figcaption{position:absolute;left:28px;right:28px;bottom:24px;z-index:2;display:flex;justify-content:space-between;gap:18px;color:rgba(255,255,255,.78);font-size:11px}
-.专家团队列表{padding:clamp(34px,4.5vw,62px);display:flex;flex-direction:column;justify-content:center}
-.专家团队引导{margin:0 0 30px;font-size:14px;line-height:1.85;color:var(--弱文)}
-.专家角色{padding:22px 0;display:grid;grid-template-columns:120px 1fr;gap:22px;border-top:1px solid rgba(32,38,41,.10)}
-.专家角色:last-child{border-bottom:1px solid rgba(32,38,41,.10)}
-.专家角色 span{font-size:11px;line-height:1.6;color:var(--主题深)}
-.专家角色 h5{margin:0 0 7px;font-size:17px;line-height:1.45;font-weight:600;color:var(--墨黑)}
-.专家角色 p{margin:0;font-size:12px;line-height:1.75;color:var(--弱文)}
+/* 专家与团队：人物摄影主导，接近杂志人物版式，不再使用职能分割线 */
+.专家团队板{display:block;min-height:0;background:transparent}
+.专家团队图{display:none}
+.专家团队列表{padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,26px);align-items:start}
+.专家团队引导{display:none}
+.专家角色{min-width:0;padding:0;border:0!important;display:flex;flex-direction:column;gap:0;background:transparent}
+.专家角色:before{content:"";display:block;width:100%;aspect-ratio:4/5;margin-bottom:18px;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.56) contrast(.96);transition:filter .55s var(--缓动),transform .55s var(--缓动)}
+.专家角色:nth-of-type(1):before{background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=84');background-position:center 34%}
+.专家角色:nth-of-type(2):before{background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1000&q=84');background-position:center 28%}
+.专家角色:nth-of-type(3):before{background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=84');background-position:center 30%}
+.专家角色:hover:before{filter:saturate(.66) contrast(.97)}
+.专家角色>div{order:2;min-width:0}
+.专家角色>span{order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文);letter-spacing:.01em}
+.专家角色 h5{margin:0;max-width:92%;font-size:clamp(18px,1.5vw,23px);line-height:1.4;font-weight:600;letter-spacing:-.015em;color:var(--墨黑)}
+.专家角色 p{display:none}
 
-/* 资质与成果：模拟可替换的证据文档，不声称真实资质 */
-.资质成果板{display:grid;grid-template-columns:5fr 7fr;background:#E7E8E4;min-height:500px}
-.资质文档区{padding:clamp(34px,4.5vw,60px);background:var(--卡片暖);display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:center}
-.资质文档{min-height:190px;background:rgba(250,250,248,.92);padding:22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 16px 42px rgba(30,38,40,.07)}
-.资质文档:nth-child(2){transform:translateY(28px)}
-.资质文档 .文档章{width:34px;height:34px;border:1px solid rgba(95,115,117,.35);display:grid;place-items:center;font-size:10px;color:var(--主题深)}
-.资质文档 h5{margin:32px 0 8px;font-size:16px;line-height:1.45;font-weight:600;color:var(--墨黑)}
-.资质文档 p{margin:0;font-size:11px;line-height:1.7;color:var(--弱文)}
-.资质文档 small{font-size:9px;color:rgba(95,115,117,.68)}
-.资质成果列表{padding:clamp(38px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
-.资质成果列表>p{margin:0 0 30px;max-width:580px;font-size:14px;line-height:1.85;color:var(--弱文)}
-.成果行{display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;padding:20px 0;border-top:1px solid rgba(32,38,41,.11)}
-.成果行:last-child{border-bottom:1px solid rgba(32,38,41,.11)}
-.成果行 span{font-size:11px;color:var(--主题深)}
-.成果行 strong{font-size:17px;line-height:1.45;font-weight:600;color:var(--墨黑)}
-.成果行 small{font-size:10px;color:var(--弱文);white-space:nowrap}
+/* 资质与成果：六格证据画廊，以文档 / 证书 / 报告图片为主体 */
+.资质成果板{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,30px);background:transparent;min-height:0;align-items:start}
+.资质文档区,.资质成果列表{display:contents}
+.资质成果列表>p{display:none}
+.资质文档,.成果行{min-width:0;padding:0;border:0!important;background:transparent;box-shadow:none;transform:none!important;display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.资质文档:before,.成果行:before{content:"";display:block;width:100%;aspect-ratio:4/5;margin-bottom:16px;background-color:#E2E4E0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:grayscale(.32) saturate(.54) contrast(.96)}
+.资质文档:nth-child(1):before{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=84')}
+.资质文档:nth-child(2):before{background-image:url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1000&q=84')}
+.成果行:nth-of-type(1):before{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=84')}
+.成果行:nth-of-type(2):before{background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=84')}
+.成果行:nth-of-type(3):before{background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=84')}
+.成果行:nth-of-type(4):before{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=84')}
+.资质文档 .文档章{display:none}
+.资质文档>div{display:block}
+.资质文档 h5,.成果行 strong{order:2;margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.45;font-weight:600;letter-spacing:-.012em;color:var(--墨黑)}
+.资质文档 p{display:none}
+.资质文档 small,.成果行 small{display:none}
+.成果行 span{order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文)}
+.资质文档:after{content:"正式文件 / 成果材料";order:3;margin-top:7px;font-size:11px;line-height:1.5;color:var(--弱文)}
 
 @media(max-width:980px){
-  .合作字标带{grid-template-columns:repeat(3,1fr)}.合作字标:nth-child(3n):after{display:none}.合作字标{min-height:110px}
-  .客户评价板,.专家团队板,.资质成果板{grid-template-columns:1fr}
-  .专家团队图{min-height:460px}.资质文档区{min-height:380px}
+  .合作字标带{grid-template-columns:repeat(3,1fr)}
+  .合作字标:nth-child(3n):after{display:none}
+  .合作字标{min-height:110px}
+  .客户评价板{grid-template-columns:1fr}
+  .专家团队列表,.资质成果板{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:680px){
-  .合作字标带{grid-template-columns:repeat(2,1fr)}.合作字标:nth-child(3n):after{display:block}.合作字标:nth-child(2n):after{display:none}
-  .客户评价正文,.客户评价事实{padding:30px 24px}.客户评价正文 blockquote{font-size:29px}
-  .专家团队图{min-height:360px}.专家团队列表{padding:30px 24px}.专家角色{grid-template-columns:1fr;gap:6px}
-  .资质文档区{padding:28px 22px;gap:12px}.资质文档{min-height:170px;padding:18px}.资质成果列表{padding:32px 24px}.成果行{grid-template-columns:1fr;gap:6px}.成果行 small{white-space:normal}
+  .合作字标带{grid-template-columns:repeat(2,1fr)}
+  .合作字标:nth-child(3n):after{display:block}
+  .合作字标:nth-child(2n):after{display:none}
+  .客户评价正文,.客户评价事实{padding:30px 24px}
+  .客户评价正文 blockquote{font-size:29px}
+  .专家团队列表,.资质成果板{grid-template-columns:1fr;gap:28px}
+  .专家角色:before,.资质文档:before,.成果行:before{aspect-ratio:4/5}
 }
