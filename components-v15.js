@@ -84,11 +84,12 @@
     const group=findGroup(aliases);
     if(!group) return null;
     const title=group.querySelector('.组件组头 h3');
-    if(title) title.textContent=newTitle;
+    if(title && title.textContent.trim()!==newTitle) title.textContent=newTitle;
     group.classList.add('系统小模块');
     if(extraClass) group.classList.add(extraClass);
     normalizeInnerHeadings(group);
-    moduleTargets[moduleId]?.appendChild(group);
+    const target=moduleTargets[moduleId];
+    if(target && group.parentElement!==target) target.appendChild(group);
     return group;
   };
 
@@ -129,7 +130,6 @@
   if(landing){
     const remaining=[...landing.querySelectorAll('.组件组')];
     remaining.forEach(group=>{
-      // 未匹配的新组件先归入最接近的“基础组件”，避免内容丢失。
       group.classList.add('系统小模块');
       moduleTargets['模块-基础组件'].appendChild(group);
     });
@@ -137,7 +137,7 @@
   }
 
   const relocateDynamicGroups=()=>{
-    const chart=moveExistingGroup('数据图表组件','图表组件','模块-数据图表','图表组件组');
+    const chart=moveExistingGroup(['数据图表组件','图表组件'],'图表组件','模块-数据图表','图表组件组');
     const content=moveExistingGroup('新闻、文章与案例','新闻、文章与案例','模块-内容媒体','内容发布组');
     const process=findGroup('流程与工作方式');
     if(process && process.parentElement!==moduleTargets['模块-流程交互']) moduleTargets['模块-流程交互'].prepend(process);
@@ -159,10 +159,10 @@
     Object.entries(desiredOrder).forEach(([moduleId,names])=>{
       const target=moduleTargets[moduleId];
       if(!target) return;
-      names.forEach(name=>{
-        const group=[...document.querySelectorAll('.系统小模块')].find(item=>headingText(item.querySelector('.组件组头 h3'))===name);
-        if(group) target.appendChild(group);
-      });
+      const desired=names.map(name=>[...document.querySelectorAll('.系统小模块')].find(item=>headingText(item.querySelector('.组件组头 h3'))===name)).filter(Boolean);
+      const current=[...target.children].filter(child=>child.classList?.contains('系统小模块'));
+      const alreadyOrdered=desired.length===current.length && desired.every((group,index)=>current[index]===group);
+      if(!alreadyOrdered) desired.forEach(group=>target.appendChild(group));
     });
   };
   reorder();
