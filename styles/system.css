@@ -12,3 +12,10 @@
 @import url("modules/page-sections.css");
 @import url("modules/states.css");
 @import url("modules/guidelines.css");
+
+/* V1 展示收敛：图表状态只保留中文状态内容，不显示英文状态标签 */
+.状态分组:has(.状态图表网格) .状态分组头{display:block}
+.状态分组:has(.状态图表网格) .状态分组头>p,
+.状态分组:has(.状态图表网格) .状态分组头>span,
+.状态图表>span{display:none!important}
+.状态图表{grid-template-rows:1fr}
