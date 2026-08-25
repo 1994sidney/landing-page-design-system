@@ -2,12 +2,22 @@
 (() => {
   if(document.querySelector('script[data-hierarchy-loader]')) return;
 
+  const loadChartPolish=()=>{
+    if(document.querySelector('script[data-chart-polish-loader]')) return;
+    const script=document.createElement('script');
+    script.src='components-v17.js';
+    script.defer=true;
+    script.dataset.chartPolishLoader='true';
+    document.body.appendChild(script);
+  };
+
   const loadPolish=()=>{
     if(document.querySelector('script[data-polish-loader]')) return;
     const script=document.createElement('script');
     script.src='components-v16.js';
     script.defer=true;
     script.dataset.polishLoader='true';
+    script.onload=loadChartPolish;
     document.body.appendChild(script);
   };
 
