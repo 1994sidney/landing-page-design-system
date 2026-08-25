@@ -1,6 +1,6 @@
-/* 流程场景与动效语言 */
-.流程视觉组 .组件组头{margin-bottom:clamp(42px,5vw,68px)}
-.流程动态库{display:grid;gap:clamp(72px,9vw,126px)}
+/* 流程场景与动效语言：固定 960×640 坐标系，避免 SVG 与 HTML 场景错位 */
+.流程视觉组 .组件组头{margin-bottom:var(--系统组件标题间距,32px)}
+.流程动态库{display:grid;gap:clamp(72px,8vw,112px)}
 .流程动态场景{display:grid;grid-template-columns:minmax(220px,3fr) minmax(0,9fr);gap:clamp(30px,4.4vw,68px);align-items:center}
 .流程动态场景:nth-child(even){grid-template-columns:minmax(0,9fr) minmax(220px,3fr)}
 .流程动态场景:nth-child(even) .流程动态说明{order:2}
@@ -11,70 +11,78 @@
 .流程动态说明 p{margin:16px 0 0;font-size:14px;line-height:1.86;color:var(--弱文)}
 .流程动态说明 .流程技术{display:block;margin-top:24px;font-size:11px;line-height:1.6;color:rgba(95,115,117,.72)}
 
-.流程场景舞台{position:relative;min-width:0;min-height:520px;overflow:hidden;background:linear-gradient(145deg,rgba(227,231,229,.74),rgba(250,250,248,.92));isolation:isolate}
-.流程场景舞台:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(123,142,144,.035) 1px,transparent 1px),linear-gradient(rgba(123,142,144,.035) 1px,transparent 1px);background-size:52px 52px;opacity:.65;z-index:0}
+/* 所有桌面流程舞台与 SVG 共用同一 3:2 比例，不允许独立拉伸 */
+.流程场景舞台{position:relative;min-width:0;min-height:0;aspect-ratio:3/2;overflow:hidden;background:linear-gradient(145deg,rgba(227,231,229,.74),rgba(250,250,248,.92));isolation:isolate}
+.流程场景舞台:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(123,142,144,.032) 1px,transparent 1px),linear-gradient(rgba(123,142,144,.032) 1px,transparent 1px);background-size:52px 52px;opacity:.55;z-index:0}
 .流程场景舞台.深场景{background:linear-gradient(145deg,#252D2F,#394547)}
-.流程场景舞台.深场景:before{background:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:54px 54px}
-.流程场景连线{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.流程场景路径{fill:none;stroke:rgba(95,115,117,.34);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 10}
-.深场景 .流程场景路径{stroke:rgba(220,228,227,.26)}
-.流程信号{fill:var(--主题深)}
+.流程场景舞台.深场景:before{background:linear-gradient(90deg,rgba(255,255,255,.032) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.032) 1px,transparent 1px);background-size:54px 54px}
+.流程场景连线{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.流程场景路径{fill:none;stroke:rgba(95,115,117,.34);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.流程主路径{stroke-width:2.1;stroke:rgba(95,115,117,.46)}
+.流程支线路径{stroke:rgba(95,115,117,.24);stroke-dasharray:4 7}
+.深场景 .流程场景路径{stroke:rgba(220,228,227,.25)}
+.深场景 .流程主路径{stroke:rgba(220,228,227,.46)}
+.流程节点{fill:var(--表面);stroke:var(--主题深);stroke-width:2;vector-effect:non-scaling-stroke}
+.深场景 .流程节点{fill:#303A3C;stroke:#DCE4E3}
+.流程信号{fill:var(--主题深);opacity:.94}
 .深场景 .流程信号{fill:#DCE4E3}
 .场景层{position:absolute;inset:0;z-index:2}
-.场景单元{position:absolute;min-width:0;background:rgba(250,250,248,.90);box-shadow:0 18px 55px rgba(27,36,38,.10);overflow:hidden;transform:translateY(0)}
-.深场景 .场景单元{background:rgba(248,250,249,.93);box-shadow:0 22px 60px rgba(9,14,15,.20)}
-.场景单元头{height:34px;padding:0 13px;display:flex;align-items:center;justify-content:space-between;background:rgba(227,231,229,.72);font-size:10px;color:var(--弱文)}
-.场景单元体{padding:18px}
-.场景单元 h5{margin:0;font-size:15px;line-height:1.45;font-weight:600;color:var(--墨黑)}
-.场景单元 p{margin:7px 0 0;font-size:11px;line-height:1.65;color:var(--弱文)}
-.场景图标{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;margin-bottom:16px;color:var(--主题深);background:var(--主题浅)}
-.场景图标 iconify-icon{font-size:26px}
+
+/* 具体工作窗口 */
+.场景单元{position:absolute;min-width:0;background:rgba(250,250,248,.94);box-shadow:0 18px 52px rgba(27,36,38,.10);overflow:hidden;will-change:transform,opacity}
+.深场景 .场景单元{background:rgba(248,250,249,.96);box-shadow:0 22px 60px rgba(9,14,15,.20)}
+.场景单元头{height:34px;padding:0 13px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(227,231,229,.76);font-size:10px;color:var(--弱文)}
+.场景单元体{padding:16px 17px}
+.场景单元 h5{margin:0;font-size:14px;line-height:1.42;font-weight:600;color:var(--墨黑)}
+.场景单元 p{margin:6px 0 0;font-size:10px;line-height:1.58;color:var(--弱文)}
+.场景图标{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;margin-bottom:12px;color:var(--主题深);background:var(--主题浅)}
+.场景图标 iconify-icon{font-size:23px}
 .场景图标.深{background:var(--墨黑);color:#fff}
 
-/* 端到端 */
-.全流程舞台 .研究窗{left:5%;top:12%;width:25%;height:250px}
-.全流程舞台 .结构窗{left:29%;top:42%;width:24%;height:220px}
-.全流程舞台 .设计窗{left:52%;top:10%;width:24%;height:250px}
-.全流程舞台 .验证窗{right:4%;top:43%;width:22%;height:220px}
-.资料行{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}
-.资料块{height:36px;background:var(--页面背景);padding:7px 8px;font-size:9px;color:var(--弱文)}
-.搜索条{height:30px;margin-top:10px;padding:0 9px;display:flex;align-items:center;gap:7px;background:rgba(220,228,227,.72);font-size:10px;color:var(--正文)}
-.搜索条 iconify-icon{font-size:14px}
-.结构网格{display:grid;grid-template-columns:1fr 1.5fr;gap:7px;margin-top:15px}
-.结构网格 span{display:block;height:34px;background:#DCE4E3}
-.结构网格 span:nth-child(2){height:75px;grid-row:span 2;background:#C7D3D2}
+/* 端到端：四个节点固定在中轴上下，路径只走中间安全通道 */
+.全流程舞台 .研究窗{left:3.2%;top:5%;width:22%}
+.全流程舞台 .结构窗{left:27.7%;bottom:5%;width:21%}
+.全流程舞台 .设计窗{left:52%;top:5%;width:22%}
+.全流程舞台 .验证窗{right:3.2%;bottom:5%;width:20.5%}
+.资料行{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:11px}
+.资料块{min-height:30px;background:var(--页面背景);padding:6px 7px;font-size:8.5px;line-height:1.4;color:var(--弱文)}
+.搜索条{min-height:27px;margin-top:9px;padding:0 8px;display:flex;align-items:center;gap:6px;background:rgba(220,228,227,.72);font-size:9px;color:var(--正文)}
+.搜索条 iconify-icon{font-size:13px}
+.结构网格{display:grid;grid-template-columns:1fr 1.45fr;gap:6px;margin-top:12px}
+.结构网格 span{display:block;height:29px;background:#DCE4E3}
+.结构网格 span:nth-child(2){height:64px;grid-row:span 2;background:#C7D3D2}
 .结构网格 span:nth-child(3){background:#EAEDEB}
-.设计预览{display:grid;grid-template-columns:38px 1fr;gap:9px;margin-top:15px}
-.设计侧栏{display:grid;gap:5px}.设计侧栏 span{height:22px;background:#D9DEDC}
-.设计画布{padding:9px;background:#EEF0EE}.设计画布 b{display:block;width:60%;height:10px;background:#687C7E}.设计画布 i{display:block;width:88%;height:6px;margin-top:7px;background:#CCD5D4}.设计画布 i:nth-child(3){width:72%}
-.验证指标{display:flex;align-items:flex-end;gap:6px;height:64px;margin-top:15px;padding:8px 6px;background:#EEF0EE}
+.设计预览{display:grid;grid-template-columns:32px 1fr;gap:7px;margin-top:12px}
+.设计侧栏{display:grid;gap:4px}.设计侧栏 span{height:18px;background:#D9DEDC}
+.设计画布{padding:8px;background:#EEF0EE}.设计画布 b{display:block;width:60%;height:9px;background:#687C7E}.设计画布 i{display:block;width:88%;height:5px;margin-top:6px;background:#CCD5D4}.设计画布 i:nth-child(3){width:72%}
+.验证指标{display:flex;align-items:flex-end;gap:5px;height:56px;margin-top:12px;padding:7px 5px;background:#EEF0EE}
 .验证指标 span{display:block;flex:1;background:linear-gradient(180deg,#BFCFCE,#6E8385);transform-origin:bottom;animation:流程柱形 2.8s ease-in-out infinite alternate;animation-play-state:paused}
 .验证指标 span:nth-child(1){height:38%}.验证指标 span:nth-child(2){height:56%;animation-delay:.15s}.验证指标 span:nth-child(3){height:72%;animation-delay:.3s}.验证指标 span:nth-child(4){height:88%;animation-delay:.45s}
-.验证清单{display:grid;gap:6px;margin-top:10px;font-size:9px;color:var(--弱文)}
-.验证清单 span{display:flex;align-items:center;gap:6px}.验证清单 iconify-icon{color:var(--主题深);font-size:13px}
+.验证清单{display:grid;gap:5px;margin-top:8px;font-size:8.5px;color:var(--弱文)}
+.验证清单 span{display:flex;align-items:center;gap:5px}.验证清单 iconify-icon{color:var(--主题深);font-size:12px}
 
-/* 多人协同 */
-.协同舞台{min-height:500px}
-.协同角色{position:absolute;left:5%;top:12%;width:27%;display:grid;gap:10px}
-.角色行{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:center;padding:11px 12px;background:rgba(250,250,248,.92);box-shadow:0 10px 32px rgba(27,36,38,.08)}
-.角色头像{width:42px;height:42px;display:grid;place-items:center;background:var(--主题浅);color:var(--主题深)}
-.角色头像 iconify-icon{font-size:25px}.角色行 strong{display:block;font-size:12px}.角色行 span{display:block;margin-top:3px;font-size:10px;color:var(--弱文)}
-.共享工作台{left:37%;top:16%;width:36%;height:310px}
-.工作台导航{display:flex;gap:7px;margin-bottom:14px}.工作台导航 span{height:8px;background:#D6DEDD}.工作台导航 span:nth-child(1){width:24%}.工作台导航 span:nth-child(2){width:18%}.工作台导航 span:nth-child(3){width:28%}
-.协作画板{display:grid;grid-template-columns:1.2fr .8fr;gap:10px}.协作主区{height:175px;padding:12px;background:#EEF1EF}.协作主区 strong{display:block;width:55%;height:12px;background:#687C7E}.协作主区 i{display:block;width:88%;height:7px;margin-top:9px;background:#CAD3D2}.协作侧区{display:grid;gap:8px}.批注块{padding:10px;background:#E0E6E4;font-size:9px;color:var(--正文);animation:流程浮动 3.4s ease-in-out infinite;animation-play-state:paused}.批注块:nth-child(2){animation-delay:.5s}.批注块 iconify-icon{font-size:15px;margin-right:5px;color:var(--主题深)}
-.交付结果{right:4%;bottom:12%;width:20%;height:205px}.交付状态{display:flex;align-items:center;gap:9px;margin-top:16px;padding:10px;background:#E0E7E5;color:var(--主题深);font-size:10px}.交付状态 iconify-icon{font-size:22px}.结果数值{margin-top:16px;font-family:var(--数字);font-size:38px;line-height:1;color:var(--墨黑)}.结果数值 small{display:block;margin-top:7px;font-family:var(--字体);font-size:10px;color:var(--弱文)}
+/* 多人协同：角色、工作台、交付结果各占独立安全区 */
+.协同舞台{aspect-ratio:3/2}
+.协同角色{position:absolute;left:4%;top:13%;width:24%;display:grid;gap:9px;z-index:2}
+.角色行{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:center;padding:10px 11px;background:rgba(250,250,248,.94);box-shadow:0 10px 28px rgba(27,36,38,.08);will-change:transform,opacity}
+.角色头像{width:38px;height:38px;display:grid;place-items:center;background:var(--主题浅);color:var(--主题深)}
+.角色头像 iconify-icon{font-size:23px}.角色行 strong{display:block;font-size:11px}.角色行 span{display:block;margin-top:2px;font-size:9px;color:var(--弱文)}
+.共享工作台{left:34%;top:10%;width:39%}
+.工作台导航{display:flex;gap:6px;margin-bottom:11px}.工作台导航 span{height:7px;background:#D6DEDD}.工作台导航 span:nth-child(1){width:24%}.工作台导航 span:nth-child(2){width:18%}.工作台导航 span:nth-child(3){width:28%}
+.协作画板{display:grid;grid-template-columns:1.2fr .8fr;gap:8px}.协作主区{height:150px;padding:10px;background:#EEF1EF}.协作主区 strong{display:block;width:55%;height:10px;background:#687C7E}.协作主区 i{display:block;width:88%;height:6px;margin-top:8px;background:#CAD3D2}.协作侧区{display:grid;gap:7px}.批注块{padding:8px;background:#E0E6E4;font-size:8px;line-height:1.45;color:var(--正文);animation:流程浮动 3.4s ease-in-out infinite;animation-play-state:paused}.批注块:nth-child(2){animation-delay:.5s}.批注块 iconify-icon{font-size:13px;margin-right:4px;color:var(--主题深)}
+.交付结果{right:4%;top:27%;width:20%}.交付状态{display:flex;align-items:center;gap:7px;margin-top:12px;padding:8px;background:#E0E7E5;color:var(--主题深);font-size:9px}.交付状态 iconify-icon{font-size:19px}.结果数值{margin-top:12px;font-family:var(--数字);font-size:34px;line-height:1;color:var(--墨黑)}.结果数值 small{display:block;margin-top:6px;font-family:var(--字体);font-size:9px;color:var(--弱文)}
 
-/* 反馈闭环 */
-.迭代舞台{min-height:520px}
-.反馈窗{left:5%;top:10%;width:25%;height:230px}.分析窗{left:38%;top:25%;width:26%;height:260px}.发布窗{right:5%;top:12%;width:23%;height:225px}.回流窗{right:8%;bottom:7%;width:26%;height:155px;background:rgba(220,228,227,.94)}
-.反馈消息{display:grid;gap:8px;margin-top:13px}.反馈消息 div{padding:9px;background:#EFF1EF;font-size:9px;line-height:1.5;color:var(--正文)}.反馈消息 iconify-icon{font-size:14px;color:var(--主题深);margin-right:5px}
-.分析环{position:relative;width:112px;height:112px;margin:10px auto 0}.分析环 svg{width:100%;height:100%;transform:rotate(-90deg)}.分析环 circle{fill:none;stroke-width:10}.分析环 .底环{stroke:#E2E7E5}.分析环 .进度环{stroke:var(--主题深);stroke-dasharray:252;stroke-dashoffset:72;stroke-linecap:butt;animation:流程环形 3.6s ease-in-out infinite alternate;animation-play-state:paused}.分析环 strong{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--数字);font-size:27px;color:var(--墨黑)}
-.发布画面{margin-top:13px;padding:12px;background:#EEF1EF}.发布标题{width:58%;height:10px;background:#687C7E}.发布行{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.发布行 span{height:45px;background:#D4DEDC}.发布按钮{width:42%;height:23px;margin-top:10px;background:var(--主题深)}
-.回流内容{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}.回流图标{width:44px;height:44px;display:grid;place-items:center;background:var(--主题深);color:#fff}.回流图标 iconify-icon{font-size:26px;animation:流程旋转 4s linear infinite;animation-play-state:paused}.回流内容 strong{font-size:12px}.回流内容 p{margin:4px 0 0;font-size:9px;color:var(--弱文)}
+/* 反馈闭环：连接线只走卡片之间和外围，不穿过内容区域 */
+.迭代舞台{aspect-ratio:3/2}
+.反馈窗{left:4%;top:9%;width:23%}.分析窗{left:38%;top:22%;width:24%}.发布窗{right:4%;top:9%;width:23%}.回流窗{right:7%;bottom:6%;width:27%;background:rgba(220,228,227,.96)}
+.反馈消息{display:grid;gap:7px;margin-top:10px}.反馈消息 div{padding:8px;background:#EFF1EF;font-size:8px;line-height:1.45;color:var(--正文)}.反馈消息 iconify-icon{font-size:13px;color:var(--主题深);margin-right:4px}
+.分析环{position:relative;width:94px;height:94px;margin:8px auto 0}.分析环 svg{width:100%;height:100%;transform:rotate(-90deg)}.分析环 circle{fill:none;stroke-width:9}.分析环 .底环{stroke:#E2E7E5}.分析环 .进度环{stroke:var(--主题深);stroke-dasharray:252;stroke-dashoffset:72;stroke-linecap:butt;animation:流程环形 3.6s ease-in-out infinite alternate;animation-play-state:paused}.分析环 strong{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--数字);font-size:24px;color:var(--墨黑)}
+.发布画面{margin-top:10px;padding:10px;background:#EEF1EF}.发布标题{width:58%;height:9px;background:#687C7E}.发布行{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.发布行 span{height:36px;background:#D4DEDC}.发布按钮{width:42%;height:20px;margin-top:8px;background:var(--主题深)}
+.回流内容{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center}.回流图标{width:40px;height:40px;display:grid;place-items:center;background:var(--主题深);color:#fff}.回流图标 iconify-icon{font-size:23px;animation:流程旋转 4s linear infinite;animation-play-state:paused}.回流内容 strong{font-size:11px}.回流内容 p{margin:3px 0 0;font-size:8.5px;color:var(--弱文)}
 
 .流程动态场景.激活 .验证指标 span,.流程动态场景.激活 .批注块,.流程动态场景.激活 .分析环 .进度环,.流程动态场景.激活 .回流图标 iconify-icon{animation-play-state:running}
-@keyframes 流程柱形{0%{transform:scaleY(.55);opacity:.65}100%{transform:scaleY(1);opacity:1}}
-@keyframes 流程浮动{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes 流程柱形{0%{transform:scaleY(.58);opacity:.66}100%{transform:scaleY(1);opacity:1}}
+@keyframes 流程浮动{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes 流程环形{0%{stroke-dashoffset:145}100%{stroke-dashoffset:54}}
 @keyframes 流程旋转{to{transform:rotate(360deg)}}
 
@@ -86,20 +94,29 @@
 .动效卡:hover{color:#fff}
 .动效卡:hover .标记{color:rgba(255,255,255,.64)}
 
+/* 页面变为单列后仍保留完整 SVG 舞台；低于 900px 则降级为稳定纵向流程 */
 @media(max-width:1080px){
   .流程动态场景,.流程动态场景:nth-child(even){grid-template-columns:1fr;gap:28px}
   .流程动态场景:nth-child(even) .流程动态说明,.流程动态场景:nth-child(even) .流程场景舞台{order:initial}
   .流程动态说明{max-width:620px}
 }
-@media(max-width:760px){
+@media(max-width:900px){
   .流程动态库{gap:64px}
-  .流程场景舞台,.协同舞台,.迭代舞台{min-height:auto;padding:20px;display:grid;gap:14px;background:rgba(237,240,238,.92)}
+  .流程场景舞台,.协同舞台,.迭代舞台{aspect-ratio:auto;min-height:auto;padding:20px;display:grid;gap:14px;background:rgba(237,240,238,.92)}
   .流程场景舞台:before,.流程场景连线{display:none}
   .场景层{position:relative;inset:auto;display:grid;gap:12px}
   .场景单元,.全流程舞台 .研究窗,.全流程舞台 .结构窗,.全流程舞台 .设计窗,.全流程舞台 .验证窗,.共享工作台,.交付结果,.反馈窗,.分析窗,.发布窗,.回流窗{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;height:auto;min-height:0}
-  .协同角色{position:relative;left:auto;top:auto;width:100%}
-  .共享工作台{margin-top:14px}.交付结果{margin-top:14px}
+  .协同角色{position:relative;left:auto;top:auto;width:100%;z-index:auto}
+  .共享工作台,.交付结果{margin-top:0}
   .场景单元体{padding:16px}
-  .流程动态说明 .流程类型{margin-bottom:12px}.流程动态说明 p{margin-top:12px}
+  .协作画板{grid-template-columns:1fr}.协作主区{height:135px}
+  .分析环{margin-left:0;margin-right:0}
 }
-@media(prefers-reduced-motion:reduce){.验证指标 span,.批注块,.分析环 .进度环,.回流图标 iconify-icon{animation:none!important}}
+@media(max-width:680px){
+  .流程场景舞台,.协同舞台,.迭代舞台{padding:16px}
+  .角色行{grid-template-columns:36px 1fr}.角色头像{width:36px;height:36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .验证指标 span,.批注块,.分析环 .进度环,.回流图标 iconify-icon{animation:none!important}
+  .流程信号{display:none}
+}
