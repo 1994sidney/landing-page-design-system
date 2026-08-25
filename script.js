@@ -213,3 +213,9 @@ const v13Script=document.createElement('script');
 v13Script.src='components-v13.js';
 v13Script.defer=true;
 document.body.appendChild(v13Script);
+
+// V2.10：加载模块导航与统一锚点。
+const v14Script=document.createElement('script');
+v14Script.src='components-v14.js';
+v14Script.defer=true;
+document.body.appendChild(v14Script);
