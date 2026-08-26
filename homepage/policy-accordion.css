@@ -1,4 +1,17 @@
 /* LeRoux policy background accordion */
+
+/* Shared LeRoux chapter-title style for every homepage section except Hero. */
+.mh-policy-copy h2,
+.mh-copy h2,
+.mh-services__intro h2,
+.mh-section-head h2,
+.mh-news-head h2{
+  font-size:34px!important;
+  line-height:1.28!important;
+  letter-spacing:-.025em!important;
+  font-weight:400!important;
+}
+
 .mh-policy-layout{
   display:grid;
   grid-template-columns:minmax(0,5fr) minmax(0,7fr);
@@ -12,10 +25,6 @@
 
 .mh-policy-copy h2{
   margin:0;
-  font-size:34px;
-  line-height:1.28;
-  letter-spacing:-.025em;
-  font-weight:400;
 }
 
 .mh-policy-copy p{
@@ -143,11 +152,9 @@
 @media(max-width:980px){
   .mh-policy-layout{grid-template-columns:1fr;gap:54px}
   .mh-policy-copy{max-width:760px}
-  .mh-policy-copy h2{font-size:34px;line-height:1.28;font-weight:400}
 }
 
 @media(max-width:560px){
-  .mh-policy-copy h2{font-size:34px;line-height:1.28;font-weight:400}
   .mh-policy-copy p{font-size:14px}
   .mh-policy-item summary{min-height:0;padding:20px 0;gap:14px}
   .mh-policy-item__title{font-size:17px;line-height:1.55}
