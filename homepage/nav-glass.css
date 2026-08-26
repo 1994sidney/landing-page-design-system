@@ -148,25 +148,26 @@
   font-size:13px;
   line-height:1.45;
   font-weight:500;
-  color:rgba(255,255,255,.90);
+  color:rgba(255,255,255,.97);
+  text-shadow:0 1px 1px rgba(0,0,0,.08);
   transition:background .2s ease,color .2s ease,padding .22s ease;
 }
 
 .mh-nav__menu a::after{
   content:"↗";
   margin-left:18px;
-  color:rgba(255,255,255,.58);
+  color:rgba(255,255,255,.76);
   transition:color .2s ease,transform .2s ease;
 }
 
 .mh-nav__menu a:hover{
   color:#fff;
-  background:rgba(255,255,255,.09);
+  background:rgba(255,255,255,.11);
   padding-left:17px;
 }
 
 .mh-nav__menu a:hover::after{
-  color:rgba(255,255,255,.92);
+  color:#fff;
   transform:translate(2px,-2px);
 }
 
