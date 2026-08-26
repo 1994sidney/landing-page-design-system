@@ -1,4 +1,4 @@
-/* Professional credibility · centered heading, three cards, partner-logo marquee */
+/* Professional credibility · centered heading, image cards, partner-logo marquee */
 #credibility{
   background:var(--mh-page);
 }
@@ -18,14 +18,13 @@
   margin-right:auto;
 }
 
-/* Move the existing platform-background action directly beneath the intro copy. */
+/* Keep the platform-background action directly beneath the intro copy. */
 #credibility .mh-center-action{
   order:2;
   justify-content:center;
   margin:26px 0 clamp(54px,6vw,78px);
 }
 
-/* Convert the three long editorial rows into three parallel cards. */
 #credibility .mh-trust-grid{
   order:3;
   display:grid;
@@ -33,41 +32,91 @@
   gap:clamp(16px,1.8vw,24px);
 }
 
+/* Full-image cards: image fills the card, bottom gradient carries the text. */
 #credibility .mh-trust-row,
 #credibility .mh-trust-row--reverse{
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  gap:0;
+  position:relative;
+  isolation:isolate;
+  display:block;
   min-width:0;
-  background:var(--mh-surface);
+  min-height:clamp(390px,31vw,470px);
+  overflow:hidden;
+  background:var(--mh-card);
 }
 
-#credibility .mh-trust-row--reverse .mh-media-placeholder,
+#credibility .mh-trust-row::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,30,31,0) 34%,rgba(24,30,31,.18) 54%,rgba(24,30,31,.88) 100%);
+}
+
+#credibility .mh-trust-row .mh-media-placeholder,
+#credibility .mh-trust-row--reverse .mh-media-placeholder{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  min-height:0;
+  background:linear-gradient(145deg,#d8ddda 0%,#aeb9b7 54%,#829091 100%);
+  transform:scale(1.01);
+  transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .4s ease;
+}
+
+#credibility .mh-trust-row:nth-child(2) .mh-media-placeholder{
+  background:linear-gradient(145deg,#cbd3d0 0%,#9fadaa 54%,#6f8082 100%);
+}
+
+#credibility .mh-trust-row:nth-child(3) .mh-media-placeholder{
+  background:linear-gradient(145deg,#e0e2de 0%,#b6bfbc 52%,#7b898a 100%);
+}
+
+#credibility .mh-trust-row .mh-media-placeholder::before{
+  content:none;
+}
+
+#credibility .mh-trust-row .mh-media-placeholder::after{
+  content:"图片待补";
+  left:50%;
+  top:42%;
+  transform:translate(-50%,-50%);
+  color:rgba(32,38,41,.42);
+}
+
+#credibility .mh-trust-row:hover .mh-media-placeholder{
+  transform:scale(1.055);
+  filter:saturate(.9) contrast(.98);
+}
+
+#credibility .mh-trust-row__copy,
 #credibility .mh-trust-row--reverse .mh-trust-row__copy{
-  order:initial;
-}
-
-#credibility .mh-trust-row .mh-media-placeholder{
-  min-height:clamp(230px,21vw,310px);
-  background:rgba(95,115,117,.13);
-}
-
-#credibility .mh-trust-row__copy{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
   max-width:none;
-  padding:28px 28px 32px;
+  padding:clamp(26px,2.8vw,38px);
+  color:#fff;
 }
 
+/* Numbering is intentionally removed from the image-card presentation. */
 #credibility .mh-index{
-  margin-bottom:18px;
+  display:none;
 }
 
 #credibility .mh-trust-row h3{
   margin:0;
+  color:#fff;
 }
 
 #credibility .mh-trust-row p{
-  margin:14px 0 0;
+  margin:12px 0 0;
+  max-width:440px;
+  color:rgba(255,255,255,.76);
 }
 
 /* Partner-brand strip. Current marks are neutral image placeholders and can be replaced with authorized logos later. */
@@ -111,17 +160,9 @@
     grid-template-columns:1fr;
   }
 
-  #credibility .mh-trust-row{
-    display:grid;
-    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
-  }
-
-  #credibility .mh-trust-row .mh-media-placeholder{
-    min-height:260px;
-  }
-
-  #credibility .mh-trust-row__copy{
-    align-self:center;
+  #credibility .mh-trust-row,
+  #credibility .mh-trust-row--reverse{
+    min-height:430px;
   }
 }
 
@@ -130,12 +171,9 @@
     margin-bottom:46px;
   }
 
-  #credibility .mh-trust-row{
-    display:flex;
-  }
-
-  #credibility .mh-trust-row .mh-media-placeholder{
-    min-height:230px;
+  #credibility .mh-trust-row,
+  #credibility .mh-trust-row--reverse{
+    min-height:380px;
   }
 
   #credibility .mh-trust-row__copy{
@@ -153,7 +191,9 @@
 }
 
 @media(prefers-reduced-motion:reduce){
+  #credibility .mh-trust-row .mh-media-placeholder,
   #credibility .mh-trust-grid::after{
+    transition:none;
     animation:none;
   }
 }
