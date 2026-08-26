@@ -7,12 +7,12 @@
   const prev = section.querySelector('.mh-case-control--prev');
   const next = section.querySelector('.mh-case-control--next');
   const quoteText = section.querySelector('.mh-case-quote__text');
-  const quoteTitle = section.querySelector('.mh-case-quote__meta strong');
-  const quoteMeta = section.querySelector('.mh-case-quote__meta span');
+  const clientCompany = section.querySelector('.mh-case-quote__meta strong');
+  const clientService = section.querySelector('.mh-case-quote__meta span');
   const viewport = section.querySelector('.mh-case-carousel');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (!track || !cards.length || !quoteText || !quoteTitle || !quoteMeta || !viewport) return;
+  if (!track || !cards.length || !quoteText || !clientCompany || !clientService || !viewport) return;
 
   let activeIndex = 0;
   let autoplayTimer = null;
@@ -36,8 +36,8 @@
     });
 
     quoteText.textContent = card.dataset.quote || '';
-    quoteTitle.textContent = card.dataset.quoteTitle || '';
-    quoteMeta.textContent = card.dataset.quoteMeta || '';
+    clientCompany.textContent = card.dataset.clientCompany || '客户单位待补';
+    clientService.textContent = card.dataset.clientService || '';
     moveTrack();
 
     if (restart) startAutoplay();
