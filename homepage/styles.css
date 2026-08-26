@@ -144,3 +144,194 @@ body{background:var(--mh-page);color:var(--mh-ink)}
   .mh-news-card h3{font-size:21px}
   .mh-footer__top{grid-template-columns:1fr}.mh-footer__brand,.mh-footer__cta{grid-column:auto}.mh-footer__bottom{flex-direction:column}.mh-footer__bottom div{flex-wrap:wrap}
 }
+
+/* Service system · editorial photography + glass information layer */
+#services .mh-services{
+  display:block;
+}
+
+#services .mh-services__intro{
+  position:static;
+  max-width:860px;
+  margin:0 auto clamp(58px,6vw,82px);
+  text-align:center;
+}
+
+#services .mh-services__intro p{
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#services .mh-services__list{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(16px,1.6vw,24px);
+}
+
+#services .mh-service-item{
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  align-items:flex-end;
+  min-height:560px;
+  padding:0;
+  overflow:hidden;
+  background:var(--mh-card);
+  transform:none;
+}
+
+#services .mh-service-item::before{
+  content:"";
+  position:absolute;
+  inset:-2%;
+  z-index:-2;
+  background:
+    linear-gradient(180deg,rgba(32,38,41,.02),rgba(32,38,41,.18)),
+    radial-gradient(circle at 26% 22%,rgba(250,250,248,.86),transparent 30%),
+    linear-gradient(135deg,#d9ddda 0%,#bcc5c3 46%,#909c9d 100%);
+  transform:scale(1.02);
+  transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .45s ease;
+}
+
+#services .mh-service-item:nth-child(2)::before{
+  background:
+    linear-gradient(180deg,rgba(32,38,41,.02),rgba(32,38,41,.22)),
+    radial-gradient(circle at 72% 20%,rgba(250,250,248,.7),transparent 28%),
+    linear-gradient(145deg,#cdd3d1 0%,#aab6b4 48%,#778789 100%);
+}
+
+#services .mh-service-item:nth-child(3)::before{
+  background:
+    linear-gradient(180deg,rgba(32,38,41,.01),rgba(32,38,41,.20)),
+    radial-gradient(circle at 32% 26%,rgba(250,250,248,.74),transparent 28%),
+    linear-gradient(135deg,#e0e2de 0%,#b7c0bd 50%,#7f8d8e 100%);
+}
+
+#services .mh-service-item::after{
+  content:"图片待补";
+  position:absolute;
+  left:24px;
+  top:24px;
+  z-index:-1;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:.08em;
+  color:rgba(32,38,41,.44);
+}
+
+#services .mh-service-item:hover{
+  transform:none;
+  background:var(--mh-card);
+}
+
+#services .mh-service-item:hover::before{
+  transform:scale(1.06);
+  filter:saturate(.88) contrast(.98);
+}
+
+#services .mh-service-item__icon{
+  position:absolute;
+  top:24px;
+  right:24px;
+  z-index:2;
+  width:38px;
+  height:38px;
+  background:rgba(32,38,41,.72);
+  color:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+#services .mh-service-item>div:last-child{
+  width:calc(100% - 40px);
+  min-height:248px;
+  margin:0 20px 20px;
+  padding:30px 28px 28px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  background:rgba(47,56,58,.84);
+  color:#fff;
+  backdrop-filter:blur(22px) saturate(.86);
+  -webkit-backdrop-filter:blur(22px) saturate(.86);
+  box-shadow:0 24px 54px rgba(32,38,41,.12);
+  transition:transform .38s cubic-bezier(.2,.7,.2,1),background .3s ease;
+}
+
+#services .mh-service-item:hover>div:last-child{
+  transform:translateY(-4px);
+  background:rgba(43,52,54,.90);
+}
+
+#services .mh-service-item h3{
+  color:#fff;
+}
+
+#services .mh-service-item p{
+  margin:16px 0 24px;
+  color:rgba(255,255,255,.68);
+}
+
+#services .mh-text-link{
+  margin-top:auto;
+  min-height:40px;
+  padding:0 15px;
+  background:rgba(250,250,248,.94);
+  color:var(--mh-ink);
+  text-decoration:none;
+  border-radius:2px;
+  transition:background .22s ease,transform .22s ease;
+}
+
+#services .mh-text-link span{
+  opacity:.58;
+  transition:transform .22s ease;
+}
+
+#services .mh-text-link:hover{
+  background:#fff;
+  color:var(--mh-ink);
+  transform:translateY(-1px);
+}
+
+#services .mh-text-link:hover span{
+  transform:translateX(2px);
+}
+
+@media(max-width:980px){
+  #services .mh-services__list{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  #services .mh-service-item{
+    min-height:500px;
+  }
+
+  #services .mh-service-item>div:last-child{
+    width:min(520px,calc(100% - 40px));
+  }
+}
+
+@media(max-width:560px){
+  #services .mh-services__intro{
+    margin-bottom:46px;
+  }
+
+  #services .mh-service-item{
+    min-height:470px;
+  }
+
+  #services .mh-service-item__icon{
+    top:18px;
+    right:18px;
+  }
+
+  #services .mh-service-item>div:last-child{
+    width:calc(100% - 28px);
+    min-height:0;
+    margin:0 14px 14px;
+    padding:24px 22px 22px;
+  }
+}
