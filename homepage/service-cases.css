@@ -265,6 +265,20 @@
   background:rgba(255,255,255,.54);
 }
 
+/* Footer · remove the CTA column and push the three navigation groups to the right. */
+.mh-footer__cta{
+  display:none;
+}
+
+.mh-footer__top{
+  grid-template-columns:minmax(320px,1fr) repeat(3,minmax(120px,max-content));
+  column-gap:clamp(52px,6vw,96px);
+}
+
+.mh-footer__col{
+  justify-self:end;
+}
+
 @media(max-width:980px){
   #cases .mh-case-quote{
     grid-template-columns:1fr;
@@ -278,6 +292,18 @@
 
   #cases .mh-case-card{
     flex-basis:min(72vw,560px);
+  }
+
+  .mh-footer__top{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .mh-footer__brand{
+    grid-column:1/-1;
+  }
+
+  .mh-footer__col{
+    justify-self:start;
   }
 }
 
@@ -321,6 +347,16 @@
   #cases .mh-case-card{
     flex-basis:82vw;
     min-height:310px;
+  }
+}
+
+@media(max-width:560px){
+  .mh-footer__top{
+    grid-template-columns:1fr;
+  }
+
+  .mh-footer__brand{
+    grid-column:auto;
   }
 }
 
