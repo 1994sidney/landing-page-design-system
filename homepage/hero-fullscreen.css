@@ -20,14 +20,14 @@
   background:var(--mh-graphite);
 }
 
-.mh-media-placeholder--hero{
+.mh-hero__image{
   position:absolute;
   inset:-2.5%;
   z-index:0;
-  min-height:0;
-  background:
-    radial-gradient(circle at 72% 28%,rgba(123,142,144,.34),transparent 34%),
-    linear-gradient(135deg,#617174 0%,#465456 48%,#263033 100%);
+  width:105%;
+  height:105%;
+  object-fit:cover;
+  object-position:center center;
   filter:saturate(.78) contrast(.96);
   transform:scale(1.035);
   transform-origin:center;
@@ -64,14 +64,7 @@
   will-change:transform,opacity;
 }
 
-/* The hero is image-ready: hide the generic placeholder decoration. */
-.mh-media-placeholder--hero::before,
-.mh-media-placeholder--hero::after{
-  display:none;
-}
-
-/* Reuse the same max-width and horizontal padding as every .mh-container below.
-   Do not override the container to 100vw, otherwise the hero drifts off the global grid. */
+/* Reuse the same max-width and horizontal padding as every .mh-container below. */
 .mh-hero__content{
   position:relative;
   z-index:3;
@@ -150,12 +143,12 @@
     font-size:clamp(48px,10.5vw,74px);
   }
 
-  .mh-hero p{
-    grid-column:1 / span 6;
-  }
+  .mh-hero p{grid-column:1 / span 6}
 }
 
 @media(max-width:560px){
+  .mh-hero__image{object-position:60% center}
+
   .mh-hero__content{
     padding-top:112px;
     padding-bottom:38px;
@@ -178,7 +171,7 @@
 }
 
 @media(prefers-reduced-motion:reduce){
-  .mh-media-placeholder--hero,
+  .mh-hero__image,
   .mh-hero__media::after,
   .mh-hero h1,
   .mh-hero p{
