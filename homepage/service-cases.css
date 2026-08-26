@@ -152,22 +152,19 @@
 #cases .mh-case-carousel{
   position:relative;
   overflow:hidden;
-  margin-left:calc((100vw - min(100vw - 40px, var(--mh-max))) / -2);
-  margin-right:calc((100vw - min(100vw - 40px, var(--mh-max))) / -2);
-  padding-left:max(20px,calc((100vw - var(--mh-max)) / 2));
-  padding-right:max(20px,calc((100vw - var(--mh-max)) / 2));
 }
 
 #cases .mh-case-track{
+  --case-gap:clamp(20px,2vw,34px);
   display:flex;
-  gap:clamp(20px,2vw,34px);
+  gap:var(--case-gap);
   transition:transform .68s cubic-bezier(.2,.72,.2,1);
   will-change:transform;
 }
 
 #cases .mh-case-card{
   position:relative;
-  flex:0 0 clamp(330px,38vw,640px);
+  flex:0 0 calc((100% - (var(--case-gap) * 2)) / 3);
   min-height:360px;
   overflow:hidden;
   background:#2d3d42;
