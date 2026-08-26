@@ -30,10 +30,10 @@
   gap:28px;
   border:0;
   border-radius:5px;
-  background:linear-gradient(120deg,rgba(123,142,144,.68),rgba(56,66,68,.62));
-  box-shadow:0 16px 46px rgba(18,24,25,.18),0 2px 8px rgba(18,24,25,.08);
-  -webkit-backdrop-filter:blur(24px) saturate(128%);
-  backdrop-filter:blur(24px) saturate(128%);
+  background:linear-gradient(120deg,rgba(34,48,53,.92),rgba(43,57,61,.86));
+  box-shadow:0 16px 46px rgba(18,24,25,.24),0 2px 8px rgba(18,24,25,.12);
+  -webkit-backdrop-filter:blur(24px) saturate(118%);
+  backdrop-filter:blur(24px) saturate(118%);
   pointer-events:auto;
   isolation:isolate;
 }
@@ -47,7 +47,7 @@
   z-index:-1;
   border-radius:inherit;
   pointer-events:none;
-  background:linear-gradient(105deg,rgba(255,255,255,.10),transparent 30%,transparent 72%,rgba(255,255,255,.04));
+  background:linear-gradient(105deg,rgba(255,255,255,.075),transparent 30%,transparent 72%,rgba(255,255,255,.025));
 }
 
 .mh-brand{
@@ -77,7 +77,7 @@
   min-height:38px;
   padding:0 10px;
   border-radius:3px;
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.92);
   font-weight:500;
   transition:color .22s ease,background .22s ease,transform .22s ease;
 }
@@ -126,10 +126,10 @@
   padding:9px;
   border:0;
   border-radius:5px;
-  background:linear-gradient(145deg,rgba(32,38,41,.94),rgba(56,66,68,.90));
-  box-shadow:0 24px 64px rgba(16,21,22,.30),0 5px 18px rgba(16,21,22,.14);
-  -webkit-backdrop-filter:blur(26px) saturate(125%);
-  backdrop-filter:blur(26px) saturate(125%);
+  background:linear-gradient(145deg,rgba(25,35,38,.98),rgba(34,48,53,.96));
+  box-shadow:0 24px 64px rgba(16,21,22,.34),0 5px 18px rgba(16,21,22,.18);
+  -webkit-backdrop-filter:blur(26px) saturate(118%);
+  backdrop-filter:blur(26px) saturate(118%);
   opacity:0;
   visibility:hidden;
   pointer-events:none;
@@ -158,19 +158,19 @@
   font-size:13px;
   line-height:1.45;
   font-weight:500;
-  color:rgba(255,255,255,.97);
-  text-shadow:0 1px 1px rgba(0,0,0,.08);
+  color:#fff;
+  text-shadow:0 1px 1px rgba(0,0,0,.10);
   transition:background .2s ease,color .2s ease,padding .22s ease;
 }
 
 .mh-nav__menu a::after{
   content:"↗";
   margin-left:18px;
-  color:rgba(255,255,255,.76);
+  color:rgba(255,255,255,.90);
   transition:color .2s ease,transform .2s ease;
 }
 
-.mh-nav__menu a:hover{color:#fff;background:rgba(255,255,255,.11);padding-left:17px}
+.mh-nav__menu a:hover{color:#fff;background:rgba(255,255,255,.12);padding-left:17px}
 .mh-nav__menu a:hover::after{color:#fff;transform:translate(2px,-2px)}
 
 .mh-header .mh-btn--ghost{
@@ -211,8 +211,8 @@
 .mh-footer__bottom a:hover{color:#fff}
 
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-  .mh-header__inner{background:rgba(95,115,117,.96)}
-  .mh-nav__menu{background:rgba(32,38,41,.98)}
+  .mh-header__inner{background:rgba(34,48,53,.97)}
+  .mh-nav__menu{background:rgba(25,35,38,.99)}
 }
 
 @media(max-width:1180px){
