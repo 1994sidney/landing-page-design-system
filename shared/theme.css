@@ -95,6 +95,11 @@ body{background:var(--mh-page);color:var(--mh-ink)}
   font-weight:500;
 }
 
+.mh-trust-row p{
+  font-size:15px;
+  line-height:1.9;
+}
+
 .mh-media-placeholder{
   position:relative;
   overflow:hidden;
