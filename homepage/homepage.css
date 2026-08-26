@@ -2,7 +2,7 @@
  * Shared tokens, buttons, navigation and footer live in /shared.
  * Each homepage section owns its styles in one focused module below.
  */
-@import url("./hero-fullscreen.css?v=20260826-home-images-v1");
+@import url("./hero-fullscreen.css?v=20260827-hero-policy-v1");
 @import url("./policy-accordion.css?v=20260826-home-images-v1");
 @import url("./services-stack.css?v=20260827-services-copy-v3");
 @import url("./service-cases.css?v=20260826-home-images-v1");
