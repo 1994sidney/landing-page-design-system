@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="心理健康服务运营平台，连接专业资源，面向不同场景提供可持续的心理健康服务。">
-  <meta name="homepage-build" content="2026-08-27-news-bg-v1">
+  <meta name="homepage-build" content="2026-08-27-nav-architecture-v1">
   <title>心理健康服务运营平台</title>
 
   <link rel="stylesheet" href="../styles/core.css?v=20260826-home-images-v1">
@@ -24,11 +24,27 @@
         </a>
 
         <nav class="mh-nav" aria-label="主导航">
-          <a href="#services">教育心理服务</a>
-          <a href="#services">社会心理服务</a>
-          <a href="#services">行业发展与人才培养</a>
-          <a href="#news">资讯中心</a>
-          <a href="#contact">合作联络</a>
+          <a href="./about/">平台介绍</a>
+          <details class="mh-nav__dropdown">
+            <summary>心理服务</summary>
+            <div class="mh-nav__menu">
+              <a href="./services/social/">社会心理服务</a>
+              <a href="./services/education/">教育心理服务</a>
+              <a href="./services/organization/">企事业单位心理服务</a>
+              <a href="./services/key-groups/">重点人群心理关爱</a>
+            </div>
+          </details>
+          <details class="mh-nav__dropdown">
+            <summary>行业发展</summary>
+            <div class="mh-nav__menu">
+              <a href="./industry/training/">专业培训</a>
+              <a href="./industry/certificates/">职业证书</a>
+              <a href="./industry/talents/">心理人才</a>
+              <a href="./industry/organizations/">服务机构</a>
+            </div>
+          </details>
+          <a href="./research-practice/">研究实践</a>
+          <a href="./news/">资讯动态</a>
           <details class="mh-nav__dropdown">
             <summary>业务平台</summary>
             <div class="mh-nav__menu">
