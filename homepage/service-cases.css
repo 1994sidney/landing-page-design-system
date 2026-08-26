@@ -66,16 +66,14 @@
 }
 
 #cases .mh-case-quote__avatar{
-  position:relative;
+  display:block;
   width:48px;
   height:48px;
   flex:0 0 48px;
-  overflow:hidden;
+  object-fit:cover;
+  object-position:center;
   border-radius:50%;
-  background:
-    radial-gradient(circle at 50% 34%,rgba(255,255,255,.22) 0 18%,transparent 19%),
-    radial-gradient(circle at 50% 94%,rgba(255,255,255,.14) 0 38%,transparent 39%),
-    rgba(255,255,255,.08);
+  background:rgba(255,255,255,.08);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
@@ -184,40 +182,20 @@
 #cases .mh-case-card__media{
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at 24% 22%,rgba(255,255,255,.15),transparent 28%),
-    linear-gradient(145deg,#708085 0%,#4b5e63 48%,#2b393d 100%);
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
   transform:scale(1.01);
   transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .45s ease;
-}
-
-#cases .mh-case-card:nth-child(2n) .mh-case-card__media{
-  background:
-    radial-gradient(circle at 72% 20%,rgba(255,255,255,.11),transparent 27%),
-    linear-gradient(150deg,#617478 0%,#3d5055 52%,#26363a 100%);
-}
-
-#cases .mh-case-card:nth-child(3n) .mh-case-card__media{
-  background:
-    radial-gradient(circle at 30% 30%,rgba(255,255,255,.13),transparent 26%),
-    linear-gradient(135deg,#819094 0%,#53666a 48%,#2b3b40 100%);
-}
-
-#cases .mh-case-card__media::after{
-  content:"案例图片待补";
-  position:absolute;
-  left:50%;
-  top:44%;
-  transform:translate(-50%,-50%);
-  font-size:11px;
-  letter-spacing:.08em;
-  color:rgba(255,255,255,.42);
 }
 
 #cases .mh-case-card::after{
   content:"";
   position:absolute;
   inset:0;
+  z-index:1;
   background:linear-gradient(180deg,rgba(16,28,32,.06) 24%,rgba(16,28,32,.72) 100%);
   pointer-events:none;
 }
