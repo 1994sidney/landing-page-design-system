@@ -74,7 +74,7 @@
 
 #news .mh-news-feature .mh-news-card__meta{
   display:flex;
-  gap:14px;
+  gap:0;
   flex-wrap:wrap;
   margin:0 0 14px;
   font-size:11px;
@@ -83,7 +83,17 @@
   color:rgba(255,255,255,.58);
 }
 
+#news .mh-news-feature .mh-news-card__meta time{
+  order:1;
+}
+
+#news .mh-news-feature .mh-news-card__meta time::after{
+  content:" · ";
+  white-space:pre;
+}
+
 #news .mh-news-feature .mh-news-card__meta span{
+  order:2;
   padding:0;
   background:transparent;
   color:inherit;
