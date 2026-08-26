@@ -185,11 +185,7 @@
 }
 
 .mh-header .mh-btn--ghost::after{
-  content:"↗";
-  margin-left:8px;
-  font-size:12px;
-  opacity:.82;
-  transition:transform .22s ease,opacity .22s ease;
+  content:none;
 }
 
 .mh-header .mh-btn--ghost:hover{
@@ -197,11 +193,6 @@
   background:rgba(255,255,255,.23);
   box-shadow:0 8px 24px rgba(18,24,25,.10);
   transform:translateY(-1px);
-}
-
-.mh-header .mh-btn--ghost:hover::after{
-  transform:translate(2px,-2px);
-  opacity:1;
 }
 
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
