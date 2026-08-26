@@ -84,7 +84,7 @@
   grid-row:1;
   max-width:none;
   margin:0;
-  font-size:clamp(58px,6.7vw,102px);
+  font-size:72px;
   line-height:1.015;
   letter-spacing:-.046em;
   font-weight:500;
