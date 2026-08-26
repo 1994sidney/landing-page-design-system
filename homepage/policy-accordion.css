@@ -16,7 +16,13 @@
   color:var(--mh-text);
 }
 
-.mh-policy-list{border-top:0}
+.mh-policy-list{
+  align-self:start;
+  padding:12px clamp(28px,2.8vw,40px) 14px;
+  border-top:0;
+  border-radius:2px;
+  background:#E3E7E5;
+}
 .mh-policy-item{border-bottom:1px solid rgba(32,38,41,.10)}
 .mh-policy-item:last-child{border-bottom:0}
 .mh-policy-item.is-animating{overflow:hidden}
@@ -33,6 +39,7 @@
   color:var(--mh-ink);
 }
 .mh-policy-item summary::-webkit-details-marker{display:none}
+.mh-policy-item summary>span:first-child{max-width:620px}
 
 .mh-policy-item__meta{
   display:block;
@@ -45,7 +52,7 @@
 
 .mh-policy-item__title{
   display:block;
-  max-width:720px;
+  max-width:620px;
   font-size:18px;
   line-height:1.55;
   letter-spacing:-.012em;
@@ -79,8 +86,9 @@
 .mh-policy-item summary:hover .mh-policy-item__title{color:var(--mh-brand-dark)}
 
 .mh-policy-item__content{
-  max-width:760px;
-  padding:0 58px 28px 0;
+  width:min(100%,620px);
+  max-width:620px;
+  padding:0 0 28px;
   will-change:opacity,transform;
 }
 .mh-policy-item__content p{
@@ -111,9 +119,11 @@
 
 @media(max-width:560px){
   .mh-policy-copy p{font-size:14px}
+  .mh-policy-list{padding:8px 20px 10px}
   .mh-policy-item summary{min-height:0;padding:20px 0;gap:14px}
-  .mh-policy-item__title{font-size:17px;line-height:1.55}
-  .mh-policy-item__content{padding:0 0 24px}
+  .mh-policy-item summary>span:first-child{max-width:none}
+  .mh-policy-item__title{max-width:none;font-size:17px;line-height:1.55}
+  .mh-policy-item__content{width:100%;max-width:none;padding:0 0 24px}
   .mh-policy-item__toggle{width:30px;height:30px}
 }
 
