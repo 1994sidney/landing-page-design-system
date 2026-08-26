@@ -1,0 +1,199 @@
+/* Service system · full-width editorial cards stacked vertically */
+#services .mh-services{
+  display:block;
+}
+
+#services .mh-services__intro{
+  position:static;
+  max-width:860px;
+  margin:0 auto clamp(58px,6vw,82px);
+  text-align:center;
+}
+
+#services .mh-services__intro p{
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#services .mh-services__list{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(24px,3vw,40px);
+  width:100%;
+}
+
+#services .mh-service-item{
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  width:100%;
+  min-height:clamp(540px,47vw,680px);
+  padding:clamp(34px,4.3vw,68px);
+  overflow:hidden;
+  background:var(--mh-card);
+  transform:none;
+}
+
+#services .mh-service-item::before{
+  content:"";
+  position:absolute;
+  inset:-2%;
+  z-index:-2;
+  background:
+    linear-gradient(90deg,rgba(32,38,41,.08),rgba(32,38,41,.02) 45%,rgba(32,38,41,.16)),
+    radial-gradient(circle at 24% 26%,rgba(250,250,248,.78),transparent 30%),
+    linear-gradient(135deg,#d9ddda 0%,#bbc4c2 46%,#8b9899 100%);
+  transform:scale(1.02);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .45s ease;
+}
+
+#services .mh-service-item:nth-child(2)::before{
+  background:
+    linear-gradient(90deg,rgba(32,38,41,.06),rgba(32,38,41,.02) 46%,rgba(32,38,41,.18)),
+    radial-gradient(circle at 68% 18%,rgba(250,250,248,.68),transparent 28%),
+    linear-gradient(145deg,#cfd5d3 0%,#a9b5b3 48%,#758486 100%);
+}
+
+#services .mh-service-item:nth-child(3)::before{
+  background:
+    linear-gradient(90deg,rgba(32,38,41,.07),rgba(32,38,41,.02) 45%,rgba(32,38,41,.17)),
+    radial-gradient(circle at 30% 24%,rgba(250,250,248,.72),transparent 28%),
+    linear-gradient(135deg,#e1e3df 0%,#b8c0bd 50%,#7c898a 100%);
+}
+
+#services .mh-service-item::after{
+  content:"图片待补";
+  position:absolute;
+  left:clamp(28px,3.2vw,48px);
+  bottom:clamp(28px,3.2vw,48px);
+  z-index:-1;
+  font-size:11px;
+  line-height:1;
+  letter-spacing:.08em;
+  color:rgba(32,38,41,.42);
+}
+
+#services .mh-service-item:hover{
+  transform:none;
+  background:var(--mh-card);
+}
+
+#services .mh-service-item:hover::before{
+  transform:scale(1.055);
+  filter:saturate(.88) contrast(.98);
+}
+
+#services .mh-service-item__icon{
+  position:absolute;
+  top:clamp(28px,3.2vw,48px);
+  left:clamp(28px,3.2vw,48px);
+  z-index:2;
+  width:40px;
+  height:40px;
+  background:rgba(32,38,41,.70);
+  color:rgba(255,255,255,.90);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+#services .mh-service-item>div:last-child{
+  width:min(520px,42%);
+  min-height:360px;
+  margin:0;
+  padding:clamp(34px,3.6vw,52px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  background:rgba(47,56,58,.84);
+  color:#fff;
+  backdrop-filter:blur(24px) saturate(.86);
+  -webkit-backdrop-filter:blur(24px) saturate(.86);
+  box-shadow:0 28px 64px rgba(32,38,41,.14);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),background .3s ease;
+}
+
+#services .mh-service-item:hover>div:last-child{
+  transform:translateY(-5px);
+  background:rgba(43,52,54,.90);
+}
+
+#services .mh-service-item h3{
+  color:#fff;
+}
+
+#services .mh-service-item p{
+  margin:18px 0 28px;
+  max-width:440px;
+  color:rgba(255,255,255,.70);
+}
+
+#services .mh-text-link{
+  margin-top:auto;
+  min-height:40px;
+  padding:0 15px;
+  background:rgba(250,250,248,.95);
+  color:var(--mh-ink);
+  text-decoration:none;
+  border-radius:2px;
+  transition:background .22s ease,transform .22s ease;
+}
+
+#services .mh-text-link span{
+  opacity:.58;
+  transition:transform .22s ease;
+}
+
+#services .mh-text-link:hover{
+  background:#fff;
+  color:var(--mh-ink);
+  transform:translateY(-1px);
+}
+
+#services .mh-text-link:hover span{
+  transform:translateX(2px);
+}
+
+@media(max-width:980px){
+  #services .mh-service-item{
+    min-height:560px;
+    padding:28px;
+    align-items:flex-end;
+  }
+
+  #services .mh-service-item>div:last-child{
+    width:min(560px,72%);
+    min-height:300px;
+  }
+}
+
+@media(max-width:680px){
+  #services .mh-services__intro{
+    margin-bottom:46px;
+  }
+
+  #services .mh-service-item{
+    min-height:500px;
+    padding:14px;
+  }
+
+  #services .mh-service-item__icon{
+    top:18px;
+    left:18px;
+  }
+
+  #services .mh-service-item::after{
+    left:18px;
+    bottom:auto;
+    top:72px;
+  }
+
+  #services .mh-service-item>div:last-child{
+    width:100%;
+    min-height:0;
+    padding:26px 24px 24px;
+  }
+}
