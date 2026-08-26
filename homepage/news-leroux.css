@@ -28,26 +28,13 @@
 #news .mh-news-feature__media{
   position:absolute;
   inset:0;
-  min-height:0;
-  background:
-    radial-gradient(circle at 28% 24%,rgba(250,250,248,.24),transparent 31%),
-    linear-gradient(145deg,#b3bcba 0%,#7d8a8c 54%,#465356 100%);
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
   transform:scale(1.01);
   transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .7s ease;
-}
-
-#news .mh-news-feature__media::before{content:none}
-
-#news .mh-news-feature__media::after{
-  content:"图片待补";
-  position:absolute;
-  left:50%;
-  top:42%;
-  transform:translate(-50%,-50%);
-  font-size:11px;
-  line-height:1;
-  letter-spacing:.08em;
-  color:rgba(250,250,248,.56);
 }
 
 #news .mh-news-feature::after{
