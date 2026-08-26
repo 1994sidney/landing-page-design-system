@@ -1,5 +1,10 @@
 @import url("./services-stack.css?v=20260826-services-stack-v2");
 
+/* Professional credibility uses the LeRoux page-background tone. */
+#credibility{
+  background:var(--mh-page);
+}
+
 /* LeRoux policy background accordion */
 
 /* Shared LeRoux chapter-title style for every homepage section except Hero. */
