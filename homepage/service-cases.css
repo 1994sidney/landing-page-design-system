@@ -154,7 +154,7 @@
   outline-offset:4px;
 }
 
-/* The carousel starts on the content grid but deliberately breaks out to the browser's right edge. */
+/* Starts on the content grid and deliberately breaks out to the browser's right edge. */
 #cases .mh-case-carousel{
   position:relative;
   width:calc(100vw - max(0px,calc(50vw - 720px)) - var(--mh-pad));
@@ -171,7 +171,6 @@
   will-change:transform;
 }
 
-/* Three complete cards still follow the inner grid width; the next card continues into the breakout area. */
 #cases .mh-case-card{
   position:relative;
   flex:0 0 calc((var(--case-grid-width) - var(--case-gap) - var(--case-gap)) / 3);
@@ -265,105 +264,25 @@
   background:rgba(255,255,255,.54);
 }
 
-/* Footer · remove the CTA column and push the three navigation groups to the right. */
-.mh-footer__cta{
-  display:none;
-}
-
-.mh-footer__top{
-  grid-template-columns:minmax(320px,1fr) repeat(3,minmax(120px,max-content));
-  column-gap:clamp(52px,6vw,96px);
-}
-
-.mh-footer__col{
-  justify-self:end;
-}
-
 @media(max-width:980px){
-  #cases .mh-case-quote{
-    grid-template-columns:1fr;
-    gap:30px;
-    min-height:0;
-  }
-
-  #cases .mh-case-controls{
-    justify-content:flex-end;
-  }
-
-  #cases .mh-case-card{
-    flex-basis:min(72vw,560px);
-  }
-
-  .mh-footer__top{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
-
-  .mh-footer__brand{
-    grid-column:1/-1;
-  }
-
-  .mh-footer__col{
-    justify-self:start;
-  }
+  #cases .mh-case-quote{grid-template-columns:1fr;gap:30px;min-height:0}
+  #cases .mh-case-controls{justify-content:flex-end}
+  #cases .mh-case-card{flex-basis:min(72vw,560px)}
 }
 
 @media(max-width:680px){
-  #cases .mh-case-shell{
-    padding-top:88px;
-    padding-bottom:84px;
-  }
-
-  #cases .mh-case-quote{
-    padding-bottom:58px;
-  }
-
-  #cases .mh-case-quote__content{
-    padding-left:0;
-  }
-
-  #cases .mh-case-quote__mark{
-    position:static;
-    display:block;
-    height:64px;
-    margin-bottom:6px;
-    font-size:82px;
-  }
-
-  #cases .mh-case-quote__text{
-    font-size:28px;
-    line-height:1.5;
-  }
-
-  #cases .mh-case-quote__meta{
-    margin-top:28px;
-  }
-
-  #cases .mh-case-quote__avatar{
-    width:44px;
-    height:44px;
-    flex-basis:44px;
-  }
-
-  #cases .mh-case-card{
-    flex-basis:82vw;
-    min-height:310px;
-  }
-}
-
-@media(max-width:560px){
-  .mh-footer__top{
-    grid-template-columns:1fr;
-  }
-
-  .mh-footer__brand{
-    grid-column:auto;
-  }
+  #cases .mh-case-shell{padding-top:88px;padding-bottom:84px}
+  #cases .mh-case-quote{padding-bottom:58px}
+  #cases .mh-case-quote__content{padding-left:0}
+  #cases .mh-case-quote__mark{position:static;display:block;height:64px;margin-bottom:6px;font-size:82px}
+  #cases .mh-case-quote__text{font-size:28px;line-height:1.5}
+  #cases .mh-case-quote__meta{margin-top:28px}
+  #cases .mh-case-quote__avatar{width:44px;height:44px;flex-basis:44px}
+  #cases .mh-case-card{flex-basis:82vw;min-height:310px}
 }
 
 @media(prefers-reduced-motion:reduce){
   #cases .mh-case-track,
   #cases .mh-case-card__media,
-  #cases .mh-case-control{
-    transition:none;
-  }
+  #cases .mh-case-control{transition:none}
 }
