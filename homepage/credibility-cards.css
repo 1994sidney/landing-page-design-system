@@ -91,6 +91,7 @@
   filter:saturate(.9) contrast(.98);
 }
 
+/* Use one fixed text stage on desktop so every title and description starts on the same horizontal line, regardless of copy length. */
 #credibility .mh-trust-row__copy,
 #credibility .mh-trust-row--reverse .mh-trust-row__copy{
   position:absolute;
@@ -98,8 +99,14 @@
   right:0;
   bottom:0;
   z-index:2;
+  box-sizing:border-box;
+  width:100%;
+  height:clamp(196px,14vw,214px);
   max-width:none;
   padding:clamp(26px,2.8vw,38px);
+  display:grid;
+  grid-template-rows:auto 1fr;
+  align-content:start;
   color:#fff;
 }
 
@@ -114,6 +121,7 @@
 }
 
 #credibility .mh-trust-row p{
+  align-self:start;
   margin:12px 0 0;
   max-width:440px;
   color:rgba(255,255,255,.76);
@@ -163,6 +171,12 @@
   #credibility .mh-trust-row,
   #credibility .mh-trust-row--reverse{
     min-height:430px;
+  }
+
+  #credibility .mh-trust-row__copy,
+  #credibility .mh-trust-row--reverse .mh-trust-row__copy{
+    height:auto;
+    display:block;
   }
 }
 
