@@ -1,0 +1,159 @@
+/* Professional credibility · centered heading, three cards, partner-logo marquee */
+#credibility{
+  background:var(--mh-page);
+}
+
+#credibility>.mh-container{
+  display:flex;
+  flex-direction:column;
+}
+
+#credibility .mh-section-head{
+  order:1;
+  margin:0 auto;
+}
+
+#credibility .mh-section-head p{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Move the existing platform-background action directly beneath the intro copy. */
+#credibility .mh-center-action{
+  order:2;
+  justify-content:center;
+  margin:26px 0 clamp(54px,6vw,78px);
+}
+
+/* Convert the three long editorial rows into three parallel cards. */
+#credibility .mh-trust-grid{
+  order:3;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(16px,1.8vw,24px);
+}
+
+#credibility .mh-trust-row,
+#credibility .mh-trust-row--reverse{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  min-width:0;
+  background:var(--mh-surface);
+}
+
+#credibility .mh-trust-row--reverse .mh-media-placeholder,
+#credibility .mh-trust-row--reverse .mh-trust-row__copy{
+  order:initial;
+}
+
+#credibility .mh-trust-row .mh-media-placeholder{
+  min-height:clamp(230px,21vw,310px);
+  background:rgba(95,115,117,.13);
+}
+
+#credibility .mh-trust-row__copy{
+  max-width:none;
+  padding:28px 28px 32px;
+}
+
+#credibility .mh-index{
+  margin-bottom:18px;
+}
+
+#credibility .mh-trust-row h3{
+  margin:0;
+}
+
+#credibility .mh-trust-row p{
+  margin:14px 0 0;
+}
+
+/* Partner-brand strip. Current marks are neutral image placeholders and can be replaced with authorized logos later. */
+#credibility .mh-trust-grid::before{
+  content:"合作机构";
+  order:10;
+  grid-column:1/-1;
+  margin-top:clamp(56px,6vw,82px);
+  text-align:center;
+  font-size:12px;
+  line-height:1.4;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:var(--mh-muted);
+}
+
+#credibility .mh-trust-grid::after{
+  content:"";
+  order:11;
+  grid-column:1/-1;
+  display:block;
+  width:100%;
+  height:80px;
+  margin-top:24px;
+  background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTIwMCA4MCI+CjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNGNDg0QSIgc3Ryb2tlLXdpZHRoPSIxLjQiIG9wYWNpdHk9Ii41MiI+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsMTApIj48Y2lyY2xlIGN4PSIyOCIgY3k9IjMwIiByPSIxOSIvPjxwYXRoIGQ9Ik0xOCAzMGgyME0yOCAyMHYyMCIvPjxyZWN0IHg9IjYwIiB5PSIxNSIgd2lkdGg9IjkyIiBoZWlnaHQ9IjMwIiByeD0iMCIvPjwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDUsMTApIj48cmVjdCB4PSI4IiB5PSIxMSIgd2lkdGg9IjM4IiBoZWlnaHQ9IjM4Ii8+PHBhdGggZD0iTTggMzBoMzhNMjcgMTF2MzgiLz48cmVjdCB4PSI2MCIgeT0iMTUiIHdpZHRoPSI5MiIgaGVpZ2h0PSIzMCIgcng9IjAiLz48L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzkwLDEwKSI+PHBhdGggZD0iTTggNDdMMjcgMTJsMTkgMzV6Ii8+PGNpcmNsZSBjeD0iMjciIGN5PSIzMSIgcj0iNyIvPjxyZWN0IHg9IjYwIiB5PSIxNSIgd2lkdGg9IjkyIiBoZWlnaHQ9IjMwIiByeD0iMCIvPjwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NzUsMTApIj48cGF0aCBkPSJNOCAxNWgzOHYzMEg4ek0xNSAyMmgyNHYxNkgxNXoiLz48cmVjdCB4PSI2MCIgeT0iMTUiIHdpZHRoPSI5MiIgaGVpZ2h0PSIzMCIgcng9IjAiLz48L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzYwLDEwKSI+PGNpcmNsZSBjeD0iMjciIGN5PSIzMCIgcj0iMTkiLz48Y2lyY2xlIGN4PSIyNyIgY3k9IjMwIiByPSI4Ii8+PHJlY3QgeD0iNjAiIHk9IjE1IiB3aWR0aD0iOTIiIGhlaWdodD0iMzAiIHJ4PSIwIi8+PC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDk0NSwxMCkiPjxwYXRoIGQ9Ik04IDMwYzEyLTI0IDI2LTI0IDM4IDAtMTIgMjQtMjYgMjQtMzggMHoiLz48Y2lyY2xlIGN4PSIyNyIgY3k9IjMwIiByPSI1Ii8+PHJlY3QgeD0iNjAiIHk9IjE1IiB3aWR0aD0iOTIiIGhlaWdodD0iMzAiIHJ4PSIwIi8+PC9nPgo8L2c+Cjwvc3ZnPg==");
+  background-repeat:repeat-x;
+  background-position:0 50%;
+  background-size:1200px 80px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  animation:mh-partner-logos 42s linear infinite;
+}
+
+@keyframes mh-partner-logos{
+  from{background-position:0 50%}
+  to{background-position:-1200px 50%}
+}
+
+@media(max-width:980px){
+  #credibility .mh-trust-grid{
+    grid-template-columns:1fr;
+  }
+
+  #credibility .mh-trust-row{
+    display:grid;
+    grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  }
+
+  #credibility .mh-trust-row .mh-media-placeholder{
+    min-height:260px;
+  }
+
+  #credibility .mh-trust-row__copy{
+    align-self:center;
+  }
+}
+
+@media(max-width:620px){
+  #credibility .mh-center-action{
+    margin-bottom:46px;
+  }
+
+  #credibility .mh-trust-row{
+    display:flex;
+  }
+
+  #credibility .mh-trust-row .mh-media-placeholder{
+    min-height:230px;
+  }
+
+  #credibility .mh-trust-row__copy{
+    padding:24px 22px 26px;
+  }
+
+  #credibility .mh-trust-grid::before{
+    margin-top:48px;
+  }
+
+  #credibility .mh-trust-grid::after{
+    height:70px;
+    background-size:1050px 70px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #credibility .mh-trust-grid::after{
+    animation:none;
+  }
+}
