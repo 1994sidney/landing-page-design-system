@@ -92,9 +92,9 @@
 #news .mh-news-feature h3{
   margin:0;
   max-width:760px;
-  font-size:clamp(30px,3.4vw,48px)!important;
-  line-height:1.22!important;
-  letter-spacing:-.025em!important;
+  font-size:24px!important;
+  line-height:1.45!important;
+  letter-spacing:-.018em!important;
   font-weight:500!important;
   color:#fff;
 }
