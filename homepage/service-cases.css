@@ -50,9 +50,9 @@
 #cases .mh-case-quote__text{
   margin:0;
   max-width:1050px;
-  font-size:clamp(30px,3.2vw,48px);
-  line-height:1.38;
-  letter-spacing:-.028em;
+  font-size:32px;
+  line-height:1.46;
+  letter-spacing:-.022em;
   font-weight:400;
   color:rgba(255,255,255,.96);
   text-wrap:balance;
@@ -62,16 +62,21 @@
   display:flex;
   align-items:center;
   gap:16px;
-  margin-top:38px;
+  margin-top:34px;
 }
 
-#cases .mh-case-quote__dot{
-  width:38px;
-  height:38px;
-  flex:0 0 38px;
+#cases .mh-case-quote__avatar{
+  position:relative;
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  overflow:hidden;
   border-radius:50%;
-  background:rgba(255,255,255,.10);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+  background:
+    radial-gradient(circle at 50% 34%,rgba(255,255,255,.22) 0 18%,transparent 19%),
+    radial-gradient(circle at 50% 94%,rgba(255,255,255,.14) 0 38%,transparent 39%),
+    rgba(255,255,255,.08);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
 }
 
 #cases .mh-case-quote__meta strong{
@@ -86,8 +91,8 @@
   display:block;
   margin-top:4px;
   font-size:12px;
-  line-height:1.5;
-  color:rgba(255,255,255,.48);
+  line-height:1.6;
+  color:rgba(255,255,255,.50);
 }
 
 #cases .mh-case-controls{
@@ -156,6 +161,7 @@
 
 #cases .mh-case-track{
   --case-gap:clamp(20px,2vw,34px);
+  --case-peek:clamp(120px,12vw,220px);
   display:flex;
   gap:var(--case-gap);
   transition:transform .68s cubic-bezier(.2,.72,.2,1);
@@ -164,7 +170,7 @@
 
 #cases .mh-case-card{
   position:relative;
-  flex:0 0 calc((100% - (var(--case-gap) * 2)) / 3);
+  flex:0 0 calc((100% - var(--case-peek) - (var(--case-gap) * 3)) / 3);
   min-height:360px;
   overflow:hidden;
   background:#2d3d42;
@@ -266,6 +272,10 @@
     justify-content:flex-end;
   }
 
+  #cases .mh-case-track{
+    --case-peek:0px;
+  }
+
   #cases .mh-case-card{
     flex-basis:min(72vw,560px);
   }
@@ -294,12 +304,18 @@
   }
 
   #cases .mh-case-quote__text{
-    font-size:26px;
-    line-height:1.48;
+    font-size:28px;
+    line-height:1.5;
   }
 
   #cases .mh-case-quote__meta{
     margin-top:28px;
+  }
+
+  #cases .mh-case-quote__avatar{
+    width:44px;
+    height:44px;
+    flex-basis:44px;
   }
 
   #cases .mh-case-card{
