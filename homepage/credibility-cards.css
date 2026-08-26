@@ -1,24 +1,11 @@
 /* Professional credibility · centered heading, image cards, partner-logo marquee */
-#credibility{
-  background:var(--mh-page);
-}
+#credibility{background:var(--mh-page)}
 
-#credibility>.mh-container{
-  display:flex;
-  flex-direction:column;
-}
+#credibility>.mh-container{display:flex;flex-direction:column}
 
-#credibility .mh-section-head{
-  order:1;
-  margin:0 auto;
-}
+#credibility .mh-section-head{order:1;margin:0 auto}
+#credibility .mh-section-head p{margin-left:auto;margin-right:auto}
 
-#credibility .mh-section-head p{
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* Keep the platform-background action directly beneath the intro copy. */
 #credibility .mh-center-action{
   order:2;
   justify-content:center;
@@ -32,7 +19,6 @@
   gap:clamp(16px,1.8vw,24px);
 }
 
-/* Full-image cards: image fills the card, bottom gradient carries the text. */
 #credibility .mh-trust-row,
 #credibility .mh-trust-row--reverse{
   position:relative;
@@ -53,45 +39,23 @@
   background:linear-gradient(180deg,rgba(24,30,31,0) 34%,rgba(24,30,31,.18) 54%,rgba(24,30,31,.88) 100%);
 }
 
-#credibility .mh-trust-row .mh-media-placeholder,
-#credibility .mh-trust-row--reverse .mh-media-placeholder{
+#credibility .mh-trust-row__media{
   position:absolute;
   inset:0;
   z-index:0;
   width:100%;
   height:100%;
-  min-height:0;
-  background:linear-gradient(145deg,#d8ddda 0%,#aeb9b7 54%,#829091 100%);
+  object-fit:cover;
+  object-position:center;
   transform:scale(1.01);
   transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .4s ease;
 }
 
-#credibility .mh-trust-row:nth-child(2) .mh-media-placeholder{
-  background:linear-gradient(145deg,#cbd3d0 0%,#9fadaa 54%,#6f8082 100%);
-}
-
-#credibility .mh-trust-row:nth-child(3) .mh-media-placeholder{
-  background:linear-gradient(145deg,#e0e2de 0%,#b6bfbc 52%,#7b898a 100%);
-}
-
-#credibility .mh-trust-row .mh-media-placeholder::before{
-  content:none;
-}
-
-#credibility .mh-trust-row .mh-media-placeholder::after{
-  content:"图片待补";
-  left:50%;
-  top:42%;
-  transform:translate(-50%,-50%);
-  color:rgba(32,38,41,.42);
-}
-
-#credibility .mh-trust-row:hover .mh-media-placeholder{
+#credibility .mh-trust-row:hover .mh-trust-row__media{
   transform:scale(1.055);
   filter:saturate(.9) contrast(.98);
 }
 
-/* Use one fixed text stage on desktop so every title and description starts on the same horizontal line, regardless of copy length. */
 #credibility .mh-trust-row__copy,
 #credibility .mh-trust-row--reverse .mh-trust-row__copy{
   position:absolute;
@@ -110,15 +74,7 @@
   color:#fff;
 }
 
-/* Numbering is intentionally removed from the image-card presentation. */
-#credibility .mh-index{
-  display:none;
-}
-
-#credibility .mh-trust-row h3{
-  margin:0;
-  color:#fff;
-}
+#credibility .mh-trust-row h3{margin:0;color:#fff}
 
 #credibility .mh-trust-row p{
   align-self:start;
@@ -127,7 +83,7 @@
   color:rgba(255,255,255,.76);
 }
 
-/* Partner-brand strip. Current marks are neutral image placeholders and can be replaced with authorized logos later. */
+/* Partner-brand strip remains a neutral placeholder until authorized logos are supplied. */
 #credibility .mh-trust-grid::before{
   content:"合作机构";
   order:10;
@@ -164,48 +120,24 @@
 }
 
 @media(max-width:980px){
-  #credibility .mh-trust-grid{
-    grid-template-columns:1fr;
-  }
-
+  #credibility .mh-trust-grid{grid-template-columns:1fr}
   #credibility .mh-trust-row,
-  #credibility .mh-trust-row--reverse{
-    min-height:430px;
-  }
-
+  #credibility .mh-trust-row--reverse{min-height:430px}
   #credibility .mh-trust-row__copy,
-  #credibility .mh-trust-row--reverse .mh-trust-row__copy{
-    height:auto;
-    display:block;
-  }
+  #credibility .mh-trust-row--reverse .mh-trust-row__copy{height:auto;display:block}
 }
 
 @media(max-width:620px){
-  #credibility .mh-center-action{
-    margin-bottom:46px;
-  }
-
+  #credibility .mh-center-action{margin-bottom:46px}
   #credibility .mh-trust-row,
-  #credibility .mh-trust-row--reverse{
-    min-height:380px;
-  }
-
-  #credibility .mh-trust-row__copy{
-    padding:24px 22px 26px;
-  }
-
-  #credibility .mh-trust-grid::before{
-    margin-top:48px;
-  }
-
-  #credibility .mh-trust-grid::after{
-    height:70px;
-    background-size:1050px 70px;
-  }
+  #credibility .mh-trust-row--reverse{min-height:380px}
+  #credibility .mh-trust-row__copy{padding:24px 22px 26px}
+  #credibility .mh-trust-grid::before{margin-top:48px}
+  #credibility .mh-trust-grid::after{height:70px;background-size:1050px 70px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  #credibility .mh-trust-row .mh-media-placeholder,
+  #credibility .mh-trust-row__media,
   #credibility .mh-trust-grid::after{
     transition:none;
     animation:none;
