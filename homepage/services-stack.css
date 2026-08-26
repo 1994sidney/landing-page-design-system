@@ -36,56 +36,39 @@
 
 #services .mh-service-item:nth-child(2){justify-content:flex-start}
 
-#services .mh-service-item::before{
-  content:"";
+#services .mh-service-item__media{
   position:absolute;
-  inset:-2%;
-  z-index:-2;
-  background:
-    linear-gradient(90deg,rgba(32,38,41,.08),rgba(32,38,41,.02) 45%,rgba(32,38,41,.16)),
-    radial-gradient(circle at 24% 26%,rgba(250,250,248,.78),transparent 30%),
-    linear-gradient(135deg,#d9ddda 0%,#bbc4c2 46%,#8b9899 100%);
-  transform:scale(1.02);
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.01);
   transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .45s ease;
 }
 
-#services .mh-service-item:nth-child(2)::before{
-  background:
-    linear-gradient(90deg,rgba(32,38,41,.06),rgba(32,38,41,.02) 46%,rgba(32,38,41,.18)),
-    radial-gradient(circle at 68% 18%,rgba(250,250,248,.68),transparent 28%),
-    linear-gradient(145deg,#cfd5d3 0%,#a9b5b3 48%,#758486 100%);
-}
-
-#services .mh-service-item:nth-child(3)::before{
-  background:
-    linear-gradient(90deg,rgba(32,38,41,.07),rgba(32,38,41,.02) 45%,rgba(32,38,41,.17)),
-    radial-gradient(circle at 30% 24%,rgba(250,250,248,.72),transparent 28%),
-    linear-gradient(135deg,#e1e3df 0%,#b8c0bd 50%,#7c898a 100%);
-}
-
-#services .mh-service-item::after{
-  content:"图片待补";
+#services .mh-service-item::before{
+  content:"";
   position:absolute;
-  left:clamp(28px,3.2vw,48px);
-  bottom:clamp(28px,3.2vw,48px);
-  z-index:-1;
-  font-size:11px;
-  line-height:1;
-  letter-spacing:.08em;
-  color:rgba(32,38,41,.42);
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(32,38,41,.08),rgba(32,38,41,.01) 45%,rgba(32,38,41,.18));
 }
 
-#services .mh-service-item:nth-child(2)::after{
-  left:auto;
-  right:clamp(28px,3.2vw,48px);
+#services .mh-service-item:nth-child(2)::before{
+  background:linear-gradient(90deg,rgba(32,38,41,.18),rgba(32,38,41,.01) 48%,rgba(32,38,41,.07));
 }
 
-#services .mh-service-item:hover::before{
+#services .mh-service-item:hover .mh-service-item__media{
   transform:scale(1.055);
-  filter:saturate(.88) contrast(.98);
+  filter:saturate(.9) contrast(.98);
 }
 
 #services .mh-service-item>div{
+  position:relative;
+  z-index:2;
   width:min(500px,40%);
   min-height:0;
   margin:0;
@@ -143,7 +126,9 @@
 @media(max-width:680px){
   #services .mh-services__intro{margin-bottom:46px}
   #services .mh-service-item{min-height:500px;padding:14px}
-  #services .mh-service-item::after,
-  #services .mh-service-item:nth-child(2)::after{left:18px;right:auto;bottom:auto;top:18px}
   #services .mh-service-item>div{width:100%;padding:24px 22px 22px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #services .mh-service-item__media{transition:none}
 }
