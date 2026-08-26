@@ -154,23 +154,27 @@
   outline-offset:4px;
 }
 
+/* The carousel starts on the content grid but deliberately breaks out to the browser's right edge. */
 #cases .mh-case-carousel{
   position:relative;
+  width:calc(100vw - max(0px,calc(50vw - 720px)) - var(--mh-pad));
+  max-width:none;
   overflow:hidden;
 }
 
 #cases .mh-case-track{
   --case-gap:clamp(20px,2vw,34px);
-  --case-peek:clamp(120px,12vw,220px);
+  --case-grid-width:calc(min(100vw,var(--mh-max)) - var(--mh-pad) - var(--mh-pad));
   display:flex;
   gap:var(--case-gap);
   transition:transform .68s cubic-bezier(.2,.72,.2,1);
   will-change:transform;
 }
 
+/* Three complete cards still follow the inner grid width; the next card continues into the breakout area. */
 #cases .mh-case-card{
   position:relative;
-  flex:0 0 calc((100% - var(--case-peek) - (var(--case-gap) * 3)) / 3);
+  flex:0 0 calc((var(--case-grid-width) - var(--case-gap) - var(--case-gap)) / 3);
   min-height:360px;
   overflow:hidden;
   background:#2d3d42;
@@ -270,10 +274,6 @@
 
   #cases .mh-case-controls{
     justify-content:flex-end;
-  }
-
-  #cases .mh-case-track{
-    --case-peek:0px;
   }
 
   #cases .mh-case-card{
