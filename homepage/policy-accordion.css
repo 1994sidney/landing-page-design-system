@@ -9,7 +9,17 @@
   font-size:34px!important;
   line-height:1.28!important;
   letter-spacing:-.025em!important;
-  font-weight:400!important;
+  font-weight:500!important;
+}
+
+/* Shared LeRoux module-title style inside homepage sections. */
+.mh-service-item h3,
+.mh-trust-row h3,
+.mh-news-card h3{
+  font-size:22px!important;
+  line-height:1.45!important;
+  letter-spacing:-.018em!important;
+  font-weight:500!important;
 }
 
 .mh-policy-layout{
