@@ -138,6 +138,14 @@
   transition:opacity .18s ease,visibility .18s ease,transform .22s cubic-bezier(.2,.7,.2,1);
 }
 
+.mh-nav__dropdown--compact>.mh-nav__menu{
+  width:max-content;
+  min-width:0;
+  max-width:min(280px,calc(100vw - 28px));
+}
+
+.mh-nav__dropdown--compact>.mh-nav__menu a{white-space:nowrap}
+
 .mh-nav__dropdown:hover>.mh-nav__menu,
 .mh-nav__dropdown[open]>.mh-nav__menu,
 .mh-nav__dropdown:focus-within>.mh-nav__menu{
