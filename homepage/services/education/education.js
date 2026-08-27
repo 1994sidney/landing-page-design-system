@@ -3,30 +3,53 @@
   if (!story) return;
 
   const stage = story.querySelector('.edu-platform-story__stage');
-  const screen = story.querySelector('.edu-platform-story__screen');
+  const track = story.querySelector('.edu-platform-story__track');
+  const panels = Array.from(story.querySelectorAll('.edu-platform-story__panel'));
+  const screens = Array.from(story.querySelectorAll('.edu-platform-story__screen'));
+  if (!stage || !track || panels.length < 2) return;
+
   const desktop = window.matchMedia('(min-width: 981px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const finalHoldScreens = 0.55;
+  let stageHeight = window.innerHeight;
+  let transitionTravel = 0;
   let ticking = false;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const ease = (value) => value * value * (3 - 2 * value);
 
   const updateScreenScale = () => {
+    const screen = screens[0];
     if (!screen || !desktop.matches) {
       story.style.removeProperty('--edu-platform-screen-scale');
       story.style.removeProperty('--edu-platform-screen-height');
       return;
     }
 
-    const available = screen.clientWidth || stage?.clientWidth || 1160;
+    const available = screen.clientWidth || stage.clientWidth || 1160;
     const scale = clamp(available / 1160, 0.54, 0.9);
     story.style.setProperty('--edu-platform-screen-scale', scale.toFixed(4));
     story.style.setProperty('--edu-platform-screen-height', `${Math.round(760 * scale)}px`);
   };
 
   const resetStory = () => {
-    story.style.removeProperty('--edu-platform-visual-y');
-    story.style.removeProperty('--edu-platform-copy-y');
+    story.style.removeProperty('height');
+    story.style.removeProperty('--edu-platform-stage-height');
+    story.style.removeProperty('--edu-platform-track-y');
+    story.style.removeProperty('--edu-platform-screen-scale');
+    story.style.removeProperty('--edu-platform-screen-height');
+  };
+
+  const updateLayout = () => {
+    if (!desktop.matches || reducedMotion.matches) {
+      resetStory();
+      return;
+    }
+
+    stageHeight = Math.max(stage.getBoundingClientRect().height, 1);
+    transitionTravel = (panels.length - 1) * stageHeight;
+
+    story.style.setProperty('--edu-platform-stage-height', `${Math.round(stageHeight)}px`);
+    story.style.height = `${Math.round(stageHeight * (panels.length + finalHoldScreens))}px`;
     updateScreenScale();
   };
 
@@ -39,15 +62,8 @@
     }
 
     const rect = story.getBoundingClientRect();
-    const viewport = window.innerHeight;
-    const travel = Math.max(story.offsetHeight - viewport, 1);
-    const raw = clamp(-rect.top / travel, 0, 1);
-    const active = clamp((raw - 0.03) / 0.72, 0, 1);
-    const progress = ease(active);
-
-    story.style.setProperty('--edu-platform-visual-y', `${((1 - progress) * 38).toFixed(2)}vh`);
-    story.style.setProperty('--edu-platform-copy-y', `${((1 - progress) * 24).toFixed(2)}vh`);
-    updateScreenScale();
+    const scrolledInsideStory = clamp(-rect.top, 0, transitionTravel);
+    story.style.setProperty('--edu-platform-track-y', `${(-scrolledInsideStory).toFixed(1)}px`);
   };
 
   const requestUpdate = () => {
@@ -56,10 +72,18 @@
     window.requestAnimationFrame(updateStory);
   };
 
-  window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', requestUpdate);
-  desktop.addEventListener?.('change', requestUpdate);
-  reducedMotion.addEventListener?.('change', requestUpdate);
+  const handleLayoutChange = () => {
+    window.requestAnimationFrame(() => {
+      updateLayout();
+      updateStory();
+    });
+  };
 
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', handleLayoutChange);
+  desktop.addEventListener?.('change', handleLayoutChange);
+  reducedMotion.addEventListener?.('change', handleLayoutChange);
+
+  updateLayout();
   updateStory();
 })();
