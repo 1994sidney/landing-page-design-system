@@ -14,16 +14,19 @@
   const updateScreenScale = () => {
     if (!screen || !desktop.matches) {
       story.style.removeProperty('--edu-platform-screen-scale');
+      story.style.removeProperty('--edu-platform-screen-height');
       return;
     }
 
     const available = screen.clientWidth || stage?.clientWidth || 1160;
     const scale = clamp(available / 1160, 0.54, 0.9);
     story.style.setProperty('--edu-platform-screen-scale', scale.toFixed(4));
+    story.style.setProperty('--edu-platform-screen-height', `${Math.round(760 * scale)}px`);
   };
 
   const resetStory = () => {
-    story.style.removeProperty('--edu-platform-progress');
+    story.style.removeProperty('--edu-platform-visual-y');
+    story.style.removeProperty('--edu-platform-copy-y');
     updateScreenScale();
   };
 
@@ -42,7 +45,8 @@
     const active = clamp((raw - 0.03) / 0.72, 0, 1);
     const progress = ease(active);
 
-    story.style.setProperty('--edu-platform-progress', progress.toFixed(4));
+    story.style.setProperty('--edu-platform-visual-y', `${((1 - progress) * 38).toFixed(2)}vh`);
+    story.style.setProperty('--edu-platform-copy-y', `${((1 - progress) * 24).toFixed(2)}vh`);
     updateScreenScale();
   };
 
