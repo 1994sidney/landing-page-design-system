@@ -1,0 +1,41 @@
+/* 官网内容排版语义令牌
+ * 适用于首页与二级内容页的普通内容模块。
+ * Hero / H1、案例引语、数据数字、元信息等特殊展示层级不受此规则约束。
+ */
+:root{
+  --mh-type-section-title:34px;
+  --mh-type-section-copy:16px;
+  --mh-type-item-title:22px;
+  --mh-type-item-copy:14px;
+
+  --mh-type-section-title-line:1.28;
+  --mh-type-section-copy-line:1.9;
+  --mh-type-item-title-line:1.45;
+  --mh-type-item-copy-line:1.9;
+}
+
+/* Design System typography samples / reusable semantic utilities. */
+.mh-type-section-title,
+.中标题{
+  font-size:var(--mh-type-section-title);
+  line-height:var(--mh-type-section-title-line);
+  font-weight:500;
+}
+
+.mh-type-section-copy,
+.正文样{
+  font-size:var(--mh-type-section-copy);
+  line-height:var(--mh-type-section-copy-line);
+}
+
+.mh-type-item-title,
+.小标题样{
+  font-size:var(--mh-type-item-title);
+  line-height:var(--mh-type-item-title-line);
+  font-weight:500;
+}
+
+.mh-type-item-copy{
+  font-size:var(--mh-type-item-copy);
+  line-height:var(--mh-type-item-copy-line);
+}
