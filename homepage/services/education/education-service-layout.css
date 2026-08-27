@@ -1,3 +1,5 @@
+@import url("../../../shared/site-typography.css?v=20260827-type-contract-v1");
+
 /* Education service introduction layout.
  * First formal content module below the shared secondary-page hero.
  */
@@ -20,9 +22,9 @@
 
 .edu-service-system__title{
   margin:0;
-  font-size:clamp(38px,3.5vw,52px);
-  line-height:1.18;
-  letter-spacing:-.038em;
+  font-size:var(--mh-type-section-title,34px);
+  line-height:var(--mh-type-section-title-line,1.28);
+  letter-spacing:-.025em;
   font-weight:500;
 }
 
@@ -36,8 +38,8 @@
 
 .edu-service-system__copy p{
   margin:0;
-  font-size:16px;
-  line-height:1.95;
+  font-size:var(--mh-type-section-copy,16px);
+  line-height:var(--mh-type-section-copy-line,1.9);
   color:var(--mh-text);
 }
 
@@ -89,16 +91,16 @@
 
 .edu-service-card h3{
   margin:0;
-  font-size:22px;
-  line-height:1.45;
+  font-size:var(--mh-type-item-title,22px);
+  line-height:var(--mh-type-item-title-line,1.45);
   letter-spacing:-.018em;
   font-weight:500;
 }
 
 .edu-service-card p{
   margin:15px 0 0;
-  font-size:14px;
-  line-height:1.9;
+  font-size:var(--mh-type-item-copy,14px);
+  line-height:var(--mh-type-item-copy-line,1.9);
   color:var(--mh-text);
 }
 
@@ -118,14 +120,6 @@
 }
 
 @media(max-width:620px){
-  .edu-service-system__title{
-    font-size:36px;
-  }
-
-  .edu-service-system__copy p{
-    font-size:15px;
-  }
-
   .edu-service-grid{
     grid-template-columns:1fr;
   }
