@@ -19,6 +19,19 @@
 
 一级模块使用 H2，二级组件组使用 H3，具体组件内部从 H4 开始。顶部导航只对应六个一级模块。
 
+## 官网内容排版基线
+
+首页与二级内容页的普通内容模块统一使用以下语义层级：
+
+- H2 模块标题：`34px`，行高 `1.28`，字重 `500`
+- H2 对应主要说明文本：`16px`，行高 `1.90`
+- H3 模块内小标题：`22px`，行高 `1.45`，字重 `500`
+- H3 对应说明文本：`14px`，行高 `1.90`
+
+这四个层级由 `styles/modules/typography.css` 提供 Design System 令牌，由 `shared/site-typography.css` 应用到当前官网。Hero / H1、案例引语、数据数字、政策文件标题、日期、眉签、图片说明与元信息属于独立语义，不机械套用上述字号。
+
+完整规则见 [`TYPOGRAPHY_RULES.md`](./TYPOGRAPHY_RULES.md)。
+
 ## 当前仓库结构
 
 ```text
@@ -28,6 +41,9 @@ landing-page-design-system/
 ├── charts.js               # ECharts 加载、状态与图表初始化
 ├── process.js              # Iconify / Anime.js 流程动画增强
 ├── RELEASE.md              # V1 发布规范、QA 与版本规则
+├── TYPOGRAPHY_RULES.md      # 官网普通内容模块排版层级规则
+├── shared/
+│   └── site-typography.css # 官网语义排版规则落地
 ├── styles/
 │   ├── core.css            # Reset、容器、布局骨架、基础排版、最小响应式
 │   ├── base.css            # 兼容入口，仅转发 core.css；禁止继续开发
@@ -46,7 +62,8 @@ landing-page-design-system/
 │       ├── hierarchy.css   # 大模块 / 小标题 / 组件三级层级
 │       ├── page-sections.css # 导航、Hero、CTA、页脚变体
 │       ├── states.css      # Hover / Focus / Error / Loading 等状态
-│       └── guidelines.css  # 内容长度、图片比例、响应式与边界规范
+│       ├── guidelines.css  # 内容长度、图片比例、响应式与边界规范
+│       └── typography.css  # 官网 H2/H3 与对应说明文字语义令牌
 └── README.md
 ```
 
@@ -67,7 +84,7 @@ landing-page-design-system/
 
 新增或修改组件时，必须进入 `styles/modules/` 中最匹配的职责文件。不要重新新增 `14.css`、`v3.css` 或按修改次数命名的覆盖文件。
 
-全站大模块、小模块、组件与组件内部间距统一由 `rhythm.css` 管理；标题层级和章节背景由 `hierarchy.css` 管理。其他模块不应重新定义另一套页面级节奏。
+全站大模块、小模块、组件与组件内部间距统一由 `rhythm.css` 管理；标题层级和章节背景由 `hierarchy.css` 管理；官网内容文字的语义字号由 `typography.css` 管理。其他模块不应重新定义另一套页面级字号体系。
 
 ## JavaScript 规则
 
@@ -103,7 +120,7 @@ landing-page-design-system/
 - Mobile：`<= 680px`
 - 复杂组件允许在约 `980px` 先进行内部重排
 
-内容长度、图片比例、移动端图表和极端内容测试均已在页面的“内容与响应式规范”中提供示例。
+普通内容模块的 H2 / H3 四级字号原则上不因设备尺寸重新定义，优先通过列数、内容宽度、换行和间距完成响应式调整。内容长度、图片比例、移动端图表和极端内容测试均已在页面的“内容与响应式规范”中提供示例。
 
 ## 外部依赖
 
