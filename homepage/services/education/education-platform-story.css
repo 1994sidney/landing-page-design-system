@@ -3,8 +3,10 @@
  */
 
 .edu-platform-story{
-  --edu-platform-progress:0;
+  --edu-platform-visual-y:38vh;
+  --edu-platform-copy-y:24vh;
   --edu-platform-screen-scale:.72;
+  --edu-platform-screen-height:547px;
   position:relative;
   height:200svh;
   min-height:1280px;
@@ -27,14 +29,14 @@
   min-width:0;
   padding-left:var(--mh-pad);
   padding-right:clamp(28px,4vw,64px);
-  transform:translate3d(0,calc((1 - var(--edu-platform-progress)) * 38vh),0);
+  transform:translate3d(0,var(--edu-platform-visual-y),0);
   will-change:transform;
 }
 
 .edu-platform-story__screen{
   position:relative;
   width:100%;
-  height:calc(760px * var(--edu-platform-screen-scale));
+  height:var(--edu-platform-screen-height);
   min-height:360px;
   overflow:hidden;
   background:#f6f8fb;
@@ -65,7 +67,7 @@
   align-self:center;
   min-width:0;
   padding:clamp(64px,7vw,108px) clamp(42px,6vw,96px) clamp(64px,7vw,108px) 0;
-  transform:translate3d(0,calc((1 - var(--edu-platform-progress)) * 24vh),0);
+  transform:translate3d(0,var(--edu-platform-copy-y),0);
   will-change:transform;
 }
 
