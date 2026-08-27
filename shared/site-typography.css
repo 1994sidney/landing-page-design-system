@@ -1,0 +1,69 @@
+/* Shared website content typography contract.
+ * Applies the Design System's semantic content sizes to the current homepage
+ * and secondary content pages. Hero/H1 and special display copy remain exempt.
+ */
+
+/* Homepage: section H2 + section description */
+.mh-policy-copy h2,
+.mh-copy h2,
+.mh-services__intro h2,
+.mh-section-head h2,
+.mh-news-head h2{
+  font-size:var(--mh-type-section-title,34px)!important;
+  line-height:var(--mh-type-section-title-line,1.28)!important;
+}
+
+.mh-policy-copy p,
+.mh-copy p,
+.mh-services__intro p,
+.mh-section-head p,
+.mh-news-head p{
+  font-size:var(--mh-type-section-copy,16px)!important;
+  line-height:var(--mh-type-section-copy-line,1.9)!important;
+}
+
+/* Homepage: H3 + supporting copy */
+#services .mh-service-item h3,
+#credibility .mh-trust-row h3,
+#news .mh-news-feature h3,
+#news .mh-news-list__item h3{
+  font-size:var(--mh-type-item-title,22px)!important;
+  line-height:var(--mh-type-item-title-line,1.45)!important;
+}
+
+#services .mh-service-item p,
+#credibility .mh-trust-row p,
+#news .mh-news-feature p,
+#news .mh-news-list__item p{
+  font-size:var(--mh-type-item-copy,14px)!important;
+  line-height:var(--mh-type-item-copy-line,1.9)!important;
+}
+
+/* Education service page: all ordinary module H2/H3 levels */
+.edu-page main section:not(.mh-page-hero) h2{
+  font-size:var(--mh-type-section-title,34px)!important;
+  line-height:var(--mh-type-section-title-line,1.28)!important;
+}
+
+.edu-page main section:not(.mh-page-hero) h3{
+  font-size:var(--mh-type-item-title,22px)!important;
+  line-height:var(--mh-type-item-title-line,1.45)!important;
+}
+
+/* Education service page: module-level explanatory copy */
+.edu-service-system__copy p,
+.edu-platform__copy>p,
+.edu-science-head .edu-lead,
+.edu-value-head .edu-lead,
+.edu-cta__side>p{
+  font-size:var(--mh-type-section-copy,16px)!important;
+  line-height:var(--mh-type-section-copy-line,1.9)!important;
+}
+
+/* Education service page: H3 supporting copy */
+.edu-service-card p,
+.edu-science-item__body p,
+.edu-value-item p{
+  font-size:var(--mh-type-item-copy,14px)!important;
+  line-height:var(--mh-type-item-copy-line,1.9)!important;
+}
