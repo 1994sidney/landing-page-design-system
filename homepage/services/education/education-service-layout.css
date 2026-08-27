@@ -50,23 +50,20 @@
 .edu-service-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  align-items:stretch;
+  column-gap:clamp(32px,3vw,48px);
+  row-gap:clamp(28px,2.6vw,38px);
+  align-items:start;
 }
 
 .edu-service-card{
   min-width:0;
-  padding:0 clamp(24px,2.5vw,38px) clamp(42px,4vw,58px) 0;
+  padding:0;
 }
 
-.edu-service-card:nth-child(even){
-  padding-right:0;
-  padding-left:clamp(24px,2.5vw,38px);
-  border-left:1px solid var(--mh-line);
-}
-
+.edu-service-card:nth-child(even),
 .edu-service-card:nth-child(n+3){
-  padding-top:clamp(42px,4vw,58px);
-  border-top:1px solid var(--mh-line);
+  padding:0;
+  border:0;
 }
 
 .edu-service-card__media{
@@ -122,19 +119,14 @@
 @media(max-width:620px){
   .edu-service-grid{
     grid-template-columns:1fr;
+    row-gap:40px;
   }
 
   .edu-service-card,
   .edu-service-card:nth-child(even),
   .edu-service-card:nth-child(n+3){
-    padding:30px 0 36px;
-    border-left:0;
-    border-top:1px solid var(--mh-line);
-  }
-
-  .edu-service-card:first-child{
-    padding-top:0;
-    border-top:0;
+    padding:0;
+    border:0;
   }
 
   .edu-service-card__media{
