@@ -1,5 +1,6 @@
 /* 学生认知科学智能评估平台 · 整屏滚动叙事模块
  * 模块到达视口顶部后固定为一整屏；固定期间只有三组图文向上移动。
+ * 固定摄影背景不参与内容轨道移动，形成前景/背景视差层次。
  * 第三组到达舞台中心后立即解除固定，页面恢复正常滚动。
  */
 
@@ -20,6 +21,7 @@ body{overflow-x:clip}
 .edu-platform-story__stage{
   position:sticky;
   top:0;
+  isolation:isolate;
   width:100%;
   height:var(--edu-platform-stage-height);
   overflow:hidden;
@@ -27,7 +29,32 @@ body{overflow-x:clip}
   color:#fff;
 }
 
+.edu-platform-story__stage::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:-3%;
+  background:url("../../assets/images/科研资源.png") center center/cover no-repeat;
+  filter:saturate(.66) contrast(.94) brightness(.88);
+  transform:scale(1.035);
+  transform-origin:center;
+  pointer-events:none;
+}
+
+.edu-platform-story__stage::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(25,35,38,.56) 0%,rgba(25,35,38,.48) 45%,rgba(25,35,38,.62) 100%),
+    rgba(25,35,38,.34);
+  pointer-events:none;
+}
+
 .edu-platform-story__track{
+  position:relative;
+  z-index:1;
   width:100%;
   transform:translate3d(0,var(--edu-platform-track-y),0);
   will-change:transform;
@@ -61,7 +88,7 @@ body{overflow-x:clip}
   max-width:640px;
   font-size:12px;
   line-height:1.75;
-  color:rgba(255,255,255,.52);
+  color:rgba(255,255,255,.58);
 }
 
 .edu-platform-story .edu-platform__copy{
@@ -80,7 +107,7 @@ body{overflow-x:clip}
 .edu-platform-story .edu-platform__copy>p{
   max-width:610px;
   margin:28px 0 0;
-  color:rgba(255,255,255,.74);
+  color:rgba(255,255,255,.78);
 }
 
 .edu-platform-story .edu-platform__difference{
@@ -88,7 +115,7 @@ body{overflow-x:clip}
   grid-template-columns:repeat(2,minmax(0,1fr));
   max-width:610px;
   margin-top:44px;
-  border-top:1px solid rgba(255,255,255,.16);
+  border-top:1px solid rgba(255,255,255,.20);
 }
 
 .edu-platform-story .edu-platform__difference>div{
@@ -97,14 +124,14 @@ body{overflow-x:clip}
 
 .edu-platform-story .edu-platform__difference>div+div{
   padding-left:24px;
-  border-left:1px solid rgba(255,255,255,.16);
+  border-left:1px solid rgba(255,255,255,.18);
 }
 
 .edu-platform-story .edu-platform__difference span{
   display:block;
   font-size:11px;
   line-height:1.5;
-  color:rgba(255,255,255,.50);
+  color:rgba(255,255,255,.56);
 }
 
 .edu-platform-story .edu-platform__difference strong{
@@ -126,7 +153,18 @@ body{overflow-x:clip}
     position:relative;
     top:auto;
     height:auto;
-    overflow:visible;
+    overflow:hidden;
+  }
+
+  .edu-platform-story__stage::before{
+    position:absolute;
+    inset:0;
+    transform:none;
+    background-position:center top;
+  }
+
+  .edu-platform-story__stage::after{
+    background:rgba(25,35,38,.66);
   }
 
   .edu-platform-story__track{
@@ -176,7 +214,13 @@ body{overflow-x:clip}
   .edu-platform-story__stage{
     position:relative;
     height:auto;
-    overflow:visible;
+    overflow:hidden;
+  }
+
+  .edu-platform-story__stage::before{
+    position:absolute;
+    inset:0;
+    transform:none;
   }
 
   .edu-platform-story__track{
