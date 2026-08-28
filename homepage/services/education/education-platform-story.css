@@ -1,21 +1,27 @@
 /* 学生认知科学智能评估平台 · 整屏滚动叙事模块
- * 外层只提供透明滚动距离；可见深色舞台固定为一整屏。
- * 三组左图右文在固定舞台内部连续向上移动。
+ * 模块到达视口顶部后固定为一整屏；固定期间只有三组图文向上移动。
+ * 第三组到达舞台中心后立即解除固定，页面恢复正常滚动。
  */
+
+/* theme.css 的 .mh-page 使用 overflow:hidden，会让 sticky 以该祖先为滚动容器而失效。
+ * 仅在教育心理服务页解除这一限制；横向溢出交由页面根层裁切。
+ */
+body{overflow-x:clip}
+.edu-page{overflow:visible}
 
 .edu-platform-story{
   --edu-platform-track-y:0px;
-  --edu-platform-stage-height:100svh;
+  --edu-platform-stage-height:100vh;
   position:relative;
-  height:345svh;
+  height:300vh;
   background:transparent;
 }
 
 .edu-platform-story__stage{
   position:sticky;
   top:0;
-  height:100svh;
-  min-height:680px;
+  width:100%;
+  height:var(--edu-platform-stage-height);
   overflow:hidden;
   background:var(--mh-ink);
   color:#fff;
@@ -29,7 +35,6 @@
 
 .edu-platform-story__panel{
   height:var(--edu-platform-stage-height);
-  min-height:680px;
   display:grid;
   grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);
   align-items:center;
@@ -45,7 +50,7 @@
   display:block;
   width:100%;
   height:auto;
-  max-height:min(68svh,720px);
+  max-height:min(68vh,720px);
   object-fit:contain;
   object-position:center;
 }
@@ -121,7 +126,6 @@
     position:relative;
     top:auto;
     height:auto;
-    min-height:0;
     overflow:visible;
   }
 
@@ -132,7 +136,6 @@
 
   .edu-platform-story__panel{
     height:auto;
-    min-height:0;
     grid-template-columns:1fr;
     padding:82px 0 0;
   }
@@ -173,7 +176,6 @@
   .edu-platform-story__stage{
     position:relative;
     height:auto;
-    min-height:0;
     overflow:visible;
   }
 
@@ -184,6 +186,5 @@
 
   .edu-platform-story__panel{
     height:auto;
-    min-height:0;
   }
 }
