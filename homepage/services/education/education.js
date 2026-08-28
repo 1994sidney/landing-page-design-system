@@ -9,7 +9,6 @@
 
   const desktop = window.matchMedia('(min-width: 981px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finalHoldScreens = 0.45;
   let stageHeight = window.innerHeight;
   let transitionTravel = 0;
   let ticking = false;
@@ -28,11 +27,11 @@
       return;
     }
 
-    stageHeight = Math.max(stage.getBoundingClientRect().height, 1);
+    stageHeight = Math.max(window.innerHeight, 1);
     transitionTravel = (panels.length - 1) * stageHeight;
 
     story.style.setProperty('--edu-platform-stage-height', `${Math.round(stageHeight)}px`);
-    story.style.height = `${Math.round(stageHeight + transitionTravel + stageHeight * finalHoldScreens)}px`;
+    story.style.height = `${Math.round(stageHeight + transitionTravel)}px`;
   };
 
   const updateStory = () => {
